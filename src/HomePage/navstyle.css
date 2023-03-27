@@ -1,0 +1,99 @@
+:root {
+    --mainColor:  #32435f;
+    --whiteColorr: #e1dcd9;
+    --titleColor: #7e534e;
+    --labelColor: #8f8681;
+    --titleColor2: #607BA9;
+    --lightMainColor: #8aabef;
+    --white : #fff;
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: var(--lightMainColor);
+    color: var(--white);
+
+}
+
+.nav-links a {
+    color: var(--white);
+}
+
+.logo {
+    font-size: 32px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1em;
+    font-size: 18px;
+}
+
+.nav-links li a:hover{
+    color: var(--mainColor);
+}
+
+/*input[type=checkbox]{
+    display: none;
+}
+
+!*HAMBURGER MENU*!
+
+.hamburger {
+    display: none;
+    font-size: 24px;
+    user-select: none;
+}*/
+
+/* APPLYING MEDIA QUERIES */
+
+@media (max-width: 768px) {
+
+    .menu {
+        display:none;
+        position: absolute;
+        background-color: var(--lightMainColor);
+        right: 0;
+        left: 0;
+        text-align: center;
+        padding: 16px 0;
+    }
+
+
+    .menu li a:hover{
+        color: var(--mainColor);
+    }
+
+
+    /*input[type=checkbox]:checked ~ .menu{
+        display: block;
+    }
+
+    .hamburger {
+        display: block;
+    }*/
+
+}
+
