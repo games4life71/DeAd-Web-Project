@@ -16,12 +16,14 @@ body
 html {
     font-size: 62.5%;
     scroll-behavior: smooth;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
 }
 
 a {
@@ -36,8 +38,9 @@ li {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px;
-    background-color: var(--lightMainColor);
+    padding-right: 10px;
+
+    background-color: #a9a9a9;
     color: var(--white);
 
 }
@@ -55,7 +58,7 @@ li {
 .nav-links {
     display: flex;
     gap: 1em;
-    font-size: 18px;
+    font-size: 30px;
 }
 
 .nav-links li a:hover {
