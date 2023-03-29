@@ -1,22 +1,29 @@
 :root {
-    --mainColor:  #32435f;
+    --mainColor: #32435f;
     --whiteColorr: #e1dcd9;
     --titleColor: #7e534e;
     --labelColor: #8f8681;
     --titleColor2: #607BA9;
-    --lightMainColor: #8aabef;
-    --white : #fff;
+    --lightMainColor: #959595;
+    --white: #fff;
+}
+
+body
+{
+    background-color: #2b2b2b;
 }
 
 html {
     font-size: 62.5%;
     scroll-behavior: smooth;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
 }
 
 a {
@@ -31,8 +38,9 @@ li {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 20px;
-    background-color: var(--lightMainColor);
+    padding-right: 10px;
+
+    background-color: #a9a9a9;
     color: var(--white);
 
 }
@@ -41,17 +49,19 @@ li {
     color: var(--white);
 }
 
-.logo {
-    font-size: 32px;
-}
+#logo {
+    width: 100%;
+    height: 10%;
+    max-width: 100px;
 
+}
 .nav-links {
     display: flex;
     gap: 1em;
-    font-size: 18px;
+    font-size: 30px;
 }
 
-.nav-links li a:hover{
+.nav-links li a:hover {
     color: var(--mainColor);
 }
 
@@ -72,7 +82,7 @@ li {
 @media (max-width: 768px) {
 
     .menu {
-        display:none;
+        display: none;
         position: absolute;
         background-color: var(--lightMainColor);
         right: 0;
@@ -82,7 +92,7 @@ li {
     }
 
 
-    .menu li a:hover{
+    .menu li a:hover {
         color: var(--mainColor);
     }
 
