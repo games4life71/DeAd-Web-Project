@@ -1,0 +1,122 @@
+body {
+    background-color: #2b2b2b;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+
+    margin: 0;
+    padding: 0;
+}
+
+.contact_text {
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    color: #ffffff;
+    text-align: center;
+    margin-top: 200px;
+    margin-right: 150px;
+    font-size: 30px;
+}
+
+
+.contact_info {
+    position: relative;
+    top: 200px;
+
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    font-weight: 500;
+    color: #fff;
+
+
+}
+
+.contact_info p {
+    margin-top: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    position: relative;
+    text-align: center;
+}
+
+.contact_info .email h2 {
+    position: relative;
+    left: 50px;
+}
+
+.contact_info .phone h2 {
+    position: relative;
+    left: 20px;
+}
+
+.contact_info .address h2 {
+    position: relative;
+    left: 75px;
+}
+
+.contact_info .phone {
+    position: relative;
+    font-size: 15px;
+    display: block;
+    justify-items: center;
+    align-items: center;
+
+
+}
+
+.contact_info .address {
+    position: relative;
+    font-size: 15px;
+    display: inline-block;
+    justify-items: center;
+    align-items: center;
+
+
+}
+
+.contact_info .email {
+    position: relative;
+    top: 0px;
+    font-size: 15px;
+    display: block;
+    justify-items: center;
+    align-items: center;
+
+
+}
+
+.contact_info .address img {
+    position: relative;
+    left: 25%;
+
+}
+
+.contact_info .phone img {
+    position: relative;
+    left: 10%;
+
+}
+
+.contact_info .email img {
+    position: relative;
+    left: 20%;
+
+}
+
+.vline1 {
+    border-left: 2px solid #fff;
+    height: 300px;
+    position: relative;
+    top: 10px;
+    left: 100px;
+}
+
+.vline2 {
+    border-left: 2px solid #fff;
+    height: 300px;
+    position: relative;
+    top: 10px;
+    right: 100px;
+}
