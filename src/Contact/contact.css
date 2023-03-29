@@ -1,21 +1,18 @@
 body {
-    background-color: #2b2b2b;
-    font-family: Arial, Helvetica, sans-serif;
+    background-color: #efefef;
     font-size: 20px;
-
     margin: 0;
     padding: 0;
 }
-
 .contact_text {
 
     display: flex;
     justify-content: center;
     align-content: center;
-    color: #ffffff;
+    color: #1b1248;
     text-align: center;
     margin-top: 200px;
-    margin-right: 150px;
+    font-family: "Times New Roman", serif;
     font-size: 30px;
 }
 
@@ -25,98 +22,48 @@ body {
     top: 200px;
 
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     flex-direction: row;
     font-weight: 500;
     color: #fff;
+    margin-left: 50px;
+    margin-right: 50px;
+    text-align: center;
 
 
+}
+
+.contact_info img {
+    margin-bottom: 20px;
 }
 
 .contact_info p {
     margin-top: 30px;
-    font-family: Arial, Helvetica, sans-serif;
+        font-family: 'Roboto', sans-serif;
     font-size: 20px;
+    color: #a9a9a9;
     position: relative;
     text-align: center;
 }
-
-.contact_info .email h2 {
-    position: relative;
-    left: 50px;
+.contact_info h2
+{
+    color:#a9a9a9;
 }
-
-.contact_info .phone h2 {
-    position: relative;
-    left: 20px;
-}
-
-.contact_info .address h2 {
-    position: relative;
-    left: 75px;
-}
-
-.contact_info .phone {
+.contact_info  .email , .address ,.phone{
     position: relative;
     font-size: 15px;
-    display: block;
+    display: flex;
+    flex-direction: column;
     justify-items: center;
     align-items: center;
-
-
+    border: 1px solid #fff;
+    padding: 30px;
+    background-color: rgba(202, 235, 242, 0.75);
+    border-radius: 10px;
 }
 
-.contact_info .address {
-    position: relative;
-    font-size: 15px;
-    display: inline-block;
-    justify-items: center;
-    align-items: center;
-
-
-}
-
-.contact_info .email {
-    position: relative;
-    top: 0px;
-    font-size: 15px;
-    display: block;
-    justify-items: center;
-    align-items: center;
-
-
-}
-
-.contact_info .address img {
-    position: relative;
-    left: 25%;
-
-}
-
-.contact_info .phone img {
-    position: relative;
-    left: 10%;
-
-}
-
-.contact_info .email img {
-    position: relative;
-    left: 20%;
-
-}
-
-.vline1 {
-    border-left: 2px solid #fff;
-    height: 300px;
-    position: relative;
-    top: 10px;
-    left: 100px;
-}
-
-.vline2 {
-    border-left: 2px solid #fff;
-    height: 300px;
-    position: relative;
-    top: 10px;
-    right: 100px;
+.contact_info .email:hover , .address:hover ,.phone:hover{
+    background-color: rgba(23, 37, 42, 1);
+    border: 1px solid #fff;
+    border-radius: 10px;
 }
