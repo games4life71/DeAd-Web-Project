@@ -1,10 +1,10 @@
-:root {
-    --mainColor:  #32435f;
-    --whiteColorr: #e1dcd9;
-    --titleColor: #7e534e;
-    --labelColor: #8f8681;
-    --titleColor2: #607BA9;
-    --lightMainColor: #8aabef;
+:root{
+    --darkblue: #32435f;
+    --lightblue: #85abef;
+    --offpink: #a67f78;
+    --capuccino: #8f8681;
+    --offwhite: #e1dcd9;
+    --lightcapuccino: #cccbc9;
 }
 
 html {
@@ -13,7 +13,7 @@ html {
 }
 
 body {
-    background: linear-gradient(to right, var(--lightMainColor), var(--mainColor));
+    background: linear-gradient(to right, var(--lightblue) , var(--darkblue)  );
     font-weight: 400;
     min-height: 100vh;
     display: grid;
@@ -36,7 +36,7 @@ body {
     justify-content: center;
     width: 100%;
     height: 100%;
-    background-color: var(--whiteColorr);
+    background-color: var(--offwhite);
     border-radius: .5rem;
     box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
 }
@@ -48,7 +48,7 @@ h2{
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.125rem;
-    color: var(--titleColor2);
+    color: var(--darkblue);
 }
 
 .wrapper .form-container form .input-field {
@@ -64,7 +64,7 @@ h2{
     transform: translateY(-50%);
     font-size: 1.6rem;
     text-transform: capitalize;
-    color: var(--titleColor2);
+    color: var(--darkblue);
     padding: 0 .5rem;
     pointer-events: none;
     transition: all .5s ease;
@@ -84,9 +84,9 @@ h2{
     padding: 0 1rem;
     border-radius: .5rem;
     outline: none;
-    border: .1rem solid black;
+    border: .1rem solid var(--darkblue);
     font-size: 1.6rem;
-    color: black;
+    color: var(--darkblue);
     background: transparent;
 }
 
@@ -96,7 +96,7 @@ h2{
 .input-field input:valid~i {
     top: 0 !important;
     font-size: 1.2rem !important;
-    background-color: var(--whiteColorr);
+    background-color: var(--offwhite);
 }
 
 .wrapper .form-container form .forgot-pass {
@@ -106,19 +106,19 @@ h2{
 .wrapper .form-container form .forgot-pass a {
     font-size: 1.4rem;
     text-decoration: none;
-    color: var(--titleColor2);
+    color: var(--darkblue);
 }
 
 .wrapper .form-container form .forgot-pass a:hover {
-    color: var(--mainColor);
+    color: var(--capuccino);
 }
 
 .wrapper .form-container form .btn {
     text-decoration: none;
     text-transform: uppercase;
     letter-spacing: 0.125rem;
-    color: var(--titleColor2);
-    outline: 0.125rem solid var(--titleColor2);
+    color: var(--darkblue);
+    outline: 0.125rem solid var(--darkblue);
     padding: 0.625rem 7.813rem;
     position: relative;
     overflow: hidden;
@@ -126,7 +126,7 @@ h2{
 }
 
 .btn:hover{
-    color: var(--mainColor);
+    color: var(--darkblue);
 }
 
 .btn::before{
@@ -136,7 +136,7 @@ h2{
     left: -3.125rem;
     width: 0;
     height: 100%;
-    background-color: var(--titleColor2);
+    background-color: var(--darkblue);
     /*transform: skewX(.312rad);*/
     z-index: -1;
     transition: width 1s;
@@ -149,18 +149,18 @@ h2{
 .wrapper .form-container form .link {
     text-align: center;
     font-size: 1.4rem;
-    color: var(--labelColor);
+    color: var(--darkblue);
     margin: 2.5rem 0;
 }
 
 .wrapper .form-container form .link a{
     text-decoration:  none;
     text-transform: capitalize;
-    color: var(--titleColor2);
+    color: var(--darkblue);
 }
 
 .wrapper .form-container form .link a:hover{
-    color: var(--mainColor);
+    color: var(--capuccino);
 }
 
 
@@ -177,7 +177,7 @@ h2{
     justify-content: center;
     width: 100%;
     height: 100%;
-    background-color: var(--whiteColorr);
+    background-color: var(--offwhite);
     border-radius: .5rem;
     box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
 }
@@ -195,7 +195,7 @@ h2{
     transform: translateY(-50%);
     font-size: 1.6rem;
     text-transform: capitalize;
-    color: var(--titleColor2);
+    color: var(--darkblue);
     padding: 0 .5rem;
     pointer-events: none;
     transition: all .5s ease;
@@ -215,9 +215,9 @@ h2{
     padding: 0 1rem;
     border-radius: .5rem;
     outline: none;
-    border: .1rem solid black;
+    border: .1rem solid var(--darkblue);
     font-size: 1.6rem;
-    color: black;
+    color: var(--darkblue);
     background: transparent;
 }
 
@@ -227,5 +227,5 @@ h2{
 .input-field-sign-up input:valid~i {
     top: 0 !important;
     font-size: 1.2rem !important;
-    background-color: var(--whiteColorr);
+    background-color: var(--offwhite);
 }
