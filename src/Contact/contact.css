@@ -1,17 +1,29 @@
+:root{
+    --darkblue: #32435f;
+    --lightblue: #85abef;
+    --offpink: #a67f78;
+    --capuccino: #8f8681;
+    --offwhite: #e1dcd9;
+    --lightcapuccino: #cccbc9;
+}
+
 body {
-    background-color: #efefef;
-    font-size: 20px;
+    background: linear-gradient(to right, var(--lightblue) , var(--darkblue) );
     margin: 0;
     padding: 0;
 }
-.contact_text {
 
+body::-webkit-scrollbar{
+    display: none;
+}
+
+.contact_text {
     display: flex;
     justify-content: center;
     align-content: center;
-    color: #1b1248;
+    color: var(--offwhite);
     text-align: center;
-    margin-top: 200px;
+    margin-top: 150px;
     font-family: "Times New Roman", serif;
     font-size: 30px;
 }
@@ -19,8 +31,7 @@ body {
 
 .contact_info {
     position: relative;
-    top: 200px;
-
+    top: 150px;
     display: flex;
     justify-content: space-evenly;
     flex-direction: row;
@@ -30,7 +41,6 @@ body {
     margin-right: 50px;
     text-align: center;
 
-
 }
 
 .contact_info img {
@@ -39,15 +49,15 @@ body {
 
 .contact_info p {
     margin-top: 30px;
-        font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 20px;
-    color: #a9a9a9;
+    color: var(--offwhite);
     position: relative;
     text-align: center;
 }
 .contact_info h2
 {
-    color:#a9a9a9;
+    color: var(--offwhite);
 }
 .contact_info  .email , .address ,.phone{
     position: relative;
@@ -58,12 +68,21 @@ body {
     align-items: center;
     border: 1px solid #fff;
     padding: 30px;
-    background-color: rgba(202, 235, 242, 0.75);
+    background-color: linear-gradient(to right, var(--lightblue) , var(--darkblue) );
     border-radius: 10px;
 }
 
-.contact_info .email:hover , .address:hover ,.phone:hover{
-    background-color: rgba(23, 37, 42, 1);
+
+
+.contact_info .email:hover , .address:hover ,.phone:hover {
+    background-color: var(--darkblue);
     border: 1px solid #fff;
     border-radius: 10px;
+    animation: fadeIn 5s;
+
+
+}
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
