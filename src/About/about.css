@@ -1,0 +1,38 @@
+:root{
+    --darkblue: #32435f;
+    --lightblue: #85abef;
+    --offpink: #a67f78;
+    --capuccino: #8f8681;
+    --offwhite: #e1dcd9;
+    --lightcapuccino: #cccbc9;
+    --brown: #5c4b4b;
+}
+
+body {
+    background:  linear-gradient(to right, var(--lightblue) 10%, var(--darkblue) 75%);
+    margin: 0;
+    padding: 0;
+
+}
+
+body::-webkit-scrollbar{
+    display: none;
+}
+
+.about-section
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    isvisble: true;
+    margin-top: 100px;
+
+}
+
+#about_title
+{
+    font-size: 20px;
+
+}
