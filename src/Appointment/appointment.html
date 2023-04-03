@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../NavBar/navstyle.css">
+    <link rel="stylesheet" href="appstyle.css">
+    <title>Make an appointment</title>
+</head>
+<body>
+<header class="header">
+    <img src="" class="logo" alt="logo">
+    <input class="menu-btn" type="checkbox" id="menu-btn" />
+    <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+    <ul class="menu">
+        <li><a href="../NavBar/navbar.html">Home</a></li>
+        <li><a href="../Login_Module/login.html">Login</a></li>
+        <li><a href="../FAQ/faq.html">FAQ</a></li>
+        <li><a href="../Contact/contact.html">Contact</a></li>
+    </ul>
+</header>
+
+<form class="visit" action="#" method="post">
+    <div class="form-header">
+        <h1>Make an appointment</h1>
+    </div>
+
+    <div class="form-body">
+        <div class="horizontal-group">
+            <div class="form-group left">
+                <label for="firstname" class="label-title">First name </label>
+                <input type="text" id="firstname" class="form-input" placeholder="enter your first name" required="required" />
+            </div>
+            <div class="form-group right">
+                <label for="lastname" class="label-title">Last name</label>
+                <input type="text" id="lastname" class="form-input" placeholder="enter your last name" />
+            </div>
+
+            <div class="form-group left">
+                <label class="label-title">Relationship with the prisoner:</label>
+                <div class="input-group">
+                    <label for="relative">
+                        <input type="radio" name="relationship" value="relative" id="relative"> Relative</label>
+                    <label for="legal_gurdian">
+                        <input type="radio" name="relationship" value="legal_gurdian" id="legal_gurdian"> Legal Guardian</label>
+                    <label for="lawyer">
+                        <input type="radio" name="relationship" value="lawyer" id="lawyer"> Lawyer</label>
+                    <label for="friend">
+                        <input type="radio" name="relationship" value="friend" id="friend"> Friend</label>
+                </div>
+            </div>
+
+            <div class="form-group left">
+                <label class="label-title">The nature of the visit: </label>
+                <div class="input-group">
+                    <label>
+                        <input type="checkbox" value="Web">Parental</label>
+                    <label>
+                        <input type="checkbox" value="iOS">Friendship</label>
+                    <label>
+                        <input type="checkbox" value="Andriod">Lawyership</label>
+                </div>
+            </div>
+
+            <div class="form-group right" >
+                <label class="label-title">Source of Income: </label>
+                <select class="form-input" id="level" >
+                    <option value="B">Employed</option>
+                    <option value="I">Self-employed</option>
+                    <option value="A">Unemployed</option>
+                </select>
+            </div>
+
+            <div class="form-group right">
+                <label class="label-title">Photo:</label>
+                <input id="image" type="file" name="profile_photo" required="required" placeholder="Photo" >
+            </div>
+
+            <div class="form-group left">
+                <label for="date" class="label-title">Date:</label>
+                <input type="date" id="date" class="form-input" required="required">
+            </div>
+
+            <div class="form-group right">
+                <label for="time" class="label-title">Time (max 5h) </label>
+                <input type="range" min="1" max="5" step="1"  value="0" id="time" class="form-input" onChange="change();" style="height:28px;width:78%;padding:0;">
+            </div>
+
+            <div class="button-center">
+            <button type="submit" class="btn">Submit</button>
+            </div>
+
+        </div>
+
+
+
+    </div>
+
+    <div class="form-footer">
+
+    </div>
+</form>
+
+</body>
+</html>
+
+
