@@ -8,10 +8,12 @@
 }
 
 a {
-    color: #000;
+    color: var(--offpink);
+    text-decoration: none;
 }
 
-/* header */
+/*
+!* header *!
 
 .header {
     background-color: var(--offwhite);
@@ -51,7 +53,7 @@ a {
     text-decoration: none;
 }
 
-/* menu */
+!* menu *!
 
 .header .menu {
     clear: both;
@@ -59,7 +61,7 @@ a {
     transition: max-height .2s ease-out;
 }
 
-/* menu icon */
+!* menu icon *!
 
 .header .menu-icon {
     cursor: pointer;
@@ -98,7 +100,7 @@ a {
     top: -0.3125em;
 }
 
-/* menu btn */
+!* menu btn *!
 
 .header .menu-btn {
     display: none;
@@ -125,7 +127,7 @@ a {
     top: 0;
 }
 
-/* 48em = 768px */
+!* 48em = 768px *!
 
 @media (min-width: 48em) {
     .header li {
@@ -142,7 +144,8 @@ a {
     .header .menu-icon {
         display: none;
     }
-}
+
+}*/
 
 body {
     background: linear-gradient(to right, var(--lightblue), var(--darkblue));
@@ -186,18 +189,13 @@ body::-webkit-scrollbar {
 .large-title {
     font-size: 60px;
     color: white;
-    margin: 0;
-    margin-left: 2rem;
-    margin-right: 2rem;
+    margin: 0 2rem;
 }
 
 .small-title {
     font-size: 36px;
-    color: var(--offpink);
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    margin-left: 2rem;
-    margin-right: 2rem;
+    color: var(--lightcapuccino);
+    margin: 0.5em 2rem;
 }
 
 .text {
@@ -218,7 +216,7 @@ body::-webkit-scrollbar {
     cursor: pointer;
     margin-left: 2rem;
     margin-right: 2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .block {
@@ -229,7 +227,7 @@ body::-webkit-scrollbar {
     padding: 20px;
     margin-bottom: 20px;
     border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
     text-align: center;
     justify-content: center;
     align-items: center;
