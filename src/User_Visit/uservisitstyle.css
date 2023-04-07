@@ -90,7 +90,7 @@ body::-webkit-scrollbar{
     font-size: 17px;
 }
 
-#range-label {
+/*#range-label {
     width:15%;
     padding:5px;
     background-color: var(--lightblue);
@@ -99,7 +99,7 @@ body::-webkit-scrollbar{
     font-size: 17px;
     position: relative;
     top:-8px;
-}
+}*/
 
 
 ::-webkit-input-placeholder {
@@ -124,7 +124,7 @@ body::-webkit-scrollbar{
     color: var(--brown);
 }
 
-.btn{
+/*.btn{
     border-radius: 10px;
     font-size: 16px;
     font-weight: 200;
@@ -139,7 +139,7 @@ body::-webkit-scrollbar{
     -webkit-user-select: none;
     touch-action: manipulation;
     color: var(--offwhite);
-}
+}*/
 
 
 
@@ -177,8 +177,7 @@ body::-webkit-scrollbar{
   
   /* Style the edit button */
   .edit-button {
-    background-color: var(--brown);
-    color: white;
+    background-color: var(--capuccino);
     border: none;
     padding: 10px;
     text-align: center;
@@ -189,12 +188,17 @@ body::-webkit-scrollbar{
     cursor: pointer;
     border-radius: 10px;
   }
-  
+
   /* Change the width of list items on smaller screens */
   @media (max-width: 768px) {
     .visitor-list li {
       width: 100%;
     }
   }
+
+a{
+    text-decoration: none;
+    color: var(--offwhite);
+}
   
 
