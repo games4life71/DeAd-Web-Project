@@ -1,4 +1,4 @@
-:root{
+:root {
     --darkblue: #32435f;
     --lightblue: #85abef;
     --offpink: #a67f78;
@@ -9,42 +9,43 @@
 }
 
 body {
-    background:  linear-gradient(to right, var(--lightblue) 10%, var(--darkblue) 75%);
+    background: linear-gradient(to bottom, var(--lightblue), var(--darkblue)) fixed;
     margin: 0;
     padding: 0;
 }
 
-body::-webkit-scrollbar{
+body::-webkit-scrollbar {
     display: none;
 }
 
-.summary{
-    width:650px;
-    margin:100px auto;
+.summary {
+    max-width: 650px;
+    margin: 100px auto;
     background: var(--offwhite);
     border-radius: 10px;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
-.form-header  {
+.form-header {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
 
 .form-header h1 {
     font-size: 30px;
-    text-align:center;
+    text-align: center;
     color: var(--brown);
-    padding:20px 0;
-    border-bottom:1px solid #cccccc;
+    padding: 20px 0;
+    border-bottom: 1px solid #cccccc;
 }
 
 .form-body {
-    padding:10px 40px;
-    /* color:#666;*/
+    padding: 10px;
 }
 
-.form-group{
-    margin-bottom:20px;
+.form-group {
+    margin-bottom: 20px;
 }
 
 .form-body .label-title {
@@ -68,46 +69,42 @@ body::-webkit-scrollbar{
     outline: none;
 }
 
-
-
-.horizontal-group .left{
-    float:left;
-    width:49%;
+.horizontal-group .left {
+    float: left;
+    width: 49%;
 }
 
-.horizontal-group .right{
-    float:right;
-    width:49%;
+.horizontal-group .right {
+    float: right;
+    width: 49%;
 }
 
 .input[type="file"] {
     outline: none;
-    cursor:pointer;
+    cursor: pointer;
     font-size: 17px;
 }
 
 #range-label {
-    width:15%;
-    padding:5px;
+    width: 15%;
+    padding: 5px;
     background-color: var(--lightblue);
-    color:white;
+    color: white;
     border-radius: 5px;
     font-size: 17px;
     position: relative;
-    top:-8px;
+    top: -8px;
 }
-
 
 ::-webkit-input-placeholder {
-    color:#d9d9d9;
+    color: #d9d9d9;
 }
-
 
 .form-footer {
-    clear:both;
+    clear: both;
 }
 
-.input-group{
+.input-group {
     /*make the buttons orizontal*/
     display: flex;
     flex-direction: column;
@@ -120,7 +117,7 @@ body::-webkit-scrollbar{
     color: var(--brown);
 }
 
-.btn{
+.btn {
     border-radius: 10px;
     font-size: 16px;
     font-weight: 200;
@@ -137,14 +134,8 @@ body::-webkit-scrollbar{
     color: var(--offwhite);
 }
 
-
-
 @media (min-width: 768px) {
     .btn {
         padding: 13px 50px 13px;
     }
-}
-
-.button-center{
-    text-align: center;
 }
