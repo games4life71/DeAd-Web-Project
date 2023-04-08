@@ -25,7 +25,6 @@ body::-webkit-scrollbar{
     align-items: center;
     justify-content: center;
     width: 100%;
-    isvisble: true;
     margin-top: 50px;
 
 }
@@ -50,5 +49,10 @@ body::-webkit-scrollbar{
     color: var(--brown);
     background-color: var(--offwhite);
 
-    ;
+
+}
+.about_text p
+{
+    margin: 20px;
+    padding: 20px;
 }
