@@ -13,7 +13,7 @@ html {
 }
 
 body {
-    background: linear-gradient(to right, var(--lightblue) , var(--darkblue)  );
+    background: linear-gradient(to bottom, var(--lightblue), var(--darkblue)) fixed;
     font-weight: 400;
     min-height: 100vh;
     display: grid;

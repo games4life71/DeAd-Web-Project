@@ -9,7 +9,7 @@
 }
 
 body {
-    background:  linear-gradient(to right, var(--lightblue) 10%, var(--darkblue) 75%);
+    background: linear-gradient(to bottom, var(--lightblue), var(--darkblue)) fixed;
     margin: 0;
     padding: 0;
 }
@@ -37,10 +37,6 @@ body::-webkit-scrollbar{
     padding:20px 0;
     border-bottom:1px solid #cccccc;
 }
-
-
-
-
 
 .form-body {
     padding:10px 40px;

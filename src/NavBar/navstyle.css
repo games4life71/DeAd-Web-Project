@@ -52,9 +52,12 @@ a {
 .header .logo {
     height: 100px;
     width: 125px;
-    top: -15px;
+    top:5px;
     left: 1%;
     position: absolute;
+    display: flex;
+    block-size: auto;
+    object-fit: contain;
 }
 
 /* menu */
@@ -151,8 +154,8 @@ a {
     .logo
     {
         display: flex;
-        justify-content: center;
-        align-items: center;
+        block-size: auto;
+        object-fit: contain;
     }
 }
 

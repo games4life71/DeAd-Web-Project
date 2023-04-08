@@ -8,7 +8,9 @@
 }
 
 body {
-    background: linear-gradient(to right, var(--lightblue) , var(--darkblue) );
+
+    background: linear-gradient(to bottom, var(--lightblue), var(--darkblue)) fixed;
+
     margin: 0;
     padding: 0;
 }

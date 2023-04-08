@@ -9,7 +9,7 @@
 }
 
 body {
-    background:  linear-gradient(to right, var(--lightblue) 10%, var(--darkblue) 75%);
+    background:  linear-gradient(to bottom, var(--lightblue) 10%, var(--darkblue) 75%);
     margin: 0;
     padding: 0;
 }
