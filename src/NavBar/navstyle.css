@@ -10,7 +10,6 @@
 body {
     margin: 0;
     font-family: Helvetica, sans-serif;
-
 }
 
 a {
@@ -25,6 +24,7 @@ a {
     position: fixed;
     top: 0;
     width: 100%;
+    height: 8%;
     z-index: 3;
 }
 
@@ -50,11 +50,11 @@ a {
 }
 
 .header .logo {
-    display: block;
-    float: left;
-    font-size: 2em;
-    padding: 0.625em 1.25em;
-    text-decoration: none;
+    height: 100px;
+    width: 125px;
+    top: -15px;
+    left: 1%;
+    position: absolute;
 }
 
 /* menu */
@@ -111,7 +111,7 @@ a {
 }
 
 .header .menu-btn:checked ~ .menu {
-    max-height: 15em;
+    max-height: 20em;
 }
 
 .header .menu-btn:checked ~ .menu-icon .navicon {
@@ -147,6 +147,12 @@ a {
     }
     .header .menu-icon {
         display: none;
+    }
+    .logo
+    {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 }
 
