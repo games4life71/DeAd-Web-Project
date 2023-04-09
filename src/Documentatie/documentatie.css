@@ -92,3 +92,8 @@ p.issue {
 b{
     color: #4b0061;
 }
+
+img {
+    max-width: 100%;
+    height: auto;
+}
