@@ -7,11 +7,11 @@
     --lightcapuccino: #cccbc9;
     --brown: #5c4b4b;
 }
+
 body {
-    background:  linear-gradient(to right, var(--lightblue) 10%, var(--darkblue) 75%);
+    background: linear-gradient(to bottom, var(--lightblue), var(--darkblue)) fixed;
     margin: 0;
     padding: 0;
-
 }
 
 body::-webkit-scrollbar{
@@ -25,7 +25,6 @@ body::-webkit-scrollbar{
     align-items: center;
     justify-content: center;
     width: 100%;
-    isvisble: true;
     margin-top: 50px;
 
 }
@@ -42,13 +41,15 @@ body::-webkit-scrollbar{
     border: 1px solid #fff;
     border-radius: 10px;
     font-size: 20px;
-    margin-top: 50px;
-    margin-bottom: 50px;
-    margin-left: 50px;
-    margin-right: 50px;
+    margin: 50px;
     text-align: center;
     color: var(--brown);
     background-color: var(--offwhite);
 
-    ;
+
+}
+.about_text p
+{
+    margin: 20px;
+    padding: 20px;
 }
