@@ -25,6 +25,12 @@ else{
 
     if(password_verify($password, $row['password'])){
         echo 'You have successfully logged in !';
+       //set the session variables
+        session_start();
+        $_SESSION['username'] = $username;
+        $_SESSION['is_logged_in'] = true;
+
+        header('Location: ../HomePage/homepage.php');
     }
     else{
         echo 'Wrong username or password';

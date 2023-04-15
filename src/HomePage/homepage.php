@@ -1,3 +1,11 @@
+<?php
+session_start(); //start the session
+if(!isset($_SESSION['is_logged_in'])){
+    $_SESSION['is_logged_in'] = false;
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -15,7 +23,7 @@
         <input class="menu-btn" type="checkbox" id="menu-btn" />
         <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
         <ul class="menu">
-            <li><a href="../HomePage/homepage.html">Home</a></li>
+            <li><a href="../HomePage/homepage.php">Home</a></li>
             <li><a href="../Login_Module/login.html">Login</a></li>
             <li><a href="../About/about.html">About Us</a></li>
             <li><a href="../Contact/contact.html">Contact</a></li>
@@ -34,11 +42,27 @@
         <div class="middle"></div>
         <div class="right-side">
             <div class="block_welcome">
-                <h2 class="block-title_welcome">Welcome, Username</h2>
-            </div>
-            <div class="block">
+
+                <?php
+                if( $_SESSION['is_logged_in']){
+
+                    echo '<h2 class="block-title_welcome">Welcome, ' . $_SESSION['username'] . ! '</h2>';
+                }
+                else
+                {
+                    echo '<div class="block">
                 <a href="../Login_Module/login.html"><h2 class="block-title">Login into your account</h2></a>
+            </div>';
+                }
+                ?>
+
+
+
+                
+
+<!--                <h2 class="block-title_welcome">Welcome, Username</h2>-->
             </div>
+
         </div>
     </div>
 

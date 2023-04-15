@@ -1,5 +1,8 @@
 <?php
 
+//check if the user is already logged in
+
+
 //get the username,password and email from the form
 $username = $_POST['username'];
 $password = $_POST['password'];
