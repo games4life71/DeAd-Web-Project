@@ -10,7 +10,7 @@
 <body>
 <div class="wrapper">
     <div class="form-container" id="sign-up">
-            <form action="#" >
+            <form action="register.php" method="POST" >
                 <h2>Sign Up</h2>
 
                     <div class="input-field-sign-up">
@@ -24,17 +24,17 @@
                         <label for="last-name">Last Name</label>
                     </div>
                     <div class="input-field-sign-up">
-                        <input type="text" required id="username">
+                        <input type="text"  name="username" required id="username">
                         <i></i>
                         <label for="username">Username</label>
                     </div>
                     <div class="input-field-sign-up">
-                        <input type="email" required id="email">
+                        <input type="email" name="email" required id="email">
                         <i></i>
                         <label for="email">Email</label>
                     </div>
                     <div class="input-field-sign-up">
-                        <input type="password" required id="password">
+                        <input type="password" name="password" required id="password">
                         <i></i>
                         <label for="password">Password</label>
                     </div>
@@ -43,7 +43,7 @@
                         <i></i>
                         <label for="confirm-password">Confirm Password</label>
                     </div>
-                <button type="submit" class="btn">login</button>
+                <button type="submit" class="btn">register</button>
                 <div class="link">
                     <p>You already have an account?<a href="login.html" class="signin-link"> Sign in</a></p>
                 </div>
