@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="../NavBar/navstyle.css">
+    <link rel="stylesheet" href="profile.css">
 </head>
 <body>
 <header class="header">
@@ -20,17 +22,39 @@
     </ul>
 </header>
 
-<div class = "big_wrapper" >
+<div class="info_wrapper">
+    <div class="blocks_wrapper">
 
-<!--    Display a logout button -->
-    <div class="logout">
-        <form action="logout.php" method="post">
-            <button type="submit" name="logout-submit">Logout</button>
-        </form>
+        <div class="block">
+
+            <div class="left_info" >
+
+                <p>Name:johndoe</p>
+                <p>Surname:doe123</p>
+                <p>Email:email.com</p>
+                <p>Address:myaddress.com</p>
+            </div>
+        </div>
+
+        <div class="line">
+            <hr>
+        </div>
+
+        <div class="block">
+            <div class="right_block">
+
+                <a href="logout.php"><h1>Logout</h1></a>
+                <a ><h1>Change Password</h1></a>
+                <a ><h1>Change Info</h1></a>
+                <a ><h1>Logout</h1></a>
+
+            </div>
+        </div>
+
     </div>
-    <h1 class="title">Profilekakakaka</h1>
-</div>
 
+
+</div>
 
 </body>
 </html>
