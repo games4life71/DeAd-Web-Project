@@ -1,21 +1,28 @@
+<?php
+session_start(); //start the session
+if(!isset($_SESSION['is_logged_in'])){
+    $_SESSION['is_logged_in'] = false;
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="homepage.css">
-        <<link rel="stylesheet" href="../NavBar/navstyle.css">
+        <link rel="stylesheet" href="homepage.css?v=1">
+        <link rel="stylesheet" href="../NavBar/navstyle.css">
         <title>Homepage</title>
     </head>
     <body>
     
     <header class="header">
-        <a href="../HomePage/homepage.html"><img src="../../assets/Logo/Asset%201.svg" class="logo" alt="logo"></a>
+        <a href="../HomePage/homepage.php"><img src="../../assets/Logo/Asset%201.svg" class="logo" alt="logo"></a>
         <input class="menu-btn" type="checkbox" id="menu-btn" />
         <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
         <ul class="menu">
-            <li><a href="../HomePage/homepage.html">Home</a></li>
+            <li><a href="../HomePage/homepage.php">Home</a></li>
             <li><a href="../Login_Module/login.html">Login</a></li>
             <li><a href="../About/about.html">About Us</a></li>
             <li><a href="../Contact/contact.html">Contact</a></li>
@@ -34,11 +41,28 @@
         <div class="middle"></div>
         <div class="right-side">
             <div class="block_welcome">
-                <h2 class="block-title_welcome">Welcome, Username</h2>
-            </div>
-            <div class="block">
+
+                <?php
+                if( $_SESSION['is_logged_in']){
+
+                    echo '<h2 class="block-title_welcome">Welcome</h2>' ;
+                    echo '<a class="block-title_welcome" id="username" href="../UserProfile/profile.php" >, ' .$_SESSION['username'] . '</a>' ;
+                }
+                else
+                {
+                    echo '<div class="block">
                 <a href="../Login_Module/login.html"><h2 class="block-title">Login into your account</h2></a>
+            </div>';
+                }
+                ?>
+
+
+
+                
+
+<!--                <h2 class="block-title_welcome">Welcome, Username</h2>-->
             </div>
+
         </div>
     </div>
 
