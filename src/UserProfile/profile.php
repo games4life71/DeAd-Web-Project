@@ -1,4 +1,11 @@
 <!DOCTYPE html>
+<?php
+session_start(); //start the session
+if (!isset($_SESSION['is_logged_in'])) {
+    $_SESSION['is_logged_in'] = false;
+}
+?>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -27,12 +34,23 @@
 
         <div class="block">
 
-            <div class="left_info" >
+            <div class="left_info">
+                <?php
+                if( $_SESSION['is_logged_in']){
+                    echo '<p>'."Username:" .$_SESSION['username']. '</p>' ;
+                    echo '<p>'."First name:" .$_SESSION['fname']. '</p>' ;
+                    echo '<p>'."Last name:" .$_SESSION['lname']. '</p>' ;
+                    echo '<p>'."Email:" .$_SESSION['email']. '</p>' ;
+                }
+                else
+                {
+                    echo '<div class="block">
+                <a href="../Login_Module/login.html"><h2 class="block-title">Login into your account</h2></a>
+            </div>';
+                }
 
-                <p>Name:johndoe</p>
-                <p>Surname:doe123</p>
-                <p>Email:email.com</p>
-                <p>Address:myaddress.com</p>
+                ?>
+
             </div>
         </div>
 
@@ -44,9 +62,9 @@
             <div class="right_block">
 
                 <a href="logout.php"><h1>Logout</h1></a>
-                <a ><h1>Change Password</h1></a>
-                <a ><h1>Change Info</h1></a>
-                <a ><h1>Logout</h1></a>
+                <a><h1>Change Password</h1></a>
+                <a><h1>Change Info</h1></a>
+                <a><h1>Logout</h1></a>
 
             </div>
         </div>
