@@ -13,7 +13,7 @@ if(!isset($_SESSION['is_logged_in'])){
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="homepage.css">
-        <<link rel="stylesheet" href="../NavBar/navstyle.css">
+        <link rel="stylesheet" href="../NavBar/navstyle.css">
         <title>Homepage</title>
     </head>
     <body>
