@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    if(!isset($_SESSION['username'])){
+        header("Location: ../Login_Module/login.php");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +22,7 @@
     <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
     <ul class="menu">
         <li><a href="../HomePage/homepage.php">Home</a></li>
-        <li><a href="../Login_Module/login.html">Login</a></li>
+        <li><a href="../Login_Module/login.php">Login</a></li>
         <li><a href="../About/about.html">About Us</a></li>
         <li><a href="../Contact/contact.html">Contact</a></li>
         <li><a href="../FAQ/faq.html">FAQ</a></li>
@@ -27,24 +34,35 @@
     <div class="left-side">
         <table>
             <tbody>
+            <?php
+            $username = $_SESSION['username'];
+            $name = $_SESSION['fname'];
+            $surname = $_SESSION['lname'];
+            $email = $_SESSION['email'];
+
+           echo" 
             <tr>
-                <td>Username</td>
-                <td>:</td>
-                <td>johndoe</td>
+                <td class = 'default'>Username</td>
+                <td class = 'default'>:</td>
+                <td>$username</td>
             <tr>
-                <td>Name</td>
-                <td>:</td>
-                <td>Doe</td>
+                <td class = 'default'>Name</td>
+                <td class = 'default'>:</td>
+                <td>$name</td>
             </tr>
             <tr>
-                <td>Surname</td>
-                <td>:</td>
-                <td>John</td>
+                <td class = 'default'>Surname</td>
+                <td class = 'default'>:</td>
+                <td>$surname</td>
             <tr>
-                <td>Email</td>
-                <td>:</td>
-                <td>johndoe@gmail.com</td>
+                <td class = 'default'>Email</td>
+                <td class = 'default' >:</td>
+                <td>$email</td>
             </tr>
+
+           ";
+
+           ?>
 
             </tbody>
         </table>
