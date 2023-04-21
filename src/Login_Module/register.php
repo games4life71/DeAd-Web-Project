@@ -34,7 +34,7 @@ if ($password != $password2) {
     header("Location: sign-up.php?error=2&username=$username&email=$email&fname=$fname&lname=$lname");
     exit();
 }
-
+//
 else if($passwordStrength <3)
 {
     header("Location: sign-up.php?strength=$passwordStrength&username=$username&email=$email&fname=$fname&lname=$lname");
@@ -87,8 +87,9 @@ else
         $_SESSION['lname'] = $_POST['lname'];
         header('Location: ../HomePage/homepage.php');
     } else {
-        echo 'Something went wrong';
+
         //redirect to the register page
-        header('Location: sign-up.php');
+        echo "error";
+//        header('Location: sign-up.php');
     }
 }

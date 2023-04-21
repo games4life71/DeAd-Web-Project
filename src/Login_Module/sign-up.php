@@ -34,10 +34,10 @@
                 if (isset($_GET['lname'])) {
                     $lname = $_GET['lname'];
                     echo "<input type='text' name='lname' value='$lname' required id='last-name'>";
-                    echo "<label for='first-name'>Last Name</label>";
+                    echo "<label for='last-name'>Last Name</label>";
                 } else {
                     echo "<input type='text' name='lname' required id='last-name'>";
-                    echo "<label for='first-name'>Last Name</label>";
+                    echo "<label for='last-name'>Last Name</label>";
                 }
                 ?>
             </div>
@@ -47,7 +47,7 @@
                 <?php
                 if (isset($_GET['username'])) {
                     $username = $_GET['username'];
-                    echo "<input type='text' name='fname' value='$username' required id='username'>";
+                    echo "<input type='text' name='username' value='$username' required id='username'>";
                     echo "<label for='username'>Username</label>";
                 } else {
                     echo "<input type='text' name='username' required id='username'>";
@@ -62,7 +62,7 @@
                 <?php
                 if (isset($_GET['email'])) {
                     $email = $_GET['email'];
-                    echo "<input type='text' name='fname' value='$email' required id='email'>";
+                    echo "<input type='text' name='email' value='$email' required id='email'>";
                     echo "<label for='email'>Email</label>";
                 } else {
                     echo "<input type='text' name='email' required id='email'>";
@@ -110,7 +110,6 @@
                 {
                     echo'<p class="error" style ="color: green;">Password is strong  !</p>';
                 }
-
 
             }
             ?>
