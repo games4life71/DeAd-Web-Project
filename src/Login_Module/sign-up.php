@@ -18,7 +18,9 @@
                 <?php
                 if (isset($_GET['fname'])) {
                     $fname = $_GET['fname'];
+
                     echo "<input type='text' name='fname' value='$fname' required id='first-name'>";
+                    echo "<label for='first-name'>First Name</label>";
                 } else {
                     echo "<input type='text' name='fname' required id='first-name'>";
                     echo "<label for='first-name'>First Name</label>";
@@ -32,6 +34,7 @@
                 if (isset($_GET['lname'])) {
                     $lname = $_GET['lname'];
                     echo "<input type='text' name='lname' value='$lname' required id='last-name'>";
+                    echo "<label for='first-name'>Last Name</label>";
                 } else {
                     echo "<input type='text' name='lname' required id='last-name'>";
                     echo "<label for='first-name'>Last Name</label>";
@@ -45,6 +48,7 @@
                 if (isset($_GET['username'])) {
                     $username = $_GET['username'];
                     echo "<input type='text' name='fname' value='$username' required id='username'>";
+                    echo "<label for='username'>Username</label>";
                 } else {
                     echo "<input type='text' name='username' required id='username'>";
                     echo "<label for='username'>Username</label>";
@@ -59,6 +63,7 @@
                 if (isset($_GET['email'])) {
                     $email = $_GET['email'];
                     echo "<input type='text' name='fname' value='$email' required id='email'>";
+                    echo "<label for='email'>Email</label>";
                 } else {
                     echo "<input type='text' name='email' required id='email'>";
                     echo "<label for='email'>Email</label>";
@@ -84,6 +89,29 @@
                 } else if ($_GET['error'] == 2) {
                     echo '<p class="error">Passwords do not match</p>';
                 }
+
+            }
+            else if (isset($_GET['strength'])) {
+
+                if($_GET['strength'] == 0)
+                {
+                    echo'<p class="error">Warning ! Very weak password .</p>';
+                }
+                else if($_GET['strength'] == 1)
+                {
+                    echo'<p class="error">Password must contain a number and be longer</p>';
+                }
+                else if($_GET['strength'] == 2)
+                {
+                    echo'<p class="error">Password must contain a number !</p>';
+                }
+
+                else
+                {
+                    echo'<p class="error" style ="color: green;">Password is strong  !</p>';
+                }
+
+
             }
             ?>
             <button type="submit" class="btn">register</button>

@@ -21,6 +21,14 @@ body {
     overflow: hidden;
 }
 
+.error{
+    color: red;
+    font:bold 1.2rem Arial;
+    font-size: 100px;
+    text-align: center;
+    /*margin-bottom: 10px;*/
+    padding: 4px;
+}
 .wrapper{
     position: relative;
     width: 35rem;

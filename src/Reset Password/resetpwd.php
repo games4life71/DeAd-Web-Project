@@ -7,16 +7,15 @@ $confirmpwd = $_POST['confirmNewPass'];
 
 
 $user = $_SESSION['username'];
-echo  $user;
+echo $user;
 
 //search for the user in the database
-$conn  = new mysqli('127.0.0.1:9999', 'root', 'root', 'mybd');
+$conn = new mysqli('127.0.0.1:9999', 'root', 'root', 'mybd');
 
 
-if( $conn->connect_errno){
+if ($conn->connect_errno) {
     die('Could not connect to db: ' . $conn->connect_error);
-}
-else {
+} else {
 
 
     //retrieve the username and password from the database
@@ -26,22 +25,19 @@ else {
     $stmt->execute();
     $result = $stmt->get_result();
 
-//    if(mysqli_num_rows($result) == 0){
-//        echo "No user found";
-//    }
-//    else{
-//        echo "User found";
-//    }
-
-    //verify hash password
 
     $row = mysqli_fetch_assoc($result); //get the row from the result
-    //print the whole row
 
-    if(password_verify($currentpwd, $row['password'])){
+
+    if (password_verify($currentpwd, $row['password'])) {
         //check if the new password and confirm password are the same
 
-        if($newpwd == $confirmpwd){
+        if ($newpwd == $confirmpwd) {
+            if ($newpwd == $currentpwd) {
+                //redirect to the reset password page with an error message
+                header("Location: resetpass.php?error=3"); //error code 3 means the new password and current password are the same
+                exit();
+            }
             //update the password in the database
             $stmt = $conn->prepare("UPDATE users SET password = ? WHERE username = ?");
             //hash the password
@@ -51,26 +47,18 @@ else {
 
             $stmt->execute();
             $result = $stmt->get_result();
-            if($result){
-                echo "Password changed successfully";
-            }
-            else{
-                echo "Password change failed";
-            }
-            sleep(5);
             //redirect to the login page
             header("Location: ../HomePage/homepage.php");
-        }
-        else{
+            exit();
+        } else {
             //redirect to the reset password page with an error message
-            header("Location: resetpass.php?error=1");
+            header("Location: resetpass.php?error=1"); //error code 1 means the new password and confirm password are not the same
+            exit();
         }
-    }
-
-    else{
+    } else {
         //redirect to the reset password page with an error message
-        //header("Location: resetpass.php?error=2");
-        echo $row['password'];
+        header("Location: resetpass.php?error=2"); //error code 2 means the current password is incorrect
+        exit();
     }
 
 
