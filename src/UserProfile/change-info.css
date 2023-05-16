@@ -1,0 +1,100 @@
+:root {
+    --darkblue: #32435f;
+    --lightblue: #85abef;
+    --offpink: #a67f78;
+    --capuccino: #8f8681;
+    --offwhite: #e1dcd9;
+    --lightcapuccino: #cccbc9;
+}
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    font-family: 'Work Sans', sans-serif;
+}
+
+body {
+    background: linear-gradient(to bottom, var(--lightblue), var(--darkblue)) fixed;
+}
+
+section {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section aside {
+    width: 350px;
+    padding: 20px;
+    background-color: var(--offwhite);
+    border-radius: 3px;
+    box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.5);
+}
+
+section aside h1 {
+    font-size: 30px;
+    color: var(--darkblue);
+    text-align: center;
+}
+
+section aside h2 {
+    font-size: 20px;
+    text-align: center;
+    margin: 10px 0;
+    color: var(--darkblue);
+    font-weight: normal;
+}
+
+input[type=text],
+input[type=password] {
+    width: calc(100% - 20px);
+    padding: 8px 10px;
+    font-size: 16px;
+    margin: 8px 0;
+    color:var(--darkblue);
+    background-color: var(--lightcapuccino);
+    border: #c9c9c9 solid 1px;
+    border-radius: 3px;
+    transition: 0.3s all cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+input[type=text]:focus,
+input[type=password]:focus {
+    transform: scale(1.2);
+}
+
+button[type=submit] {
+    margin: 8px 0;
+    width: 100%;
+    border: none;
+    color: #fff;
+    background-color: var(--lightblue);
+    padding: 8px 0;
+    font-size: 18px;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: 0.2s all ease-in-out;
+}
+
+button[type=submit]:hover {
+    background-color: var(--darkblue);
+}
+
+/*
+section aside p {
+    font-size: 16px;
+    text-align: center;
+    margin-top: 10px;
+    color: #555;
+}
+
+section aside p a {
+    color: #f15e64;
+    text-decoration: underline;
+}
+
+section aside p a:hover {
+    text-decoration: none;
+}*/

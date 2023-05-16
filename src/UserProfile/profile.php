@@ -14,6 +14,16 @@
     <title>Profile</title>
     <link rel="stylesheet" href="../NavBar/navstyle.css">
     <link rel="stylesheet" href="profile.css">
+    <style>
+        :root {
+            --darkblue: #32435f;
+            --lightblue: #85abef;
+            --offpink: #a67f78;
+            --capuccino: #8f8681;
+            --offwhite: #e1dcd9;
+            --lightcapuccino: #cccbc9;
+        }
+    </style>
 </head>
 <body>
 <header class="header">
@@ -42,22 +52,27 @@
 
            echo" 
             <tr>
-                <td class = 'default'>Username</td>
+                <td class = 'default'><b>Username</b></td>
                 <td class = 'default'>:</td>
-                <td>$username</td>
+                <td style='color: var(--darkblue);' >$username</td>
             <tr>
-                <td class = 'default'>Name</td>
+                <td class = 'default'><b>Name</b></td>
                 <td class = 'default'>:</td>
-                <td>$name</td>
+                <td style='color: var(--darkblue);'>$name</td>
             </tr>
             <tr>
-                <td class = 'default'>Surname</td>
+                <td class = 'default'><b>Surname</b></td>
                 <td class = 'default'>:</td>
-                <td>$surname</td>
+                <td style='color: var(--darkblue);' >$surname</td>
             <tr>
-                <td class = 'default'>Email</td>
+                <td class = 'default'><b>Email</b></td>
                 <td class = 'default' >:</td>
-                <td>$email</td>
+                <td style='color: var(--darkblue);' >$email</td>
+            </tr>
+            <tr>
+                <td class = 'default'><b>Secondary email</b></td>
+                <td class = 'default' >:</td>
+                <td style='color: var(--darkblue);' >secondary email</td>
             </tr>
 
            ";
@@ -84,7 +99,7 @@
 
             </div>
             <div class="url">
-                <a href="#">Change Info</a>
+                <a href="change_info.php">Change Info</a>
 
             </div>
         </div>
