@@ -5,7 +5,7 @@ $password = $_POST['password'];
 
 
 //connect to the database
-$conn  = new mysqli('127.0.0.1:9999', 'root', 'root', 'mybd');
+$conn  = new mysqli('127.0.0.1:3306', 'root', 'root', 'mybd');
 
 if( $conn->connect_errno){
     die('Could not connect to db: ' . $conn->connect_error);
