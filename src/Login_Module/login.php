@@ -1,42 +1,58 @@
-<?php
-//get the username and password from the form
-$username = $_POST['username'];
-$password = $_POST['password'];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style-sign-in.css">
+    <title>DeAd-SignIn</title>
+</head>
+<body>
+<div class="wrapper">
+        <div class="form-container">
+            <form action="login_script.php" method="POST">
+                <h2>Login</h2>
+                <div class="input-field">
+                    <i></i>
+                    <?php
+                    if(isset($_GET['username'])){
+                        $username = $_GET['username'];
+                        echo "<input type='text' name='username' value='$username' required id='username'>";
+                    }
+                    else{
+                        echo "<input type='text' name='username' required id='username'>";
+                        echo "<label for='username'>Username</label>";
+                    }
 
+                    ?>
 
-//connect to the database
-$conn  = new mysqli('127.0.0.1:9999', 'root', 'root', 'mybd');
+                </div>
+                <div class="input-field">
+                    <input type="password" name ="password"  required id="password">
+                    <i></i>
+                    <label for="password">Password</label>
+                </div>
+                <?php
+                //ig
 
-if( $conn->connect_errno){
-    die('Could not connect to db: ' . $conn->connect_error);
-}
+                   if(isset($_GET['error'])){
+                       if($_GET['error'] == 1){
+                           echo '<p class="error">Invalid username or password</p>';
+                       }
+                   }
 
-else{
+                ?>
 
+                <div class="forgot-pass">
+                    <a href="#">Forgot Password?</a>
+                </div>
+                <button type="submit" class="btn">login</button>
+                <div class="link">
+                    <p>Don't have an account?<a href="sign-up.php" class="signup-link"> Sign up</a></p>
+                </div>
+            </form>
+        </div>
 
-    //retrieve the username and password from the database
-    $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
-    $stmt->bind_param("s", $username);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    //verify hash password
-    $row = mysqli_fetch_assoc($result); //get the row from the result
-
-
-    if(password_verify($password, $row['password'])){
-        echo 'You have successfully logged in !';
-       //set the session variables
-        session_start();
-        $_SESSION['username'] = $username;
-        $_SESSION['is_logged_in'] = true;
-
-        header('Location: ../HomePage/homepage.php');
-    }
-    else{
-        echo 'Wrong username or password';
-    }
-
-
-}
-//
+</div>
+</body>
+</html>

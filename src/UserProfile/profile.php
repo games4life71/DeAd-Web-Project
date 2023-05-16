@@ -1,11 +1,11 @@
-<!DOCTYPE html>
 <?php
-session_start(); //start the session
-if (!isset($_SESSION['is_logged_in'])) {
-    $_SESSION['is_logged_in'] = false;
-}
+    session_start();
+    if(!isset($_SESSION['username'])){
+        header("Location: ../Login_Module/login.php");
+    }
 ?>
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -14,6 +14,16 @@ if (!isset($_SESSION['is_logged_in'])) {
     <title>Profile</title>
     <link rel="stylesheet" href="../NavBar/navstyle.css">
     <link rel="stylesheet" href="profile.css">
+    <style>
+        :root {
+            --darkblue: #32435f;
+            --lightblue: #85abef;
+            --offpink: #a67f78;
+            --capuccino: #8f8681;
+            --offwhite: #e1dcd9;
+            --lightcapuccino: #cccbc9;
+        }
+    </style>
 </head>
 <body>
 <header class="header">
@@ -22,57 +32,82 @@ if (!isset($_SESSION['is_logged_in'])) {
     <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
     <ul class="menu">
         <li><a href="../HomePage/homepage.php">Home</a></li>
-        <li><a href="../Login_Module/login.html">Login</a></li>
+        <li><a href="../Login_Module/login.php">Login</a></li>
         <li><a href="../About/about.html">About Us</a></li>
         <li><a href="../Contact/contact.html">Contact</a></li>
         <li><a href="../FAQ/faq.html">FAQ</a></li>
     </ul>
 </header>
 
-<div class="info_wrapper">
-    <div class="blocks_wrapper">
 
-        <div class="block">
+<div class="container">
+    <div class="left-side">
+        <table>
+            <tbody>
+            <?php
+            $username = $_SESSION['username'];
+            $name = $_SESSION['fname'];
+            $surname = $_SESSION['lname'];
+            $email = $_SESSION['email'];
 
-            <div class="left_info">
-                <?php
-                if( $_SESSION['is_logged_in']){
-                    echo '<p>'."Username:" .$_SESSION['username']. '</p>' ;
-                    echo '<p>'."First name:" .$_SESSION['fname']. '</p>' ;
-                    echo '<p>'."Last name:" .$_SESSION['lname']. '</p>' ;
-                    echo '<p>'."Email:" .$_SESSION['email']. '</p>' ;
-                }
-                else
-                {
-                    echo '<div class="block">
-                <a href="../Login_Module/login.html"><h2 class="block-title">Login into your account</h2></a>
-            </div>';
-                }
+           echo" 
+            <tr>
+                <td class = 'default'><b>Username</b></td>
+                <td class = 'default'>:</td>
+                <td style='color: var(--darkblue);' >$username</td>
+            <tr>
+                <td class = 'default'><b>Name</b></td>
+                <td class = 'default'>:</td>
+                <td style='color: var(--darkblue);'>$name</td>
+            </tr>
+            <tr>
+                <td class = 'default'><b>Surname</b></td>
+                <td class = 'default'>:</td>
+                <td style='color: var(--darkblue);' >$surname</td>
+            <tr>
+                <td class = 'default'><b>Email</b></td>
+                <td class = 'default' >:</td>
+                <td style='color: var(--darkblue);' >$email</td>
+            </tr>
+            <tr>
+                <td class = 'default'><b>Secondary email</b></td>
+                <td class = 'default' >:</td>
+                <td style='color: var(--darkblue);' >secondary email</td>
+            </tr>
 
-                ?>
+           ";
+
+           ?>
+
+            </tbody>
+        </table>
+    </div>
+    <div class="middle"></div>
+    <div class="right-side">
+        <div class="right-url">
+
+            <div class="url">
+                <a href="#" class="active">Profile</a>
 
             </div>
-        </div>
+            <div class="url">
+                <a href="logout.php">Logout</a>
 
-        <div class="line">
-            <hr>
-        </div>
+            </div>
+            <div class="url">
+                <a href="#">Change Password</a>
 
-        <div class="block">
-            <div class="right_block">
-
-                <a href="logout.php"><h1>Logout</h1></a>
-                <a><h1>Change Password</h1></a>
-                <a><h1>Change Info</h1></a>
-                <a><h1>Logout</h1></a>
+            </div>
+            <div class="url">
+                <a href="change_info.php">Change Info</a>
 
             </div>
         </div>
 
     </div>
-
-
 </div>
+
+
 
 </body>
 </html>
