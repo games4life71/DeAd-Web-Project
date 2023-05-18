@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `DeAd`.`users` (
   `lname` VARCHAR(45) NOT NULL,
   `email` VARCHAR(100) NOT NULL,
   `photo` MEDIUMBLOB NULL,
-  `secondary_email' VARCHAR(45),
+  `secondary_email` VARCHAR(45),
   `function` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE INDEX `user_id_UNIQUE` (`user_id` ASC) VISIBLE,
