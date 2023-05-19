@@ -44,7 +44,7 @@
                 ?>
 
                 <div class="forgot-pass">
-                    <a href="#">Forgot Password?</a>
+                    <a href="../Forgot%20Password/forgotpass.html">Forgot Password?</a>
                 </div>
                 <button type="submit" class="btn">login</button>
                 <div class="link">

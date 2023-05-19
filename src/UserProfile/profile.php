@@ -49,7 +49,7 @@
             $name = $_SESSION['fname'];
             $surname = $_SESSION['lname'];
             $email = $_SESSION['email'];
-
+            $secondary_email = $_SESSION['secondary_email'];
            echo" 
             <tr>
                 <td class = 'default'><b>Username</b></td>
@@ -95,7 +95,7 @@
 
             </div>
             <div class="url">
-                <a href="#">Change Password</a>
+                <a href="../Reset%20Password/resetpass.php">Change Password</a>
 
             </div>
             <div class="url">
