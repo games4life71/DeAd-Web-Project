@@ -11,6 +11,7 @@ $username = 'john.doe';
 //print the post
 //print_r($_POST);
 $prisoner_health = 'good';
+// !! cred ca asa e corect  !! $prisoner_health = $_POST['prisoner_health'];
 $visit_date = $_POST['visit_date'];
 $visit_time_start = $_POST['visit_time_start'];
 $visit_time_end = $_POST['visit_time_end'];
@@ -38,7 +39,7 @@ $stmt = $conn->prepare("INSERT INTO visits_summary
      summary) 
  VALUES (?,?,?,?,?,?,?,?,?,?,?)");
 
-
+//astea cred ca sunt hardcodate
 $visitor_id = 1;
 $inmate_id = 2;
 try {
@@ -48,7 +49,7 @@ try {
         $visit_date,
         $visit_nature,
         $visit_nature,
-        $objectsTo,
+        $objectsFrom,
         $objectsTo,
         $prisoner_health,
         $visit_time_start,
