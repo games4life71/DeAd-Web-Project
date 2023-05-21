@@ -4,8 +4,8 @@ class DbConnection
 {
 
     //this class describes the connection to the database as a singleton
-    private static $instance = null;
-    private $connection;
+    private static ?DbConnection $instance = null;
+    private mysqli $connection;
 
     private function __construct()
     {
@@ -26,7 +26,7 @@ class DbConnection
         return self::$instance;
     }
 
-    public function getConnection()
+    public function getConnection(): mysqli
     {
         return $this->connection;
     }

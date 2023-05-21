@@ -9,7 +9,7 @@ $username = 'john.doe';
 //    header('Location: ../Login_Module/login.php');
 //}
 //print the post
-print_r($_POST);
+//print_r($_POST);
 $prisoner_health = 'good';
 $visit_date = $_POST['visit_date'];
 $visit_time_start = $_POST['visit_time_start'];
@@ -19,16 +19,12 @@ $objectsTo = $_POST['objectsTo'];
 $summary = $_POST['summary'];
 
 $config = require '../../config.php';
-require  '../Utils/DbConnection.php';
-$connection = DbConnection::getInstance()->getConnection($config);
+require '../Utils/DbConnection.php';
+$conn = DbConnection::getInstance()->getConnection();
 
-
-if (!$connection) {
-    echo "Connection error: " . mysqli_connect_error();
-}
 
 //prepare sql statement
-$stmt = $connection->prepare("INSERT INTO visits_summary
+$stmt = $conn->prepare("INSERT INTO visits_summary
     (visitor_id,
      inmate_id,
      visit_date,
@@ -62,7 +58,21 @@ try {
     echo $e->getMessage();
 }
 $stmt->execute();
+$error_code = $stmt->errno;
+echo $error_code;
+if ($error_code != 0) {
+    echo $stmt->error;
+
+
+} else {
+    header('Location: ../HomePage/homepage.php');
+
+}
+
 $stmt->close();
-$connection->close();
+
+
+
+//redirect to the summary page if everything is ok
 
 

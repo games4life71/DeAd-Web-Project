@@ -6,18 +6,29 @@ $username = $_SESSION['username'];
 $config = require '../../config.php';
 
 //$id=$_SESSION['id'];
-$conn = new mysqli($config['hostname'], $config['username'], $config['password'], $config['database']);
 
-/*$stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
-$stmt->bind_param("s", $username);
-$stmt->execute();
-$result = $stmt->get_result();*/
+require '../Utils/DbConnection.php';
+$conn = DbConnection::getInstance()->getConnection();
 
 
 $name = $_POST['name'];
 $surname = $_POST['surname'];
 $secondary_email = $_POST['secondary_email'];
 
+//verify if the email is valid
+if (!filter_var($secondary_email, FILTER_VALIDATE_EMAIL)) {
+    header("Location: change_info.php?error=3");
+    exit();
+} else if ($secondary_email == $_SESSION['email']) {
+    header("Location: change_info.php?error=4");
+    exit();
+} else if ($secondary_email == $_SESSION['secondary_email']) {
+    header("Location: change_info.php?error=5");
+    exit();
+} else if ($secondary_email == null) {
+    header("Location: change_info.php?error=6");
+    exit();
+}
 
 //verify if the name and surname contain only letters
 if (!preg_match("/^[a-zA-Z ]*$/", $name)) {
@@ -28,25 +39,25 @@ if (!preg_match("/^[a-zA-Z ]*$/", $name)) {
     exit();
 }
 
-$stmt = $conn->prepare("UPDATE users SET fname = ?, lname = ? WHERE username = ?");
-$stmt->bind_param("sss", $name, $surname, $username);
+$stmt = $conn->prepare("UPDATE users SET fname = ?, lname = ?, secondary_email = ?  WHERE username = ?");
+$stmt->bind_param("ssss", $name, $surname, $secondary_email, $username);
 $stmt->execute();
-$result = $stmt->get_result();
+
 //set the session variables
 $_SESSION['fname'] = $name;
 $_SESSION['lname'] = $surname;
 $_SESSION['secondary_email'] = $secondary_email;
 
-echo $result;
-if ($result) {
-    header("Location: profile.php");
-    exit;
-} else {
-    echo "Failed";
-}
-
+$error_code = $stmt->errno;
 $stmt->close();
-$conn->close();
+if ($error_code != 0) {
+    header("Location: change_info.php?error=7");
+} else {
+    header("Location:profile.php");
+}
+exit();
+
+
 
 
 

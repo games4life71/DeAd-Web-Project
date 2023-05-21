@@ -41,7 +41,10 @@ else if($passwordStrength <3)
     exit();
 }
 
-$conn = new mysqli('127.0.0.1:9999', 'root', 'root', 'dead  ');
+
+require '../Utils/DbConnection.php';
+$conn = DbConnection::getInstance()->getConnection();
+
 
 if ($conn->connect_errno) {
     die('Could not connect to db: ' . $conn->connect_error);
