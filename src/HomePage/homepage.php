@@ -58,9 +58,6 @@ if(!isset($_SESSION['is_logged_in'])){
                 ?>
 
 
-
-                
-
 <!--                <h2 class="block-title_welcome">Welcome, Username</h2>-->
             </div>
 

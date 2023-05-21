@@ -40,7 +40,11 @@ else if($passwordStrength <3)
     header("Location: sign-up.php?strength=$passwordStrength&username=$username&email=$email&fname=$fname&lname=$lname");
     exit();
 }
-$conn = new mysqli('127.0.0.1:3306', 'root', 'root', 'mybd');
+
+
+require '../Utils/DbConnection.php';
+$conn = DbConnection::getInstance()->getConnection();
+
 
 if ($conn->connect_errno) {
     die('Could not connect to db: ' . $conn->connect_error);

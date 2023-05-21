@@ -53,7 +53,23 @@ if(!isset($_SESSION['username'])){
                 echo "<input type='text' name='surname' id='surname' placeholder='Surname' />";
             }
             ?>
-            <input type="text" name="email" id="email" placeholder="Add secondary email" />
+            <?php
+            if(isset($_GET['error'])){
+                if($_GET['error'] == 3){
+                    echo '<p class = "error">Invalid email</p>';
+                }
+                else if ($_GET['error'] == 4){
+                    echo '<p class = "error">Email already exists as primary email</p>';
+                }
+                else if ($_GET['error'] == 5){
+                    echo '<p class = "error">Email already exists as secondary email</p>';
+                }
+                else if ($_GET['error'] == 6){
+                    echo '<p class = "error">Email cannot be null</p>';
+                }
+            }
+            ?>
+            <input type="text" name="secondary_email" id="secondary_email" placeholder="Add secondary email" />
             <button type="submit" name="submit">Enter</button>
         </form>
     </aside>

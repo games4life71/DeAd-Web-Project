@@ -49,6 +49,7 @@
             $name = $_SESSION['fname'];
             $surname = $_SESSION['lname'];
             $email = $_SESSION['email'];
+            $secondary_email = $_SESSION['secondary_email'] ?? "No secondary email";
 
            echo" 
             <tr>
@@ -70,9 +71,10 @@
                 <td style='color: var(--darkblue);' >$email</td>
             </tr>
             <tr>
+            
                 <td class = 'default'><b>Secondary email</b></td>
                 <td class = 'default' >:</td>
-                <td style='color: var(--darkblue);' >secondary email</td>
+                <td style='color: var(--darkblue);' >$secondary_email</td>
             </tr>
 
            ";
@@ -95,7 +97,7 @@
 
             </div>
             <div class="url">
-                <a href="#">Change Password</a>
+                <a href="../Reset%20Password/resetpass.php">Change Password</a>
 
             </div>
             <div class="url">

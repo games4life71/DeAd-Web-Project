@@ -15,14 +15,14 @@
     <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
     <ul class="menu">
         <li><a href="../HomePage/homepage.php">Home</a></li>
-        <li><a href="../Login_Module/login.html">Login</a></li>
+        <li><a href="../Login_Module/login.php">Login</a></li>
         <li><a href="../About/about.html">About Us</a></li>
         <li><a href="../Contact/contact.html">Contact</a></li>
         <li><a href="../FAQ/faq.html">FAQ</a></li>
     </ul>
 </header>
 
-<form class="visit" action="#" method="post">
+<form class="visit" action="save_appointment.php" method="post" enctype="multipart/form-data">
     <div class="form-header">
         <h1>Make an appointment</h1>
     </div>
@@ -30,13 +30,13 @@
     <div class="form-body">
         <div class="horizontal-group">
             <div class="form-group left">
-                <label for="firstname" class="label-title">First name </label>
-                <input type="text" id="firstname" class="form-input" placeholder="enter your first name"
-                       required="required"/>
+                <label for="firstname" class="label-title">First name of the prisoner </label>
+                <input type="text" id="firstname" name="firstname" class="form-input" placeholder="enter the first name"/>
             </div>
+
             <div class="form-group right">
-                <label for="lastname" class="label-title">Last name</label>
-                <input type="text" id="lastname" class="form-input" placeholder="enter your last name"/>
+                <label for="lastname" class="label-title">Last name of the prisoner</label>
+                <input type="text" id="lastname" name="lastname" class="form-input" placeholder="enter the last name"/>
             </div>
 
             <div class="form-group left">
@@ -57,20 +57,20 @@
                 <label class="label-title">The nature of the visit: </label>
                 <div class="input-group">
                     <label>
-                        <input type="checkbox" value="Web">Parental</label>
+                        <input type="checkbox" name="visit_nature" value="parental">Parental</label>
                     <label>
-                        <input type="checkbox" value="iOS">Friendship</label>
+                        <input type="checkbox" name="visit_nature" value="friendship">Friendship</label>
                     <label>
-                        <input type="checkbox" value="Andriod">Lawyership</label>
+                        <input type="checkbox" name="visit_nature" value="lawyership">Lawyership</label>
                 </div>
             </div>
 
             <div class="form-group right">
                 <label class="label-title" for="level">Source of Income: </label>
-                <select class="form-input" id="level">
-                    <option value="B">Employed</option>
-                    <option value="I">Self-employed</option>
-                    <option value="A">Unemployed</option>
+                <select class="form-input" id="level" name="source_of_income">
+                    <option name="source_of_income" value="employed">Employed</option>
+                    <option name="source_of_income" value="self-employed">Self-employed</option>
+                    <option name="source_of_income" value="unemployed">Unemployed</option>
                 </select>
             </div>
 
@@ -81,12 +81,12 @@
 
             <div class="form-group left">
                 <label for="date" class="label-title">Date:</label>
-                <input type="date" id="date" class="form-input" required="required">
+                <input type="date" name="date" id="date" class="form-input" required="required">
             </div>
 
             <div class="form-group right">
                 <label for="time" class="label-title">Time (max 5h) </label>
-                <input type="range" min="1" max="5" step="1" value="0" id="time" class="form-input" onChange="change();"
+                <input type="range" min="0" max="5" step="1" value="0" id="time" name="estimated_time" class="form-input" onChange="change();"
                        style="height:28px;width:78%;padding:0;">
             </div>
 
