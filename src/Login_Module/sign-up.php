@@ -95,7 +95,8 @@
 
                 if($_GET['strength'] == 0)
                 {
-                    echo'<p class="error">Warning ! Very weak password .</p>';
+                    echo'<p class="error">Password must contain at least 8 characters</p>';
+                    echo '<p class="error">Password must also contain a number !</p>';
                 }
                 else if($_GET['strength'] == 1)
                 {

@@ -50,6 +50,7 @@
             $surname = $_SESSION['lname'];
             $email = $_SESSION['email'];
             $secondary_email = $_SESSION['secondary_email'];
+
            echo" 
             <tr>
                 <td class = 'default'><b>Username</b></td>
@@ -72,7 +73,7 @@
             <tr>
                 <td class = 'default'><b>Secondary email</b></td>
                 <td class = 'default' >:</td>
-                <td style='color: var(--darkblue);' >secondary email</td>
+                <td style='color: var(--darkblue);' >$secondary_email</td>
             </tr>
 
            ";

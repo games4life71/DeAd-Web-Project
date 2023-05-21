@@ -19,8 +19,9 @@ $objectsTo = $_POST['objectsTo'];
 $summary = $_POST['summary'];
 
 $config = require '../../config.php';
+require  '../Utils/DbConnection.php';
+$connection = DbConnection::getInstance()->getConnection($config);
 
-$connection = mysqli_connect($config['hostname'], $config['username'], $config['password'], $config['database']);
 
 if (!$connection) {
     echo "Connection error: " . mysqli_connect_error();
