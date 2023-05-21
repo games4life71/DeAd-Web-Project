@@ -7,9 +7,10 @@ if(!isset($_SESSION['is_logged_in'])){
 }
 
 $config = require '../../config.php';
-$connection = mysqli_connect($config['hostname'], $config['username'], $config['password'], $config['database']);
+require '../Utils/DbConnection.php';
+$conn = DbConnection::getInstance()->getConnection();
 
-$statemnt = $connection->prepare("SELECT user_id FROM users WHERE username = ?");
+$statemnt = $conn->prepare("SELECT user_id FROM users WHERE username = ?");
 $statemnt->bind_param("s", $username);
 $statemnt->execute();
 $result = $statemnt->get_result();
@@ -26,17 +27,34 @@ $lastname = $_POST['lastname'];
 $relationship = $_POST['relationship'];
 $visit_nature = $_POST['visit_nature'];
 $source_of_income = $_POST['source_of_income'];
-$profile_photo= $_POST['profile_photo'];
+//if$profile_photo= $_POST['profile_photo'];
 $date= $_POST['date'];
 $estimated_time= $_POST['estimated_time'];
 
+//print the post array
+if(!empty($_FILES['profile_photo']['name'])){
+    $profile_photo = $_FILES['profile_photo']['tmp_name'];
+    $profile_photo = file_get_contents($profile_photo);
+    $profile_photo = addslashes($profile_photo);
+}
+else{
+    $profile_photo = null;
+}
+//get the content of the image and then add slashes to it
+$profile_photo = file_get_contents($profile_photo,PATHINFO_EXTENSION);
+$photo = addslashes($profile_photo);
 
-if (!$connection) {
+//compress the image
+
+
+
+//echo $img_content;
+if (!$conn) {
     echo "Connection error: " . mysqli_connect_error();
 }
 
 //prepare sql statement
-$stmt = $connection->prepare("INSERT INTO appointments
+$stmt = $conn->prepare("INSERT INTO appointments
     (person_id,
      firstname,
     lastname,
@@ -62,6 +80,7 @@ try{
 }catch (Exception $e){
     echo $e->getMessage();
 }
+
 $stmt->execute();
 $stmt->close();
-$connection->close();
+header('Location: ../HomePage/homepage.php');
