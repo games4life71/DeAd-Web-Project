@@ -150,19 +150,59 @@ button span:after {
     background-color: #fff;
 }
 
-@media (max-width: 480px) {
-    /* Further adjustments for smaller screens */
+@media (max-width: 768px) {
     #cover {
-        padding: 20px;
+        /* Styles for tablets and smaller screens */
         position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-
+        width: 90%;
+        max-width: 550px;
+        margin: 0 auto;
+        /* Rest of the styles specific to tablets and smaller screens */
     }
-
     input[type="text"] {
         height: 72px;
+    }
+
+    #s-cover {
+        padding-left: 15px;
+    }
+
+    button {
+        width: 50px;
+        height: 60px;
+    }
+
+    #s-circle {
+        top: -4px;
+        width: 26px;
+        height: 26px;
+        border-width: 8px;
+    }
+
+    button span {
+        top: 50px;
+        left: 26px;
+        width: 28px;
+    }
+
+    button span:before,
+    button span:after {
+        width: 28px;
+    }
+}
+
+/* Media query for screens with a maximum width of 480px (e.g., mobile phones) */
+@media (max-width: 480px) {
+    #cover {
+        /* Styles for mobile phones and smaller screens */
+        position: absolute;
+        width: 90%;
+        max-width: 550px;
+        margin: 0 auto;
+        /* Rest of the styles specific to mobile phones and smaller screens */
+    }
+    input[type="text"] {
+        height: 50px;
     }
 
     #s-cover {
