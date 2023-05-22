@@ -51,12 +51,12 @@ if (!isset($_SESSION['is_logged_in'])) {
 
         if(isset($_SESSION['function'])) {
 
-            if (!$_SESSION['function'] == 'admin') {
+            if ($_SESSION['function'] == 'user') {
                 echo '
-            <a href="../Appointment/appointment.html">
+            <a href="../Appointment/appointment.php">
             <button class="oval-button">CREATE APPOINTMENTS</button>
         </a>
-        <a href="../User_Visit/uservisit.html">
+        <a href="../User_Visit/uservisit.php">
             <button class="oval-button">SEE APPOINTMENTS</button>
         </a>';
             } else {

@@ -94,6 +94,23 @@
                 <button type="submit" class="btn">Submit</button>
             </div>
 
+            <?php
+            if(isset($_GET['error']))
+            {
+                if($_GET['error'] == 1 )
+                {
+                    //invalid inmate name
+                    echo "<p class='error'>Invalid inmate name !</p>";
+                }
+
+                elseif ($_GET['error'] == 2)
+                {
+                    //invalid inmate name
+                    echo "<p class='error'>Invalid file type  !</p>";
+                }
+            }
+            ?>
+
         </div>
 
 

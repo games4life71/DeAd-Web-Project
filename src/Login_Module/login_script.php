@@ -39,6 +39,7 @@ else{
         $_SESSION['lname'] = $row['lname'];
         $_SESSION['function'] = $row['function'];
         $_SESSION['id'] = $row['user_id'];
+
         $_SESSION['function'] = $row['function'];
         if($row['secondary_email']!=null)
         $_SESSION['secondary_email'] = $row['secondary_email'];
