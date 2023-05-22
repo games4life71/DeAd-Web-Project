@@ -13,7 +13,7 @@ if(!isset($_SESSION['is_logged_in'])){
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="homepage.css">
-        <<link rel="stylesheet" href="../NavBar/navstyle.css">
+        <link rel="stylesheet" href="../NavBar/navstyle.css">
         <title>Homepage</title>
     </head>
     <body>
@@ -24,7 +24,7 @@ if(!isset($_SESSION['is_logged_in'])){
         <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
         <ul class="menu">
             <li><a href="../HomePage/homepage.php">Home</a></li>
-            <li><a href="../Login_Module/login.html">Login</a></li>
+            <li><a href="../Login_Module/login.php">Login</a></li>
             <li><a href="../About/about.html">About Us</a></li>
             <li><a href="../Contact/contact.html">Contact</a></li>
             <li><a href="../FAQ/faq.html">FAQ</a> </li>
@@ -46,19 +46,17 @@ if(!isset($_SESSION['is_logged_in'])){
                 <?php
                 if( $_SESSION['is_logged_in']){
 
-                    echo '<h2 class="block-title_welcome">Welcome, ' . $_SESSION['username'] . ! '</h2>';
+                    echo '<h2 class="block-title_welcome">Welcome , </h2>' ;
+                    echo '<a class="block-title_welcome" id="username" href="../UserProfile/profile.php" >   ' .$_SESSION['username'] . '</a>' ;
                 }
                 else
                 {
                     echo '<div class="block">
-                <a href="../Login_Module/login.html"><h2 class="block-title">Login into your account</h2></a>
+                <a href="../Login_Module/login.php"><h2 class="block-title">Login into your account</h2></a>
             </div>';
                 }
                 ?>
 
-
-
-                
 
 <!--                <h2 class="block-title_welcome">Welcome, Username</h2>-->
             </div>
