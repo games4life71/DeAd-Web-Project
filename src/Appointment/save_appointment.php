@@ -50,13 +50,12 @@ $estimated_time = $_POST['estimated_time'];
 
 if (!empty($_FILES['profile_photo']['name'])) {
     $profile_photo = $_FILES['profile_photo']['tmp_name'];
-   // compress($profile_photo); //compress the image first
+    // compress($profile_photo); //compress the image first
     $photo_contents = file_get_contents($profile_photo);
     $photo_contents = addslashes($photo_contents);
 } else {
     $profile_photo = null;
 }
-
 
 
 $valid_extensions = array('jpeg', 'jpg', 'png');
@@ -100,6 +99,7 @@ $stmt = $conn->prepare("INSERT INTO appointments
     estimated_time)
     VALUES (?,?,?,?,?,?,?,?,?)");
 
+
 try {
     $stmt->bind_param("issssssss",
         $person_id,
@@ -115,8 +115,34 @@ try {
 } catch (Exception $e) {
     echo $e->getMessage();
 }
+//insert the appointment into the visits_summary table
+$stmt = $conn->prepare("INSERT INTO visits_summary (
+                            visitor_id,
+                            inmate_id,
+                            visit_date,
+                            visit_nature,
+                            visit_type,
+                            appointment_refID) 
+VALUES (?,?,?,?,?,?)");
 
+//get the appointment id
+$stmt2 = $conn->prepare("SELECT appointment_id FROM appointments WHERE person_id = ? AND date = ?");
+$stmt2->bind_param("is", $person_id, $date);
+$stmt2->execute();
+$result = $stmt2->get_result();
+$row_appoint = $result->fetch_assoc();
+print_r($row);
+$stmt2->close();
 
+$stmt->bind_param("iisssi",
+    $person_id,
+    $row['inmate_id'],
+    $date,
+    $visit_nature,
+    $visit_nature,
+    $row_appoint['appointment_id']);
+$stmt->execute();
+echo $stmt->error;
 $stmt->close();
 
-header('Location: ../HomePage/homepage.php');
+//header('Location: ../HomePage/homepage.php');

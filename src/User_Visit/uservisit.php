@@ -70,6 +70,15 @@ session_start();
                 curl_close($curl);
                 $response = json_decode($curl_response, true);
                 //parse the response
+                //if there are no appointments, display a message
+                if (empty($response)) {
+                    echo '<h2>You have no appointments</h2>';
+                    //button to create an appointment
+                    echo '<div class="button-center">';
+                    echo '<a href="../Appointment/appointment.php">Create an appointment</a>';
+                    echo '</div>';
+                    exit();
+                }
                 foreach ($response as $appointment) {
                     echo '<li>';
                     echo '<div class="visitor-info">';

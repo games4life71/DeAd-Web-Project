@@ -66,8 +66,9 @@
                         curl_close($curl);
                         $response = json_decode($response, true);
                         print_r($response);
-
-
+                        //send the appointment id to the next page
+                        echo "<input type='hidden' name='appointment_id' value='" . $response['appointment_id'] . "'>";
+                        //echo "<input type='hidden' name='prisoner_id' value='" . $response['inmate_id'] . "'>";
                         ?>
                         <label for="police">
                             <input type="radio" name="witnesses" value="relative" id="police"> Police Guard</label>
@@ -97,6 +98,16 @@
                 </div>
 
                 <div class="form-group right">
+                    <?php
+                    if(isset($_GET['error'])){
+                        if($_GET['error'] == 1)
+                        {
+                            //the inmate already has a visit at that time
+                            echo "<div class='form-group'><p class='error'>The inmate already has a visit at that time</p></div>";
+                        }
+                    }
+
+                    ?>
                     <label for="time-start" class="label-title">Visit time start-end(max 5h) </label>
                     <label for="time-end" class="label-title"></label>
                     <!--<input type="range" min="1" max="5" step="1"  value="0" id="time" class="form-input" onChange="change();" style="height:28px;width:78%;padding:0;">-->
