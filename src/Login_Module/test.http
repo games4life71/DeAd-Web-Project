@@ -1,0 +1,4 @@
+### Send POST request with body as parameters
+POST http://localhost/src/Login_Module/login.php
+Content-Type: application/x-www-form-urlencoded
+username=test1&password=1234
