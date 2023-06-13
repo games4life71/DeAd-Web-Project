@@ -1,8 +1,8 @@
 <?php
-    session_start();
-    if(!isset($_SESSION['username'])){
-        header("Location: ../Login_Module/login.php");
-    }
+session_start();
+if (!isset($_SESSION['username'])) {
+    header("Location: ../Login_Module/login.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -26,13 +26,21 @@
     </style>
 </head>
 <body>
+
 <header class="header">
     <a href="../HomePage/homepage.php"><img src="../../assets/Logo/Asset%201.svg" class="logo" alt="logo"></a>
     <input class="menu-btn" type="checkbox" id="menu-btn"/>
     <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
     <ul class="menu">
         <li><a href="../HomePage/homepage.php">Home</a></li>
-        <li><a href="../Login_Module/login.php">Login</a></li>
+        <?php
+        if ($_SESSION['is_logged_in']) {
+            echo '<li><a href="../UserProfile/profile.php">Profile</a></li>';
+        } else {
+            echo '<li><a href="../Login_Module/login.php">Login</a></li>';
+        }
+        ?>
+
         <li><a href="../About/about.html">About Us</a></li>
         <li><a href="../Contact/contact.html">Contact</a></li>
         <li><a href="../FAQ/faq.html">FAQ</a></li>
@@ -51,7 +59,7 @@
             $email = $_SESSION['email'];
             $secondary_email = $_SESSION['secondary_email'] ?? "No secondary email";
 
-           echo" 
+            echo " 
             <tr>
                 <td class = 'default'><b>Username</b></td>
                 <td class = 'default'>:</td>
@@ -76,10 +84,20 @@
                 <td class = 'default' >:</td>
                 <td style='color: var(--darkblue);' >$secondary_email</td>
             </tr>
-
+            
            ";
+            if ($_SESSION['function'] == 'admin') {
+                echo "
+               <tr>
+            
+                <td class = 'default'><b>Role:</b></td>
+                <td class = 'default' >:</td>
+                <td style='color: var(--darkblue);' >Admin</td>
+            </tr>
+               ";
+            }
 
-           ?>
+            ?>
 
             </tbody>
         </table>
@@ -108,7 +126,6 @@
 
     </div>
 </div>
-
 
 
 </body>
