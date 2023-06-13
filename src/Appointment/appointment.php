@@ -57,11 +57,11 @@
                 <label class="label-title">The nature of the visit: </label>
                 <div class="input-group">
                     <label>
-                        <input type="checkbox" name="visit_nature" value="parental">Parental</label>
+                        <input type="radio" name="visit_nature" value="parental">Parental</label>
                     <label>
-                        <input type="checkbox" name="visit_nature" value="friendship">Friendship</label>
+                        <input type="radio" name="visit_nature" value="friendship">Friendship</label>
                     <label>
-                        <input type="checkbox" name="visit_nature" value="lawyership">Lawyership</label>
+                        <input type="radio" name="visit_nature" value="lawyership">Lawyership</label>
                 </div>
             </div>
 
