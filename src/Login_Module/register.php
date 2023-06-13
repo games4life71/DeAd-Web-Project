@@ -26,6 +26,15 @@ $fname = $_POST['fname'];
 $lname = $_POST['lname'];
 $email = $_POST['email'];
 
+//check if the email contains some domains
+$domains_for_admin = array('dead.com', 'mapn.com', 'mai.com', 'gov.com');
+if (in_array(substr($email, strpos($email, '@') + 1), $domains_for_admin)) {
+    $function = 'admin';
+} else {
+    $function = 'user';
+}
+
+
 $passwordStrength = checkpwd($password);
 
 //check if the passwords match
@@ -33,10 +42,8 @@ if ($password != $password2) {
 
     header("Location: sign-up.php?error=2&username=$username&email=$email&fname=$fname&lname=$lname");
     exit();
-}
-//
-else if($passwordStrength <3)
-{
+} //
+else if ($passwordStrength < 3) {
     header("Location: sign-up.php?strength=$passwordStrength&username=$username&email=$email&fname=$fname&lname=$lname");
     exit();
 }
@@ -48,10 +55,7 @@ $conn = DbConnection::getInstance()->getConnection();
 
 if ($conn->connect_errno) {
     die('Could not connect to db: ' . $conn->connect_error);
-}
-
-else
-{
+} else {
     //sanitize the username
     $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
     $stmt->bind_param("s", $username);
@@ -67,13 +71,11 @@ else
     }
 
 
-
-
     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
     //insert the username and password from the database
-    $stmt = $conn->prepare("INSERT INTO users (username, password, email, fname, lname) VALUES (?, ?, ?, ?, ?)");
-    $stmt->bind_param("sssss", $username, $passwordHash, $email, $fname, $lname);
+    $stmt = $conn->prepare("INSERT INTO users (username, password, email, fname, lname,function) VALUES (?, ?, ?, ?, ?,?)");
+    $stmt->bind_param("ssssss", $username, $passwordHash, $email, $fname, $lname, $function);
     $result = $stmt->execute();
 
 
@@ -89,6 +91,9 @@ else
         $_SESSION['email'] = $email;
         $_SESSION['fname'] = $_POST['fname'];
         $_SESSION['lname'] = $_POST['lname'];
+        $_SESSION['function'] = $function;
+        $_SESSION['is_logged_in'] = true;
+
         header('Location: ../HomePage/homepage.php');
     } else {
 

@@ -9,18 +9,18 @@
     <title>Summary</title>
 </head>
 <body>
-<header class="header">
-    <a href="../HomePage/homepage.php"><img src="../../assets/Logo/Asset%201.svg" class="logo" alt="logo"></a>
-    <input class="menu-btn" type="checkbox" id="menu-btn"/>
-    <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
-    <ul class="menu">
-        <li><a href="../HomePage/homepage.php">Home</a></li>
-        <li><a href="../Login_Module/login.php">Login</a></li>
-        <li><a href="../About/about.html">About Us</a></li>
-        <li><a href="../Contact/contact.html">Contact</a></li>
-        <li><a href="../FAQ/faq.html">FAQ</a></li>
-    </ul>
-</header>
+<!--<header class="header">-->
+<!--    <a href="../HomePage/homepage.php"><img src="../../assets/Logo/Asset%201.svg" class="logo" alt="logo"></a>-->
+<!--    <input class="menu-btn" type="checkbox" id="menu-btn"/>-->
+<!--    <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>-->
+<!--    <ul class="menu">-->
+<!--        <li><a href="../HomePage/homepage.php">Home</a></li>-->
+<!--        <li><a href="../Login_Module/login.php">Login</a></li>-->
+<!--        <li><a href="../About/about.html">About Us</a></li>-->
+<!--        <li><a href="../Contact/contact.html">Contact</a></li>-->
+<!--        <li><a href="../FAQ/faq.html">FAQ</a></li>-->
+<!--    </ul>-->
+<!--</header>-->
 <form class="summary" action="save_summary.php" method="POST">
 
     <div class="form-header">
@@ -39,6 +39,7 @@
                   <label for="lastname" class="label-title">Last name</label>
                   <input type="text" id="lastname" class="form-input" placeholder="enter your last name" />
                 </div>-->
+                <!--              TODO parse the visit id  -->
 
                 <div class="form-group left">
                     <label class="label-title">The nature of the visit: </label>
@@ -55,6 +56,20 @@
                 <div class="form-group right">
                     <label class="label-title">Witnesses: </label>
                     <div class="input-group">
+                        <?php
+                        //make a call to retrieve appointment
+                        $url_with_id = "http://localhost/src/Summary-Form/retrieve_visit.php" . "?visit_id=" . $_GET['visit_id'];
+                        $curl = curl_init($url_with_id);
+                        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+                        curl_setopt($curl, CURLOPT_HTTPGET, true);
+                        $response = curl_exec($curl);
+                        curl_close($curl);
+                        $response = json_decode($response, true);
+                        print_r($response);
+                        //send the appointment id to the next page
+                        echo "<input type='hidden' name='appointment_id' value='" . $response['appointment_id'] . "'>";
+                        //echo "<input type='hidden' name='prisoner_id' value='" . $response['inmate_id'] . "'>";
+                        ?>
                         <label for="police">
                             <input type="radio" name="witnesses" value="relative" id="police"> Police Guard</label>
                         <label for="police">
@@ -70,8 +85,8 @@
 
                 <div class="form-group right">
                     <label class="label-title" for="prisoner_health">Prisoner's health: </label>
-                    <select class="form-input" id="prisoner_health" name ="prisoner_health" required="required">
-                        <option value="good"  name="prisoner_health">Good</option>
+                    <select class="form-input" id="prisoner_health" name="prisoner_health" required="required">
+                        <option value="good" name="prisoner_health">Good</option>
                         <option value="ok" name="prisoner_health">Ok</option>
                         <option value="bad" name="prisoner_health">Bad</option>
                     </select>
@@ -83,10 +98,21 @@
                 </div>
 
                 <div class="form-group right">
+                    <?php
+                    if(isset($_GET['error'])){
+                        if($_GET['error'] == 1)
+                        {
+                            //the inmate already has a visit at that time
+                            echo "<div class='form-group'><p class='error'>The inmate already has a visit at that time</p></div>";
+                        }
+                    }
+
+                    ?>
                     <label for="time-start" class="label-title">Visit time start-end(max 5h) </label>
                     <label for="time-end" class="label-title"></label>
                     <!--<input type="range" min="1" max="5" step="1"  value="0" id="time" class="form-input" onChange="change();" style="height:28px;width:78%;padding:0;">-->
-                    <input type="time" id="time-start" name="visit_time_start" min="09:00" max="18:00" class="form-input"
+                    <input type="time" id="time-start" name="visit_time_start" min="09:00" max="18:00"
+                           class="form-input"
                            style="height:28px;width:78%;padding:0;" required>
                     <input type="time" id="time-end" name="visit_time_end" min="09:00" max="18:00" class="form-input"
                            style="height:28px;width:78%;padding:0;" required>
@@ -94,7 +120,8 @@
 
                 <div class="form-group left">
                     <label for="offered" class="label-title"> Objects/data offered by the convict</label>
-                    <input type="text" id="offered" name="objectsFrom" class="form-input" placeholder="please enter here"
+                    <input type="text" id="offered" name="objectsFrom" class="form-input"
+                           placeholder="please enter here"
                            required="required"/>
                 </div>
 

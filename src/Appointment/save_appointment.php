@@ -1,8 +1,25 @@
 <?php
+
+
+function compress($image)
+{
+    $info = getimagesize($image);
+    if ($info['mime'] == 'image/jpeg')
+        $image = imagecreatefromjpeg($image);
+    elseif ($info['mime'] == 'image/gif')
+        $image = imagecreatefromgif($image);
+    elseif ($info['mime'] == 'image/png')
+        $image = imagecreatefrompng($image);
+    imagejpeg($image, $image, 50);
+
+    return $image;
+}
+
+
 session_start();
 $username = $_SESSION['username'];
 //if the use is not logged in, redirect to the login page
-if(!isset($_SESSION['is_logged_in'])){
+if (!isset($_SESSION['is_logged_in'])) {
     header('Location: ../Login_Module/login.php');
 }
 
@@ -22,36 +39,52 @@ $statemnt->close();
 //print_r($_POST);
 //person id din tabela users
 
-$firstname = $_POST['firstname'];
-$lastname = $_POST['lastname'];
+$firstname = $_POST['firstname']; //first name of the inmate
+$lastname = $_POST['lastname'];  //last name of the inmate
 $relationship = $_POST['relationship'];
 $visit_nature = $_POST['visit_nature'];
 $source_of_income = $_POST['source_of_income'];
-//if$profile_photo= $_POST['profile_photo'];
-$date= $_POST['date'];
-$estimated_time= $_POST['estimated_time'];
+$date = $_POST['date'];
+$estimated_time = $_POST['estimated_time'];
 
-//print the post array
-if(!empty($_FILES['profile_photo']['name'])){
+
+if (!empty($_FILES['profile_photo']['name'])) {
     $profile_photo = $_FILES['profile_photo']['tmp_name'];
-    $profile_photo = file_get_contents($profile_photo);
-    $profile_photo = addslashes($profile_photo);
-}
-else{
+    // compress($profile_photo); //compress the image first
+    $photo_contents = file_get_contents($profile_photo);
+    $photo_contents = addslashes($photo_contents);
+} else {
     $profile_photo = null;
 }
-//get the content of the image and then add slashes to it
-$profile_photo = file_get_contents($profile_photo,PATHINFO_EXTENSION);
-$photo = addslashes($profile_photo);
-
-//compress the image
 
 
+$valid_extensions = array('jpeg', 'jpg', 'png');
 
-//echo $img_content;
+//get the extension of the uploaded file
+$ext = strtolower(pathinfo($_FILES['profile_photo']['name'], PATHINFO_EXTENSION));
+
+//check if the extension is valid
+if (!in_array($ext, $valid_extensions)) {
+    header('Location: appointment.php?error=2'); //invalid extension
+    exit();
+}
+
+
 if (!$conn) {
     echo "Connection error: " . mysqli_connect_error();
 }
+
+//check if the inmate exists in the database
+$stmt = $conn->prepare("SELECT * FROM inmates WHERE fname = ? AND lname = ?");
+$stmt->bind_param("ss", $firstname, $lastname);
+$stmt->execute();
+$result = $stmt->get_result();
+$row = $result->fetch_assoc();
+if ($row == null) {
+    header('Location: appointment.php?error=1'); //inmate does not exist
+    exit();
+}
+
 
 //prepare sql statement
 $stmt = $conn->prepare("INSERT INTO appointments
@@ -66,7 +99,8 @@ $stmt = $conn->prepare("INSERT INTO appointments
     estimated_time)
     VALUES (?,?,?,?,?,?,?,?,?)");
 
-try{
+
+try {
     $stmt->bind_param("issssssss",
         $person_id,
         $firstname,
@@ -77,10 +111,38 @@ try{
         $source_of_income,
         $date,
         $estimated_time);
-}catch (Exception $e){
+    $stmt->execute();
+} catch (Exception $e) {
     echo $e->getMessage();
 }
+//insert the appointment into the visits_summary table
+$stmt = $conn->prepare("INSERT INTO visits_summary (
+                            visitor_id,
+                            inmate_id,
+                            visit_date,
+                            visit_nature,
+                            visit_type,
+                            appointment_refID) 
+VALUES (?,?,?,?,?,?)");
 
+//get the appointment id
+$stmt2 = $conn->prepare("SELECT appointment_id FROM appointments WHERE person_id = ? AND date = ?");
+$stmt2->bind_param("is", $person_id, $date);
+$stmt2->execute();
+$result = $stmt2->get_result();
+$row_appoint = $result->fetch_assoc();
+print_r($row);
+$stmt2->close();
+
+$stmt->bind_param("iisssi",
+    $person_id,
+    $row['inmate_id'],
+    $date,
+    $visit_nature,
+    $visit_nature,
+    $row_appoint['appointment_id']);
 $stmt->execute();
+echo $stmt->error;
 $stmt->close();
-header('Location: ../HomePage/homepage.php');
+
+//header('Location: ../HomePage/homepage.php');
