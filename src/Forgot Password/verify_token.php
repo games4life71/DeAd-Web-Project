@@ -35,4 +35,4 @@ $stmt->execute();
 
 
 
-header("Location: ../Reset Password/reset_password_email.php?username=$username&email=$email");
+header("Location: ../Reset_Password/reset_password_email.php?username=$username&email=$email");
