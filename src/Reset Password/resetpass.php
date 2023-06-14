@@ -1,9 +1,9 @@
 <?php
-session_start();
-if (!$_SESSION['is_logged_in']) {
-    header('Location: ../Login_Module/login.php');
-}
-?>
+//session_start();
+//if (!$_SESSION['is_logged_in']) {
+//    header('Location: ../Login_Module/login.php');
+//}
+//?>
 
 
 <!DOCTYPE html>

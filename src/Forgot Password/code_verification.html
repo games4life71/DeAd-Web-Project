@@ -10,13 +10,13 @@
 <body>
 <div class="wrapper">
   <div class="form-container">
-    <form action="forgot_pwd.php" method="POST">
-      <h2>Forgot Password</h2>
+    <form action="verify_token.php" method="POST">
+      <h2>Enter the code :</h2>
 
       <div class="input-field">
-        <input type="email" name="email" required id="email">
+        <input type="text" name="code" required id="code">
         <i></i>
-        <label for="email">Email</label>
+        <label for="code">Code</label>
       </div>
 
       <button type="submit" class="btn">send</button>

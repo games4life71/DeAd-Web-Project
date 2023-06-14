@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+require '../Utils/DbConnection.php';
 function checkpwd($password)
 {
     $uppercase = preg_match('@[A-Z]@', $password);
@@ -27,7 +27,9 @@ echo $user;
 
 //search for the user in the database
 $config =  require '../../config.php';
-$conn = new mysqli($config['hostname'], $config['username'], $config['password'],  $config['database']);
+
+$conn = DbConnection::getInstance()->getConnection();
+
 
 $passwordStrength = checkpwd($newpwd);
 
