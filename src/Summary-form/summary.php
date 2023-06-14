@@ -60,6 +60,10 @@
                         //make a call to retrieve appointment
                         $url_with_id = "http://localhost/src/Summary-Form/retrieve_visit.php" . "?visit_id=" . $_GET['visit_id'];
                         $curl = curl_init($url_with_id);
+                        if(isset($_SESSION['token']))
+                        {
+                            curl_setopt($curl,CURLOPT_HTTPHEADER,array('Authorization: Bearer '.$_SESSION['token']));
+                        }
                         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
                         curl_setopt($curl, CURLOPT_HTTPGET, true);
                         $response = curl_exec($curl);

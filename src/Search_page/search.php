@@ -39,13 +39,28 @@
     if (isset($_GET['username'])) {
         //make a call to the searchUsername endpoint
         //
+        session_start();
         $url_with_username = "http://localhost/src/Search_page/searchUsername.php?username=" . $_GET['username'];
         $curl = curl_init();
+        //attach the token to the header
+        if(isset($_SESSION['token']))
+        {
+            curl_setopt($curl,CURLOPT_HTTPHEADER,array('Authorization: Bearer '.$_SESSION['token']));
+        }
         curl_setopt($curl, CURLOPT_URL, $url_with_username);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_HTTPGET, true);
 
         $curl_response = curl_exec($curl);
+        //parse the response code
+        $response_code = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+        if ($response_code == 401) {
+            echo "Unauthorized";
+            exit();
+        }
+
+
+
         curl_close($curl);
         echo $curl_response;
 
