@@ -26,4 +26,13 @@ if($result ->num_rows == 0){
 $username = $result->fetch_assoc()['username'];
 $email = $result->fetch_assoc()['email'];
 //refirect to the reset password page
+
+
+//delete the entry from the database
+$stmt = $conn->prepare("DELETE FROM reset_pwd_requests WHERE token = ?");
+$stmt->bind_param("s", $token);
+$stmt->execute();
+
+
+
 header("Location: ../Reset Password/reset_password_email.php?username=$username&email=$email");
