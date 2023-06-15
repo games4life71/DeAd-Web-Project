@@ -41,7 +41,7 @@ button {
     right: 0;
     width: 550px;
     padding: 35px;
-    margin: -83px auto 0 auto;
+    margin: -200px auto 0 auto;
     background-color: var(--lightblue);
     border-radius: 20px;
     box-shadow: 0 10px 40px var(--capuccino), 0 0 0 20px #ffffffeb;
@@ -62,6 +62,18 @@ input[type="text"] {
 input[type="text"]::placeholder {
     color: var(--offwhite);
 }
+
+select[name="search-results"] {
+    width: 100%;
+    padding: 15px;
+    font-size: 30px;
+    border: 1px solid var(--darkblue);
+    border-radius: 3px;
+    background-color: var(--offwhite);
+    color: var(--darkblue);
+}
+
+
 
 #s-cover {
     width: 1px;
@@ -232,6 +244,3 @@ button span:after {
         width: 28px;
     }
 }
-
-
-

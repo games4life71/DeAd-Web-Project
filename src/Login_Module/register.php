@@ -71,6 +71,7 @@ if ($conn->connect_errno) {
     }
 
 
+    $user_id = $result->fetch_assoc()['user_id'];
     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
     //insert the username and password from the database
@@ -93,6 +94,7 @@ if ($conn->connect_errno) {
         $_SESSION['lname'] = $_POST['lname'];
         $_SESSION['function'] = $function;
         $_SESSION['is_logged_in'] = true;
+        $_SESSION['id'] = $user_id;
 
         header('Location: ../HomePage/homepage.php');
     } else {

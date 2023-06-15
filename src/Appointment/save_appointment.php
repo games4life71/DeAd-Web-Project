@@ -45,7 +45,8 @@ $relationship = $_POST['relationship'];
 $visit_nature = $_POST['visit_nature'];
 $source_of_income = $_POST['source_of_income'];
 $date = $_POST['date'];
-$estimated_time = $_POST['estimated_time'];
+$visit_start = $_POST['visit_time_start'];
+$visit_end = $_POST['visit_time_end'];
 
 
 if (!empty($_FILES['profile_photo']['name'])) {
@@ -85,6 +86,19 @@ if ($row == null) {
     exit();
 }
 
+//check if the inmate has a visit in the same time interval
+$stmt3 = $conn->prepare("SELECT * FROM appointments WHERE date = ? AND visit_start<= ? and visit_end >= ?");
+$stmt3->bind_param("sss", $date, $visit_start, $visit_end);
+$stmt3->execute();
+$result = $stmt3->get_result();
+$stmt3->close();
+//check if the inmate has a visit in the same time interval
+if ($result->num_rows > 0) {
+    echo "The inmate has a visit in the same time interval";
+    header('Location: ../Summary-form/summary.php?error=1'); //the inmate has a visit in the same time interval
+    exit();
+}
+
 
 //prepare sql statement
 $stmt = $conn->prepare("INSERT INTO appointments
@@ -96,12 +110,13 @@ $stmt = $conn->prepare("INSERT INTO appointments
      photo,
     source_of_income,
     date,
-    estimated_time)
-    VALUES (?,?,?,?,?,?,?,?,?)");
+    visit_start,
+     visit_end)
+    VALUES (?,?,?,?,?,?,?,?,?,?)");
 
 
 try {
-    $stmt->bind_param("issssssss",
+    $stmt->bind_param("isssssssss",
         $person_id,
         $firstname,
         $lastname,
@@ -110,7 +125,8 @@ try {
         $profile_photo,
         $source_of_income,
         $date,
-        $estimated_time);
+        $visit_start,
+        $visit_end);
     $stmt->execute();
 } catch (Exception $e) {
     echo $e->getMessage();
@@ -121,7 +137,7 @@ $stmt = $conn->prepare("INSERT INTO visits_summary (
                             inmate_id,
                             visit_date,
                             visit_nature,
-                            visit_type,
+                            visit_hours,
                             appointment_refID) 
 VALUES (?,?,?,?,?,?)");
 
@@ -131,18 +147,24 @@ $stmt2->bind_param("is", $person_id, $date);
 $stmt2->execute();
 $result = $stmt2->get_result();
 $row_appoint = $result->fetch_assoc();
-print_r($row);
+//print_r($row);
 $stmt2->close();
+
+
+$visit_hours = intval($visit_end) - intval($visit_start);
 
 $stmt->bind_param("iisssi",
     $person_id,
     $row['inmate_id'],
     $date,
     $visit_nature,
-    $visit_nature,
+    $visit_hours,
     $row_appoint['appointment_id']);
 $stmt->execute();
+$result = $stmt->get_result();
+print("Result: ");
+print($result);
 echo $stmt->error;
 $stmt->close();
 
-//header('Location: ../HomePage/homepage.php');
+header('Location: ../HomePage/homepage.php');
