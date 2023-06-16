@@ -70,7 +70,7 @@ $username = $_GET['username'];
                 echo '<td>' . $row['date'] . '</td>';
                 echo '<td>' . $row['visit_start'] . '</td>';
                 echo '<td>' . $row['visit_nature'] . '</td>';
-                echo '<td><a class="edit-button" href="http://localhost/src/Admin_Edit/editappointment.php?appointment_id=' . $row['appointment_id'] . '&person_id=' . $row['person_id'] . '&username=' . $username . '">Edit</a></td>';
+                echo '<td><a class="edit-button" href="../Admin_Edit/editappointment.php?appointment_id=' . $row['appointment_id'] . '&person_id=' . $row['person_id'] . '&username=' . $username . '">Edit</a></td>';
                 //echo '<td><button class="edit-button" data-id="' . $row['appointment_id'] . '" data-personid="' . $row['person_id'] . '">Edit</button></td>';
                 echo '<td><button class="delete-button" data-id="' . $row['appointment_id'] . '">Delete</button></td>';
                 echo '</tr>';
