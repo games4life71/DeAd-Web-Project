@@ -1,8 +1,8 @@
 <?php
 
 use Firebase\JWT\JWT;
+require_once '../../vendor/autoload.php';
 use Firebase\JWT\Key;
-
 require '../Utils/DbConnection.php';
 $config = require '../..//config.php';
 if($_SERVER['REQUEST_METHOD'] == 'GET')

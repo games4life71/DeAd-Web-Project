@@ -4,7 +4,7 @@
 //retrive the visit from appointment table and send it back
 
 use Firebase\JWT\JWT;
-
+use Firebase\JWT\Key;
 if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     require '../Utils/DbConnection.php';
@@ -18,11 +18,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $token = str_replace('Bearer ', '', $token);
 
     //validate it
-    $config = require_once '../../config.php';
+    $config = require '../../config.php';
     require_once('../../vendor/autoload.php');
+    $jwt = new JWT();
+    $secret_key = $config['secret_key'];
+
     try{
 
-        $decoded = JWT::decode($token, new \Firebase\JWT\Key($config['secret_key'], 'HS256'));
+        $decoded = $jwt->decode($token, new Key($secret_key, 'HS256'));
 
     }
 
