@@ -1,6 +1,9 @@
 <?php
 //get the username and password from the form
 
+use Firebase\JWT\JWT;
+require_once  '../../vendor/autoload.php';
+
 
 $username = $_POST['username'];
 $password = $_POST['password'];
@@ -44,7 +47,38 @@ else{
         if($row['secondary_email']!=null)
         $_SESSION['secondary_email'] = $row['secondary_email'];
 
-        header('Location: ../HomePage/homepage.php');
+
+        //create a new auth token
+        $key = $config['secret_key'];
+        $issuedAt = new DateTimeImmutable();
+
+        $expire = $issuedAt->modify('+6 hours')->getTimestamp();
+        $serverName = $config['hostname'];
+        $username = $_SESSION['username'];
+        $data  = [
+            'iat' => $issuedAt->getTimestamp(),         // Issued at: time when the token was generated
+            'iss' => $serverName,                       // Issuer
+            'nbf' => $issuedAt->getTimestamp(),         // Not before
+            'exp' => $expire,                           // Expire
+            'userName' => $username,                    // User name
+
+        ];
+        $token  =  JWT::encode(
+            $data,
+            $key,
+            'HS256'
+
+        );
+
+        //set the token in the session
+        $_SESSION['token'] = $token;
+        header("Location:../HomePage/homepage.php");
+
+
+
+
+
+
     }
 
     else{
