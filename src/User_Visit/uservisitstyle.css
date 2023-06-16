@@ -127,7 +127,13 @@ body::-webkit-scrollbar{
 }
 
 .button-center{
+    border: 5px solid var(--offpink);
+    margin: 0 auto;
+    border-radius: 10px;
+    width: 50%;
+    padding: 10px;
     text-align: center;
+    color: var(--brown);
 }
 .edit-button a
 {

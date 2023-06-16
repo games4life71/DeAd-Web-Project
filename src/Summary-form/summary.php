@@ -102,24 +102,9 @@
                 </div>
 
                 <div class="form-group right">
-                    <?php
-                    if(isset($_GET['error'])){
-                        if($_GET['error'] == 1)
-                        {
-                            //the inmate already has a visit at that time
-                            echo "<div class='form-group'><p class='error'>The inmate already has a visit at that time</p></div>";
-                        }
-                    }
-
-                    ?>
-                    <label for="time-start" class="label-title">Visit time start-end(max 5h) </label>
-                    <label for="time-end" class="label-title"></label>
-                    <!--<input type="range" min="1" max="5" step="1"  value="0" id="time" class="form-input" onChange="change();" style="height:28px;width:78%;padding:0;">-->
-                    <input type="time" id="time-start" name="visit_time_start" min="09:00" max="18:00"
-                           class="form-input"
-                           style="height:28px;width:78%;padding:0;" required>
-                    <input type="time" id="time-end" name="visit_time_end" min="09:00" max="18:00" class="form-input"
-                           style="height:28px;width:78%;padding:0;" required>
+                    <label for="time" class="label-title">Hours (max 5) </label>
+                    <input type="range" min="0" max="5" step="1" value="0" id="time" name="visit_hours" class="form-input" onChange="change();"
+                           style="height:28px;width:78%;padding:0;">
                 </div>
 
                 <div class="form-group left">

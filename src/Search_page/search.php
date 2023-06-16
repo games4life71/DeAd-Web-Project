@@ -11,6 +11,7 @@
 <body>
 <header class="header">
     <a href="search.php"><img src="../../assets/Logo/Asset%201.svg" class="logo" alt="logo"></a>
+    <a href="../HomePage/homepage.php"><img src="../../assets/Logo/Asset%201.svg" class="logo" alt="logo"></a>
     <input class="menu-btn" type="checkbox" id="menu-btn"/>
     <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
     <ul class="menu">
@@ -69,12 +70,36 @@
 
 
     ?>
+    <div id="myDropdown" class="dropdown-content">
+        <br>
+<!--        <datalist id="results"></datalist>-->
+        <?php // TODO add nice design of usernames displayed
+        if (isset($_GET['username'])) {
+            //make a call to the searchUsername endpoint
+            //
+            $url_with_username = "http://localhost/src/Search_page/searchUsername.php?username=" . $_GET['username'];
+            $curl = curl_init();
+            curl_setopt($curl, CURLOPT_URL, $url_with_username);
+            curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($curl, CURLOPT_HTTPGET, true);
+
+            $curl_response = curl_exec($curl);
+            curl_close($curl);
+            echo $curl_response;
+
+
+        }
+
+        ?>
+
+    </div>
 </div>
 
 <div class="matches">
 
 
 </div>
+
 
 </body>
 </html>
