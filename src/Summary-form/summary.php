@@ -41,14 +41,15 @@
     $response = curl_exec($curl);
     curl_close($curl);
     $response = json_decode($response, true);
-    print_r($response);
+    //print_r($response);
 
     $GLOBALS['visit_date'] = $response['date'];
     $GLOBALS['visit_nature'] = $response['visit_nature'];
     $visit_start = intval($response['visit_start']);
     $visit_end = intval($response['visit_end']);
-    $GLOBALS['visit_time'] = $visit_start . " - " . $visit_end;
-
+    $difference = $visit_end - $visit_start;
+    $GLOBALS['visit_time'] = $difference;
+    //print_r($GLOBALS['visit_time']);
 
     //send the appointment id to the next page
     echo "<input type='hidden' name='appointment_id' value='" . $response['appointment_id'] . "'>";
@@ -73,17 +74,19 @@
                     <div class="input-group">
                         <?php
                         if($GLOBALS['visit_nature'] == "parental")
-                            echo "<label><input type='radio' name='visit_nature' value='Parental' checked='checked'>Parental</label>";
+                            echo "<label><input type='radio' name='visit_nature' value='parental' checked='checked'>Parental</label>";
                         else
-                            echo "<label><input type='radio' name='visit_nature' value='Parental'>Parental</label>";
+                            echo "<label><input type='radio' name='visit_nature' value='parental'>Parental</label>";
+
                         if($GLOBALS['visit_nature'] == "friendship")
-                            echo "<label><input type='radio' name='visit_nature' value='Friendship' checked='checked'>Friendship</label>";
+                            echo "<label><input type='radio' name='visit_nature' value='friendship' checked='checked'>Friendship</label>";
                         else
-                            echo "<label><input type='radio' name='visit_nature' value='Friendship'>Friendship</label>";
+                            echo "<label><input type='radio' name='visit_nature' value='friendship'>Friendship</label>";
+
                         if($GLOBALS['visit_nature'] == "lawyer")
-                            echo "<label>><input type='radio' name='visit_nature' value='Lawyer' checked='checked'>Lawyer</label";
+                            echo "<label><input type='radio' name='visit_nature' value='lawyership' checked='checked'>Lawyer</label>";
                         else
-                            echo "<label><input type='radio' name='visit_nature' value='Lawyer'>Lawyer</label>";
+                            echo "<label><input type='radio' name='visit_nature' value='lawyership'>Lawyer</label>";
                         ?>
 
                     </div>
@@ -99,9 +102,9 @@
                             <input type="radio" name="witnesses" value="legal_gurdian" id="legal_gurdian"> Legal
                             Guardian</label>
                         <label for="doctor">
-                            <input type="radio" name="witnesses" value="doctor" id="doctor"> Doctor</label>
+                            <input type="radio" name="witnesses" value="doctor" id="doctor" > Doctor</label>
                         <label for="nurse">
-                            <input type="radio" name="witnesses" value="nurse" id="nurse"> Nurse</label>
+                            <input type="radio" name="witnesses" value="nurse" id="nurse"  >Nurse</label>
                     </div>
                 </div>
 
@@ -117,12 +120,15 @@
 
                 <div class="form-group right">
                     <label for="date" class="label-title">Visit date:</label>
-                    <input type="date" id="date" name="visit_date" class="form-input" required="required">
+                    <?php
+                    echo "<input type='date' id='date' name='visit_date' class='form-input' value='" . $GLOBALS['visit_date'] . "' required='required'>";
+                    ?>
+<!--                    <input type="date" id="date" name="visit_date" class="form-input" required="required">-->
                 </div>
 
                 <div class="form-group right">
                     <label for="time" class="label-title">Hours (max 5) </label>
-                    <input type="range" min="0" max="5" step="1" value="0" id="time" name="visit_hours" class="form-input" onChange="change();"
+                    <input type="range" min="0" max="5" step="1"  id="time" name="visit_hours" class="form-input" onChange="change();" value="<?php echo $GLOBALS['visit_time']; ?>"
                            style="height:28px;width:78%;padding:0;">
                 </div>
 

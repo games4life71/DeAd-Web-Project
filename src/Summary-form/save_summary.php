@@ -14,7 +14,6 @@ $objectsTo = $_POST['objectsTo'];
 $summary = $_POST['summary'];
 $appointment_id = $_POST['appointment_id'];
 
-
 $config = require '../../config.php';
 require '../Utils/DbConnection.php';
 $conn = DbConnection::getInstance()->getConnection();
