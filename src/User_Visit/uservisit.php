@@ -72,10 +72,10 @@ session_start();
                 //parse the response
                 //if there are no appointments, display a message
                 if (empty($response)) {
-                    echo '<h2>You have no appointments</h2>';
                     //button to create an appointment
                     echo '<div class="button-center">';
-                    echo '<a href="../Appointment/appointment.php">Create an appointment</a>';
+                    echo '<h2>You have no appointments</h2>';
+                    echo '<a href="../Appointment/editappointment.php" style="color:  #5c4b4b">Create an appointment</a>';
                     echo '</div>';
                     exit();
                 }

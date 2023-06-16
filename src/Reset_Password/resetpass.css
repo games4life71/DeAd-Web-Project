@@ -1,0 +1,173 @@
+:root{
+    --darkblue: #32435f;
+    --lightblue: #85abef;
+    --offpink: #a67f78;
+    --capuccino: #8f8681;
+    --offwhite: #e1dcd9;
+    --lightcapuccino: #cccbc9;
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: linear-gradient(to bottom, var(--lightblue), var(--darkblue)) fixed;
+    font-weight: 400;
+    min-height: 100vh;
+    display: grid;
+    place-content: center;
+    overflow: hidden;
+}
+
+.error{
+    color: red;
+    font:bold 1.2rem Arial;
+    font-size: 100px;
+    text-align: center;
+    /*margin-bottom: 10px;*/
+    padding: 4px;
+}
+.wrapper{
+    position: relative;
+    width: 35rem;
+    height: 50rem;
+}
+
+.wrapper .form-container{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: var(--offwhite);
+    border-radius: .5rem;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.2);
+}
+
+
+h2{
+    font-size: 3rem;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.125rem;
+    color: var(--darkblue);
+}
+
+.wrapper .form-container form .input-field {
+    position: relative;
+    width: 32rem;
+    margin: 3rem 0;
+}
+
+.wrapper .form-container form .input-field i,
+.wrapper .form-container form .input-field label {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.6rem;
+    text-transform: capitalize;
+    color: var(--darkblue);
+    padding: 0 .5rem;
+    pointer-events: none;
+    transition: all .5s ease;
+}
+
+.wrapper .form-container form .input-field i {
+    left: .5rem;
+}
+
+.wrapper .form-container form .input-field label {
+    left: 2.5rem
+}
+
+.wrapper .form-container form .input-field input {
+    width: 90%;
+    height: 4rem;
+    padding: 0 1rem;
+    border-radius: .5rem;
+    outline: none;
+    border: .1rem solid var(--darkblue);
+    font-size: 1.6rem;
+    color: var(--darkblue);
+    background: transparent;
+}
+
+.input-field input:focus~label,
+.input-field input:valid~label,
+.input-field input:focus~i,
+.input-field input:valid~i {
+    top: 0 !important;
+    font-size: 1.2rem !important;
+    background-color: var(--offwhite);
+}
+
+.wrapper .form-container form .forgot-pass {
+    margin: -1.5rem 0 1.5rem;
+}
+
+.wrapper .form-container form .forgot-pass a {
+    font-size: 1.4rem;
+    text-decoration: none;
+    color: var(--darkblue);
+}
+
+.wrapper .form-container form .forgot-pass a:hover {
+    color: var(--capuccino);
+}
+
+.wrapper .form-container form .btn {
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.125rem;
+    color: var(--darkblue);
+    outline: 0.125rem solid var(--darkblue);
+    padding: 0.625rem 7.813rem;
+    position: relative;
+    overflow: hidden;
+    transition: color 1s;
+}
+
+.btn:hover{
+    color: var(--darkblue);
+}
+
+.btn::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -3.125rem;
+    width: 0;
+    height: 100%;
+    background-color: var(--darkblue);
+    /*transform: skewX(.312rad);*/
+    z-index: -1;
+    transition: width 1s;
+}
+
+.btn:hover::before{
+    width: 150%;
+}
+
+.wrapper .form-container form .link {
+    text-align: center;
+    font-size: 1.4rem;
+    color: var(--darkblue);
+    margin: 2.5rem 0;
+}
+
+.wrapper .form-container form .link a{
+    text-decoration:  none;
+    text-transform: capitalize;
+    color: var(--darkblue);
+}
+
+.wrapper .form-container form .link a:hover{
+    color: var(--capuccino);
+}
+

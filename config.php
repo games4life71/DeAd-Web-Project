@@ -5,10 +5,11 @@
 //return an array of configuration settings
 
 $config = array(
-    'hostname' => 'localhost:9999',
+    'hostname' => '127.0.0.3:3306',
     'username' => 'root',
     'password' => 'root',
-    'database' => 'dead'
+    'database' => 'dead',
+    'secret_key' => 'bGS6lzFqvvSQ8ALbOxatm7/Vk7mLQyzqaS34Q4oR1ew='
 );
 return $config;
 ?>

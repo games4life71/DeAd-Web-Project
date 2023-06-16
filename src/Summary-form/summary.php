@@ -26,7 +26,34 @@
     <div class="form-header">
         <h1>Summary of the visit</h1>
     </div>
+    <?php
+    session_start();
+    //make a call to retrieve appointment
+    $url_with_id = "http://localhost/src/Summary-Form/retrieve_visit.php" . "?visit_id=" . $_GET['visit_id'];
+    $curl = curl_init($url_with_id);
 
+    if(isset($_SESSION['token']))
+    {
+        curl_setopt($curl,CURLOPT_HTTPHEADER,array('Authorization: Bearer '.$_SESSION['token']));
+    }
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl, CURLOPT_HTTPGET, true);
+    $response = curl_exec($curl);
+    curl_close($curl);
+    $response = json_decode($response, true);
+    print_r($response);
+
+    $GLOBALS['visit_date'] = $response['date'];
+    $GLOBALS['visit_nature'] = $response['visit_nature'];
+    $visit_start = intval($response['visit_start']);
+    $visit_end = intval($response['visit_end']);
+    $GLOBALS['visit_time'] = $visit_start . " - " . $visit_end;
+
+
+    //send the appointment id to the next page
+    echo "<input type='hidden' name='appointment_id' value='" . $response['appointment_id'] . "'>";
+    //echo "<input type='hidden' name='prisoner_id' value='" . $response['inmate_id'] . "'>";
+    ?>
 
     <div class="form-body">
         <div class="form-body">
@@ -44,33 +71,29 @@
                 <div class="form-group left">
                     <label class="label-title">The nature of the visit: </label>
                     <div class="input-group">
-                        <label>
-                            <input type="checkbox" name="visit_nature" value="Parental">Parental</label>
-                        <label>
-                            <input type="checkbox" name="visit_nature" value="Friendship">Friendship</label>
-                        <label>
-                            <input type="checkbox" name="visit_nature" value="Lawyer">Lawyership</label>
+                        <?php
+                        if($GLOBALS['visit_nature'] == "parental")
+                            echo "<label><input type='radio' name='visit_nature' value='Parental' checked='checked'>Parental</label>";
+                        else
+                            echo "<label><input type='radio' name='visit_nature' value='Parental'>Parental</label>";
+                        if($GLOBALS['visit_nature'] == "friendship")
+                            echo "<label><input type='radio' name='visit_nature' value='Friendship' checked='checked'>Friendship</label>";
+                        else
+                            echo "<label><input type='radio' name='visit_nature' value='Friendship'>Friendship</label>";
+                        if($GLOBALS['visit_nature'] == "lawyer")
+                            echo "<label>><input type='radio' name='visit_nature' value='Lawyer' checked='checked'>Lawyer</label";
+                        else
+                            echo "<label><input type='radio' name='visit_nature' value='Lawyer'>Lawyer</label>";
+                        ?>
+
                     </div>
                 </div>
 
                 <div class="form-group right">
                     <label class="label-title">Witnesses: </label>
                     <div class="input-group">
-                        <?php
-                        //make a call to retrieve appointment
-                        $url_with_id = "http://localhost/src/Summary-Form/retrieve_visit.php" . "?visit_id=" . $_GET['visit_id'];
-                        $curl = curl_init($url_with_id);
-                        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-                        curl_setopt($curl, CURLOPT_HTTPGET, true);
-                        $response = curl_exec($curl);
-                        curl_close($curl);
-                        $response = json_decode($response, true);
-                        print_r($response);
-                        //send the appointment id to the next page
-                        echo "<input type='hidden' name='appointment_id' value='" . $response['appointment_id'] . "'>";
-                        //echo "<input type='hidden' name='prisoner_id' value='" . $response['inmate_id'] . "'>";
-                        ?>
-                        <label for="police">
+
+                        <label for="police" >
                             <input type="radio" name="witnesses" value="relative" id="police"> Police Guard</label>
                         <label for="police">
                             <input type="radio" name="witnesses" value="legal_gurdian" id="legal_gurdian"> Legal
@@ -98,24 +121,9 @@
                 </div>
 
                 <div class="form-group right">
-                    <?php
-                    if(isset($_GET['error'])){
-                        if($_GET['error'] == 1)
-                        {
-                            //the inmate already has a visit at that time
-                            echo "<div class='form-group'><p class='error'>The inmate already has a visit at that time</p></div>";
-                        }
-                    }
-
-                    ?>
-                    <label for="time-start" class="label-title">Visit time start-end(max 5h) </label>
-                    <label for="time-end" class="label-title"></label>
-                    <!--<input type="range" min="1" max="5" step="1"  value="0" id="time" class="form-input" onChange="change();" style="height:28px;width:78%;padding:0;">-->
-                    <input type="time" id="time-start" name="visit_time_start" min="09:00" max="18:00"
-                           class="form-input"
-                           style="height:28px;width:78%;padding:0;" required>
-                    <input type="time" id="time-end" name="visit_time_end" min="09:00" max="18:00" class="form-input"
-                           style="height:28px;width:78%;padding:0;" required>
+                    <label for="time" class="label-title">Hours (max 5) </label>
+                    <input type="range" min="0" max="5" step="1" value="0" id="time" name="visit_hours" class="form-input" onChange="change();"
+                           style="height:28px;width:78%;padding:0;">
                 </div>
 
                 <div class="form-group left">

@@ -12,7 +12,7 @@ if (!isset($_SESSION['is_logged_in'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="homepage.css">
+    <link rel="stylesheet" href="homepage.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="../NavBar/navstyle.css">
     <title>Homepage</title>
 </head>
@@ -53,7 +53,7 @@ if (!isset($_SESSION['is_logged_in'])) {
 
             if ($_SESSION['function'] == 'user') {
                 echo '
-            <a href="../Appointment/appointment.php">
+            <a href="../Appointment/editappointment.php">
             <button class="oval-button">CREATE APPOINTMENTS</button>
         </a>
         <a href="../User_Visit/uservisit.php">
@@ -61,7 +61,7 @@ if (!isset($_SESSION['is_logged_in'])) {
         </a>';
             } else {
                 echo '
-            <a href="../Admin_Visit/adminvisit.html">
+            <a href="../Search_page/search.php">
             <button class="oval-button">ADMIN APPOINTMENTS</button>
         </a>';
             }
@@ -77,13 +77,14 @@ if (!isset($_SESSION['is_logged_in'])) {
             <?php
             if ($_SESSION['is_logged_in']) {
 
-                echo '<h2 class="block-title_welcome">Welcome , </h2>';
-                echo '<a class="block-title_welcome" id="username" href="../UserProfile/profile.php" >   ' . $_SESSION['username'] . '</a>';
+                echo '<h2 class="block-title_welcome">Welcome,&nbsp;</h2>';
+                echo '<a class="block-title_welcome" id="username" href="../UserProfile/profile.php" >'.$_SESSION['username'] . ' </a>';
                 if ($_SESSION['function'] == 'admin') {
                     //display admin block
                    //TODO make it look good
 
                 }
+
             } else {
                 echo '<div class="block">
                 <a href="../Login_Module/login.php"><h2 class="block-title">Login into your account</h2></a>
