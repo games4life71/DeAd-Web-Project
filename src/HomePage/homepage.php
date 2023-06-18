@@ -53,7 +53,7 @@ if (!isset($_SESSION['is_logged_in'])) {
 
             if ($_SESSION['function'] == 'user') {
                 echo '
-            <a href="../Appointment/appointment.php">
+            <a href="../Appointment/editappointment.php">
             <button class="oval-button">CREATE APPOINTMENTS</button>
         </a>
         <a href="../User_Visit/uservisit.php">
@@ -61,7 +61,7 @@ if (!isset($_SESSION['is_logged_in'])) {
         </a>';
             } else {
                 echo '
-            <a href="../Admin_Visit/adminvisit.html">
+            <a href="../Search_page/search.php">
             <button class="oval-button">ADMIN APPOINTMENTS</button>
         </a>';
             }

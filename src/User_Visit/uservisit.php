@@ -75,7 +75,11 @@ session_start();
                     //button to create an appointment
                     echo '<div class="button-center">';
                     echo '<h2>You have no appointments</h2>';
+<<<<<<< HEAD
                     echo '<a href="../Appointment/appointment.php" style="color:  #5c4b4b">Create an appointment</a>';
+=======
+                    echo '<a href="../Appointment/editappointment.php" style="color:  #5c4b4b">Create an appointment</a>';
+>>>>>>> Luci-branch
                     echo '</div>';
                     exit();
                 }

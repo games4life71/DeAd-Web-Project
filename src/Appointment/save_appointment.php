@@ -66,7 +66,7 @@ $ext = strtolower(pathinfo($_FILES['profile_photo']['name'], PATHINFO_EXTENSION)
 
 //check if the extension is valid
 if (!in_array($ext, $valid_extensions)) {
-    header('Location: appointment.php?error=2'); //invalid extension
+    header('Location: editappointment.php?error=2'); //invalid extension
     exit();
 }
 
@@ -82,7 +82,20 @@ $stmt->execute();
 $result = $stmt->get_result();
 $row = $result->fetch_assoc();
 if ($row == null) {
-    header('Location: appointment.php?error=1'); //inmate does not exist
+    header('Location: editappointment.php?error=1'); //inmate does not exist
+    exit();
+}
+
+//check if the inmate has a visit in the same time interval
+$stmt3 = $conn->prepare("SELECT * FROM appointments WHERE date = ? AND visit_start<= ? and visit_end >= ?");
+$stmt3->bind_param("sss", $date, $visit_start, $visit_end);
+$stmt3->execute();
+$result = $stmt3->get_result();
+$stmt3->close();
+//check if the inmate has a visit in the same time interval
+if ($result->num_rows > 0) {
+    echo "The inmate has a visit in the same time interval";
+    header('Location: ../Summary-form/summary.php?error=1'); //the inmate has a visit in the same time interval
     exit();
 }
 

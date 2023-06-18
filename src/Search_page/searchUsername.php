@@ -1,12 +1,14 @@
 <?php
 
 use Firebase\JWT\JWT;
+
 require_once '../../vendor/autoload.php';
+
 use Firebase\JWT\Key;
+
 require '../Utils/DbConnection.php';
 $config = require '../..//config.php';
-if($_SERVER['REQUEST_METHOD'] == 'GET')
-{
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 
     //verify the key sent in authorization header
@@ -35,7 +37,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET')
         exit();
     };
 
-  //  print_r($decode);
+    //  print_r($decode);
 
     //print_r(apache_request_headers());
     $conn = DbConnection::getInstance()->getConnection();
@@ -45,29 +47,38 @@ if($_SERVER['REQUEST_METHOD'] == 'GET')
 
     $username = $_GET['username'];
     $username = $username . "%";
-    $username =  $username."%";
+    $username = $username . "%";
     $stmt = $conn->prepare("SELECT * FROM users WHERE username like ?");
 
     $stmt->bind_param("s", $username);
     $stmt->execute();
     $result = $stmt->get_result();
-    if($result->num_rows == 0)
-    {
+    if ($result->num_rows == 0) {
         echo '<p style="color:red; font-size: 30px;" >No results found ! </p>';
+
+    } else {
+        echo '<select name="search-results" onchange="location = this.value;">';
+        echo '<option value="" disabled selected>Choose a prisoner</option>';
+        while ($row = $result->fetch_assoc()) {
+            echo '<option value="../HomePage/homepage.php"> ' . $row['username'] . ' </option>';
+
         }
+    }
 
-        else {
-            echo '<select name="search-results" onchange="location = this.value;">' ;
-            echo '<option value="" disabled selected>Choose a prisoner</option>';
-            while ($row = $result->fetch_assoc()) {
-                echo '<option value="../HomePage/homepage.php"> ' . $row['username'] . ' </option>';
-            }
-            echo '</select>';
-            }exit();
-}
-else {
-    //respond method not accepted
-    http_response_code(405);
+//else {
+//        echo '<select name="search-results" onchange="location = this.value;">';
+//        while ($row = $result->fetch_assoc()) {
+//            $url_with_username = "../Admin_Visit/adminvisit.php?username=" . $row['username'];
+//            echo '<option value="' . $url_with_username . '"> ' . $row['username'] . ' </option>';
+//            >>>>>>>
+//            Luci - branch
+//            }
+//        echo '</select>';
+//    }
+//    exit();
+//} else {
+//    //respond method not accepted
+//    http_response_code(405);
+//}
 }
 
-?>
