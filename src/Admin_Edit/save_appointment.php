@@ -96,22 +96,6 @@ $stmt3->close();
 if ($result->num_rows > 0) {
     echo "The inmate has a visit in the same time interval";
     header('Location: ../Summary-form/summary.php?error=1'); //the inmate has a visit in the same time interval
-
-    exit();
-}
-
-//check if the inmate has a visit in the same time interval
-$stmt3 = $conn->prepare("SELECT * FROM appointments WHERE date = ? AND visit_start<= ? and visit_end >= ?");
-$stmt3->bind_param("sss", $date, $visit_start, $visit_end);
-$stmt3->execute();
-$result = $stmt3->get_result();
-$stmt3->close();
-//check if the inmate has a visit in the same time interval
-if ($result->num_rows > 0) {
-    echo "The inmate has a visit in the same time interval";
-    header('Location: ../Summary-form/summary.php?error=1'); //the inmate has a visit in the same time interval
-
-
     exit();
 }
 

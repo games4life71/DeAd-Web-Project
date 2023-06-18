@@ -56,7 +56,7 @@ if (!isset($_SESSION['is_logged_in'])) {
                     facilities. With our platform, you can easily request and manage visitation 
                     appointments, ensuring a smooth and organized experience.</p>';
                 echo '
-            <a href="../Appointment/appointment.php">
+            <a href="../Appointment/editappointment.php">
             <button class="oval-button">CREATE APPOINTMENTS</button>
         </a>
         <a href="../User_Visit/uservisit.php">
@@ -70,7 +70,7 @@ if (!isset($_SESSION['is_logged_in'])) {
                         process, reviewing and approving visitor requests, monitoring visit details, 
                         and generating statistical reports.</p>';
                 echo '
-            <a href="../Admin_Visit/adminvisit.html">
+            <a href="../Search_page/search.php">
             <button class="oval-button">ADMIN APPOINTMENTS</button>
         </a>';
             }

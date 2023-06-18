@@ -72,7 +72,7 @@
     ?>
     <div id="myDropdown" class="dropdown-content">
         <br>
-<!--        <datalist id="results"></datalist>-->
+        <!--        <datalist id="results"></datalist>-->
         <?php // TODO add nice design of usernames displayed
         if (isset($_GET['username'])) {
             //make a call to the searchUsername endpoint
