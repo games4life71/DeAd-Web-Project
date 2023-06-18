@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $username = $_GET['username'];
     $conn = DbConnection::getInstance()->getConnection();
  //select all the data of a user
-    $sql = "SELECT * FROM users WHERE username = ?";
+    $sql = "SELECT * FROM users where username = ?";
     $stmt = $conn->prepare($sql);
 
     $stmt->bind_param("s", $username);
@@ -35,9 +35,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     $stmt->execute();
     $result = $stmt->get_result();
-    $encode = json_encode($result->fetch_assoc());
+     $row = $result->fetch_assoc();
+    //print_r($result->fetch_assoc());
+    $encode = json_encode($row);
+    //get the user id
 
-    echo $encode;
+   $user_id = $row['user_id'];
+
+   $export_data['user_info'] = $encode;
+
+    $stmt = $conn->prepare("SELECT * FROM appointments WHERE person_id = ?");
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $encode = json_encode($result->fetch_assoc());
+    $export_data['appointments'] = $encode;
+
+   print_r($export_data) ;
 
 
 }
