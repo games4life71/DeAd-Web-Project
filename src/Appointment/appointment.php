@@ -62,10 +62,14 @@
                         <input type="radio" name="visit_nature" value="friendship">Friendship</label>
                     <label>
 <<<<<<< HEAD
+<<<<<<< HEAD
                         <input type="radio" name="visit_nature" value="lawyer">Lawyership</label>
 =======
                         <input type="radio" name="visit_nature" value="lawyership">Lawyership</label>
 >>>>>>> Luci-branch
+=======
+                        <input type="radio" name="visit_nature" value="lawyership">Lawyership</label>
+>>>>>>> origin/Luci-branch
                 </div>
             </div>
 

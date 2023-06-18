@@ -96,6 +96,7 @@ $stmt3->close();
 if ($result->num_rows > 0) {
     echo "The inmate has a visit in the same time interval";
     header('Location: ../Summary-form/summary.php?error=1'); //the inmate has a visit in the same time interval
+
     exit();
 }
 
@@ -109,6 +110,8 @@ $stmt3->close();
 if ($result->num_rows > 0) {
     echo "The inmate has a visit in the same time interval";
     header('Location: ../Summary-form/summary.php?error=1'); //the inmate has a visit in the same time interval
+
+
     exit();
 }
 

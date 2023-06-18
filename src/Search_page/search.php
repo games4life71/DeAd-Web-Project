@@ -24,11 +24,7 @@
 
 </header>
 <div id="cover">
-
     <form method="get">
-
-    <form method="get" >
-
         <div class="tb">
             <div class="td"><input name="username" type="text" placeholder="Search for the prisoner" required></div>
             <div class="td" id="s-cover">
@@ -73,20 +69,11 @@
     }
 
 
-
-
     ?>
     <div id="myDropdown" class="dropdown-content">
         <br>
-<!--        <datalist id="results"></datalist>-->
+        <!--        <datalist id="results"></datalist>-->
         <?php // TODO add nice design of usernames displayed
-
-/*    */?>
-    <!--<div id="myDropdown" class="dropdown-content">
-        <br>
-
-        <?php /*// TODO add nice design of usernames displayed
->>>>>>> Luci-branch
         if (isset($_GET['username'])) {
             //make a call to the searchUsername endpoint
             //
@@ -103,15 +90,9 @@
 
         }
 
-<<<<<<< HEAD
         ?>
 
     </div>
-=======
-        */?>
-
-    </div>-->
-
 </div>
 
 <div class="matches">

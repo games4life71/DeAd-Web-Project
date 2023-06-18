@@ -41,24 +41,28 @@
     $response = curl_exec($curl);
     curl_close($curl);
     $response = json_decode($response, true);
-<<<<<<< HEAD
+
     //print_r($response);
-=======
+
     print_r($response);
->>>>>>> Luci-branch
+
+    print_r($response);
+
 
     $GLOBALS['visit_date'] = $response['date'];
     $GLOBALS['visit_nature'] = $response['visit_nature'];
     $visit_start = intval($response['visit_start']);
     $visit_end = intval($response['visit_end']);
-<<<<<<< HEAD
+
     $difference = $visit_end - $visit_start;
     $GLOBALS['visit_time'] = $difference;
     //print_r($GLOBALS['visit_time']);
-=======
+
     $GLOBALS['visit_time'] = $visit_start . " - " . $visit_end;
 
->>>>>>> Luci-branch
+
+    $GLOBALS['visit_time'] = $visit_start . " - " . $visit_end;
+
 
     //send the appointment id to the next page
     echo "<input type='hidden' name='appointment_id' value='" . $response['appointment_id'] . "'>";
@@ -83,7 +87,7 @@
                     <div class="input-group">
                         <?php
                         if($GLOBALS['visit_nature'] == "parental")
-<<<<<<< HEAD
+
                             echo "<label><input type='radio' name='visit_nature' value='parental' checked='checked'>Parental</label>";
                         else
                             echo "<label><input type='radio' name='visit_nature' value='parental'>Parental</label>";
@@ -97,10 +101,8 @@
                             echo "<label><input type='radio' name='visit_nature' value='lawyership' checked='checked'>Lawyer</label>";
                         else
                             echo "<label><input type='radio' name='visit_nature' value='lawyership'>Lawyer</label>";
-=======
-                            echo "<label><input type='radio' name='visit_nature' value='Parental' checked='checked'>Parental</label>";
-                        else
-                            echo "<label><input type='radio' name='visit_nature' value='Parental'>Parental</label>";
+
+
                         if($GLOBALS['visit_nature'] == "friendship")
                             echo "<label><input type='radio' name='visit_nature' value='Friendship' checked='checked'>Friendship</label>";
                         else
@@ -109,7 +111,7 @@
                             echo "<label>><input type='radio' name='visit_nature' value='Lawyer' checked='checked'>Lawyer</label";
                         else
                             echo "<label><input type='radio' name='visit_nature' value='Lawyer'>Lawyer</label>";
->>>>>>> Luci-branch
+
                         ?>
 
                     </div>
@@ -151,11 +153,13 @@
 
                 <div class="form-group right">
                     <label for="time" class="label-title">Hours (max 5) </label>
-<<<<<<< HEAD
+
                     <input type="range" min="0" max="5" step="1"  id="time" name="visit_hours" class="form-input" onChange="change();" value="<?php echo $GLOBALS['visit_time']; ?>"
-=======
+
                     <input type="range" min="0" max="5" step="1" value="0" id="time" name="visit_hours" class="form-input" onChange="change();"
->>>>>>> Luci-branch
+
+                    <input type="range" min="0" max="5" step="1" value="0" id="time" name="visit_hours" class="form-input" onChange="change();"
+
                            style="height:28px;width:78%;padding:0;">
                 </div>
 
