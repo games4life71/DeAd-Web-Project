@@ -40,9 +40,9 @@ session_start();
         }
         ?>
 
-        <li><a href="../About/about.html">About Us</a></li>
-        <li><a href="../Contact/contact.html">Contact</a></li>
-        <li><a href="../FAQ/faq.html">FAQ</a></li>
+        <li><a href="../About/about.php">About Us</a></li>
+        <li><a href="../Contact/contact.php">Contact</a></li>
+        <li><a href="../FAQ/faq.php">FAQ</a></li>
     </ul>
 </header>
 

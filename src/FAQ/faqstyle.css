@@ -58,6 +58,11 @@ details p {
     font-weight: 300;
 }
 
+details ol{
+    color: var(--brown);
+    font-weight: 300;
+}
+
 summary {
     display: flex;
     justify-content: space-between;
