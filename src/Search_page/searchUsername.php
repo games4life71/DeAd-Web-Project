@@ -58,6 +58,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET')
 
         else {
             echo '<select name="search-results" onchange="location = this.value;">' ;
+            echo '<option value="" disabled selected>Choose a prisoner</option>';
             while ($row = $result->fetch_assoc()) {
                 echo '<option value="../HomePage/homepage.php"> ' . $row['username'] . ' </option>';
             }
