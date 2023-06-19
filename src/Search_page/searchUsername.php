@@ -40,6 +40,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
         try {
 
             $decode = $jwt->decode($token, new Key($key, 'HS256'));
+            //check if the user is an admin
+            if ($decode->role != 'admin') {
+                http_response_code(401);
+                exit();
+            }
+            //check if the token is expired
+            if ($decode->exp < time()) {
+                http_response_code(401);
+                exit();
+            }
+
         } catch (Exception $e) {
             http_response_code(401);
             exit();
@@ -82,18 +93,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             }
         }
 
-//else {
-//        echo '<select name="search-results" onchange="location = this.value;">';
-//        while ($row = $result->fetch_assoc()) {
-//            $url_with_username = "../Admin_Visit/adminvisit.php?username=" . $row['username'];
-//            echo '<option value="' . $url_with_username . '"> ' . $row['username'] . ' </option>';
-//            >>>>>>>
-//            Luci - branch
-//            }
-//        echo '</select>';
-//    }
-//    exit();
-//}
 
 
     } else {

@@ -51,6 +51,11 @@ else{
         //create a new auth token
         $key = $config['secret_key'];
         $issuedAt = new DateTimeImmutable();
+        $role = "user";
+        if($row['function'] == 'admin')
+        {
+            $role = "admin";
+        }
 
         $expire = $issuedAt->modify('+6 hours')->getTimestamp();
         $serverName = $config['hostname'];
@@ -61,7 +66,7 @@ else{
             'nbf' => $issuedAt->getTimestamp(),         // Not before
             'exp' => $expire,                           // Expire
             'userName' => $username,                    // User name
-
+            'role' => $role                             // User role
         ];
         $token  =  JWT::encode(
             $data,
@@ -72,6 +77,8 @@ else{
 
         //set the token in the session
         $_SESSION['token'] = $token;
+        //echo $token;
+
         header("Location:../HomePage/homepage.php");
 
 
