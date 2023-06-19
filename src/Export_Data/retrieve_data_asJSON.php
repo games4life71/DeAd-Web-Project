@@ -9,15 +9,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     require_once  '../Utils/DbConnection.php';
     $config = require '../..//config.php';
 
-    if (!isset(apache_request_headers()['Authorization'])) {
-        //respond unauthorized
-        http_response_code(401);
-        exit();
-    }
-    $token = apache_request_headers()['Authorization'];
-    $token = str_replace('Bearer ', '', $token);
+//    if (!isset(apache_request_headers()['Authorization'])) {
+//        //respond unauthorized
+//        http_response_code(401);
+//        exit();
+//    }
+//    $token = apache_request_headers()['Authorization'];
+//    $token = str_replace('Bearer ', '', $token);
     //echo $token;
-
+    session_start();
+    $token = $_SESSION['token'];
     $key = $config['secret_key'];
 
     //  echo $token;
@@ -90,8 +91,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $encode = json_encode($appointments);
     //$encode = json_encode($result->fetch_assoc());
     $export_data['appointments'] = $encode;
-
-   print_r($export_data) ;
-
+    $output = fopen('php://output', 'w');
+    fwrite($output, json_encode($export_data));
+    $filename ="export_".$username.'_'.date('Y-m-d').".json";
+    header('Content-Type: application/json');
+    header('Content-Disposition: attachment; filename="'.$filename.'"');
+    fpassthru($output);
+    fclose($output);
+   //print_r($export_data) ;
+    exit();
 
 }

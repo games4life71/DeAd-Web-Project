@@ -8,14 +8,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     require_once '../Utils/DbConnection.php';
     $config = require '../..//config.php';
 
-    if (!isset(apache_request_headers()['Authorization'])) {
-        //respond unauthorized
-        http_response_code(401);
-        exit();
-    }
-    $token = apache_request_headers()['Authorization'];
-    $token = str_replace('Bearer ', '', $token);
-    //echo $token;
+//    if (!isset(apache_request_headers()['Authorization'])) {
+//        //respond unauthorized
+//        http_response_code(401);
+//        exit();
+//    }
+//    $token = apache_request_headers()['Authorization'];
+//    $token = str_replace('Bearer ', '', $token);
+//    //echo $token;
+    session_start();
+    $token = $_SESSION['token'];
 
     $key = $config['secret_key'];
 
@@ -64,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $separator = ",";
     $filename = "export_data_".$username.'_'.date('Y-m-d') . ".csv";
     header("Content-type: text/csv");
-    header('Content-Disposition: attachment; filename="'.$filename.';');
+    header('Content-Disposition: attachment; filename="'.$filename);
 
     $output = fopen("php://output", "w");
     $fields = array('User Id ', 'Username', 'First Name ', 'Last Name ', 'Email', 'Secondary Email ', 'Funtion/Role');

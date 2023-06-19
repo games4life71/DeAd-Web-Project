@@ -44,7 +44,7 @@ if (!isset($_SESSION['is_logged_in'])) {
 <div class="container">
     <div class="left-side">
         <?php
-        echo '<h1 class="large-title">APPOINTMENT VISIT</h1>';
+        echo '<h1 class="large-title" style="font-size: 45px">WELCOME TO OUR WEBSITE ! </h1>';
 
 
         if(isset($_SESSION['function'])) {
