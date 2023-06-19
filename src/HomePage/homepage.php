@@ -71,8 +71,14 @@ if (!isset($_SESSION['is_logged_in'])) {
                         and generating statistical reports.</p>';
                 echo '
             <a href="../Search_page/search.php">
-            <button class="oval-button">ADMIN PANEL</button>
+            <button class="oval-button">ADMIN PANEL</button><br>
+            
         </a>';
+                echo '
+            <a href="../Export_Data/export_all.php">
+            <button class="oval-button">EXPORT PANEL</button>
+        </a>
+';
             }
         }
 
