@@ -25,13 +25,10 @@ if (!isset($_SESSION['is_logged_in'])) {
     <ul class="menu">
         <li><a href="../HomePage/homepage.php">Home</a></li>
         <?php
-        if($_SESSION['is_logged_in'])
-        {
+        if ($_SESSION['is_logged_in']) {
             echo '<li><a href="../UserProfile/profile.php">Profile</a></li>';
-        }
-        else
-        {
-            echo'<li><a href="../Login_Module/login.php">Login</a></li>';
+        } else {
+            echo '<li><a href="../Login_Module/login.php">Login</a></li>';
         }
         ?>
 
@@ -44,41 +41,49 @@ if (!isset($_SESSION['is_logged_in'])) {
 <div class="container">
     <div class="left-side">
         <?php
-        echo '<h1 class="large-title" style="font-size: 45px">WELCOME TO OUR WEBSITE ! </h1>';
+        echo '<h1 class="large-title" >WELCOME TO OUR WEBSITE ! </h1>';
+        if (!$_SESSION['is_logged_in']) {
 
+            echo '<h2 class="small-title">How we can help you</h2>';
+            echo '<p class="text">Our platform is designed to streamline the visitation process for 
+                individuals visiting loved ones in correctional facilities. 
+                With our platform, you can easily request and manage visitation 
+                appointments, ensuring a smooth and organized experience.</p>';
+        }else {
 
-        if(isset($_SESSION['function'])) {
+            if (isset($_SESSION['function'])) {
 
-            if ($_SESSION['function'] == 'user') {
-                echo '<h2 class="small-title">How we can help you</h2>';
-                echo '<p class="text">Our user-friendly web application is designed to streamline 
+                if ($_SESSION['function'] == 'user') {
+                    echo '<h2 class="small-title">How we can help you</h2>';
+                    echo '<p class="text">Our user-friendly web application is designed to streamline 
                     the visitation process for individuals visiting loved ones in correctional 
                     facilities. With our platform, you can easily request and manage visitation 
                     appointments, ensuring a smooth and organized experience.</p>';
-                echo '
+                    echo '
             <a href="../Appointment/appointment.php">
             <button class="oval-button">CREATE APPOINTMENTS</button>
         </a>
         <a href="../User_Visit/uservisit.php">
             <button class="oval-button">SEE APPOINTMENTS</button>
         </a>';
-            } else {
-                echo '<h2 class="small-title">Welcome to the administrator\'s homepage!</h2>';
-                echo '<p class="text">This dedicated platform for managing visits in correctional 
+                } else {
+                    echo '<h2 class="small-title">Welcome to the administrator\'s homepage!</h2>';
+                    echo '<p class="text">This dedicated platform for managing visits in correctional 
                         facilities provides you with the necessary tools for efficient and 
                         secure visitation management. You have full control over the visitation 
                         process, reviewing and approving visitor requests, monitoring visit details, 
                         and generating statistical reports.</p>';
-                echo '
+                    echo '
             <a href="../Search_page/search.php">
             <button class="oval-button">ADMIN PANEL</button><br>
             
         </a>';
-                echo '
+                    echo '
             <a href="../Export_Data/export_all.php">
             <button class="oval-button">EXPORT PANEL</button>
         </a>
 ';
+                }
             }
         }
 
@@ -93,10 +98,10 @@ if (!isset($_SESSION['is_logged_in'])) {
             if ($_SESSION['is_logged_in']) {
 
                 echo '<h2 class="block-title_welcome">Welcome,&nbsp;</h2>';
-                echo '<a class="block-title_welcome" id="username" href="../UserProfile/profile.php" >'.$_SESSION['username'] . ' </a>';
+                echo '<a class="block-title_welcome" id="username" href="../UserProfile/profile.php" >' . $_SESSION['username'] . ' </a>';
                 if ($_SESSION['function'] == 'admin') {
                     //display admin block
-                   //TODO make it look good
+                    //TODO make it look good
 
                 }
 

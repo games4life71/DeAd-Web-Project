@@ -13,7 +13,7 @@ if (!isset($_SESSION['is_logged_in'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../NavBar/navstyle.css">
-    <link rel="stylesheet" href="../Appointment/appstyle.css">
+    <link rel="stylesheet" href="export_all.css">
     <title>Export data</title>
 </head>
 <body>
@@ -36,52 +36,50 @@ if (!isset($_SESSION['is_logged_in'])) {
     </ul>
 </header>
 
-<form class="visit" action="export_all_script.php" method="get" enctype="multipart/form-data">
+<form class="export" action="export_all_script.php" method="post" enctype="multipart/form-data">
     <div class="form-header">
         <h1>Export</h1>
     </div>
 
     <div class="form-body">
-
-
-        <div class="form-group right">
-            <label class="label-title" for="level">Export data for: </label>
-            <select class="form-input" id="level" name="source_of_income">
-                <option name="source_of_income" value="employed">Inmates</option>
-                <option name="source_of_income" value="self-employed">Users</option>
-                <option name="source_of_income" value="unemployed">All Appointments</option>
+        <div class="form-group">
+            <label class="label-title" for="persons">Export data for: </label>
+            <select class="form-input" id="persons" name="persons">
+                <option name="persons" value="inmates">Inmates</option>
+                <option name="persons" value="users">Users</option>
+                <option name="persons" value="all">All Appointments</option>
             </select>
         </div>
 
 
         <label class="label-title">Sort By:</label>
-        <div class="input-group">
-            <label for="relative">
-                <input type="radio" name="sorted" value="alphabetically" id="relative"> Alphabetically</label>
-            <label for="legal_gurdian">
-                <input type="radio" name="sorted" value="date_created" id="legal_gurdian"> Date created</label>
-            <label for="lawyer">
-
+        <div class="form-group">
+            <label for="alphabetically">
+                <input type="radio" name="sorted" value="alphabetically" id="alphabetically"> Alphabetically</label>
+            <label for="date_created">
+                <input type="radio" name="sorted" value="date_created" id="date_created"> Date created</label>
         </div>
+
+
         <label class="label-title">Format: </label>
-        <div class="input-group">
+        <div class="form-group">
             <label>
                 <input type="radio" name="format" value="json">JSON</label>
             <label>
                 <input type="radio" name="format" value="csv">CSV</label>
             <label>
+                <input type="radio" name="format" value="html">HTML</label>
 
         </div>
 
     </div>
-    <button type="submit" name="export" class="btn">Export</button>
-
-
-
 
     <div class="form-footer">
-
+        <h1></h1>
+        <button type="submit" name="export" class="btn">Export</button>
     </div>
+    <br>
+
 </form>
 
 </body>
