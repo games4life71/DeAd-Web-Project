@@ -32,6 +32,14 @@ if (isset($_POST['submit'])) {
     mysqli_close($conn);
 }
 ?>
+<?php
+session_start(); //start the session
+if (!isset($_SESSION['is_logged_in'])) {
+    $_SESSION['is_logged_in'] = false;
+}
+
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -50,7 +58,16 @@ if (isset($_POST['submit'])) {
     <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
     <ul class="menu">
         <li><a href="../HomePage/homepage.php">Home</a></li>
-        <li><a href="../Login_Module/login.php">Login</a></li>
+        <?php
+        if($_SESSION['is_logged_in'])
+        {
+            echo '<li><a href="../UserProfile/profile.php">Profile</a></li>';
+        }
+        else
+        {
+            echo'<li><a href="../Login_Module/login.php">Login</a></li>';
+        }
+        ?>
         <li><a href="../About/about.html">About Us</a></li>
         <li><a href="../Contact/contact.html">Contact</a></li>
         <li><a href="../FAQ/faq.html">FAQ</a></li>

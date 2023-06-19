@@ -1,3 +1,11 @@
+<?php
+session_start(); //start the session
+if (!isset($_SESSION['is_logged_in'])) {
+    $_SESSION['is_logged_in'] = false;
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,25 +17,34 @@
     <title>Summary</title>
 </head>
 <body>
-<!--<header class="header">-->
-<!--    <a href="../HomePage/homepage.php"><img src="../../assets/Logo/Asset%201.svg" class="logo" alt="logo"></a>-->
-<!--    <input class="menu-btn" type="checkbox" id="menu-btn"/>-->
-<!--    <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>-->
-<!--    <ul class="menu">-->
-<!--        <li><a href="../HomePage/homepage.php">Home</a></li>-->
-<!--        <li><a href="../Login_Module/login.php">Login</a></li>-->
-<!--        <li><a href="../About/about.html">About Us</a></li>-->
-<!--        <li><a href="../Contact/contact.html">Contact</a></li>-->
-<!--        <li><a href="../FAQ/faq.html">FAQ</a></li>-->
-<!--    </ul>-->
-<!--</header>-->
+<header class="header">
+    <a href="../HomePage/homepage.php"><img src="../../assets/Logo/Asset%201.svg" class="logo" alt="logo"></a>
+    <input class="menu-btn" type="checkbox" id="menu-btn"/>
+    <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+    <ul class="menu">
+        <li><a href="../HomePage/homepage.php">Home</a></li>
+        <?php
+        if($_SESSION['is_logged_in'])
+        {
+            echo '<li><a href="../UserProfile/profile.php">Profile</a></li>';
+        }
+        else
+        {
+            echo'<li><a href="../Login_Module/login.php">Login</a></li>';
+        }
+        ?>
+        <li><a href="../About/about.html">About Us</a></li>
+        <li><a href="../Contact/contact.html">Contact</a></li>
+        <li><a href="../FAQ/faq.html">FAQ</a></li>
+    </ul>
+</header>
 <form class="summary" action="save_summary.php" method="POST">
 
     <div class="form-header">
         <h1>Summary of the visit</h1>
     </div>
     <?php
-    session_start();
+    //session_start();
     //make a call to retrieve appointment
     $url_with_id = "http://localhost/src/Summary-Form/retrieve_visit.php" . "?visit_id=" . $_GET['visit_id'];
     $curl = curl_init($url_with_id);
@@ -44,9 +61,9 @@
 
     //print_r($response);
 
-    print_r($response);
+    //print_r($response);
 
-    print_r($response);
+    //print_r($response);
 
 
     $GLOBALS['visit_date'] = $response['date'];
@@ -103,14 +120,14 @@
                             echo "<label><input type='radio' name='visit_nature' value='lawyership'>Lawyer</label>";
 
 
-                        if($GLOBALS['visit_nature'] == "friendship")
-                            echo "<label><input type='radio' name='visit_nature' value='Friendship' checked='checked'>Friendship</label>";
-                        else
-                            echo "<label><input type='radio' name='visit_nature' value='Friendship'>Friendship</label>";
-                        if($GLOBALS['visit_nature'] == "lawyer")
-                            echo "<label>><input type='radio' name='visit_nature' value='Lawyer' checked='checked'>Lawyer</label";
-                        else
-                            echo "<label><input type='radio' name='visit_nature' value='Lawyer'>Lawyer</label>";
+//                        if($GLOBALS['visit_nature'] == "friendship")
+//                            echo "<label><input type='radio' name='visit_nature' value='Friendship' checked='checked'>Friendship</label>";
+//                        else
+//                            echo "<label><input type='radio' name='visit_nature' value='Friendship'>Friendship</label>";
+//                        if($GLOBALS['visit_nature'] == "lawyer")
+//                            echo "<label>><input type='radio' name='visit_nature' value='Lawyer' checked='checked'>Lawyer</label";
+//                        else
+//                            echo "<label><input type='radio' name='visit_nature' value='Lawyer'>Lawyer</label>";
 
                         ?>
 
