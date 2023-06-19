@@ -48,8 +48,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     };
 
 
-    //TODO validate the token
-    //
+
     $username = $_GET['username'];
     $conn = DbConnection::getInstance()->getConnection();
  //select all the data of a user
