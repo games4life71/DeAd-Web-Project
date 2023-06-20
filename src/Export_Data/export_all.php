@@ -43,11 +43,11 @@ if (!isset($_SESSION['is_logged_in'])) {
 
     <div class="form-body">
         <div class="form-group">
-            <label class="label-title" for="persons">Export data for: </label>
-            <select class="form-input" id="persons" name="persons">
-                <option name="persons" value="inmates">Inmates</option>
-                <option name="persons" value="users">Users</option>
-                <option name="persons" value="all">All Appointments</option>
+            <label class="label-title" for="export">Export data for: </label>
+            <select class="form-input" id="export" name="export">
+                <option name="export" value="inmates">Inmates</option>
+                <option name="export" value="users">Users</option>
+                <option name="export" value="all">All Appointments</option>
             </select>
         </div>
 
@@ -76,7 +76,7 @@ if (!isset($_SESSION['is_logged_in'])) {
 
     <div class="form-footer">
         <h1></h1>
-        <button type="submit" name="export" class="btn">Export</button>
+        <button type="submit"  class="btn">Export</button>
     </div>
     <br>
 
