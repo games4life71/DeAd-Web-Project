@@ -27,7 +27,7 @@
     <div id="cover">
         <form method="get">
             <div class="tb">
-                <div class="td"><input name="username" type="text" placeholder="Search for the prisoner" required></div>
+                <div class="td"><input name="username" type="text" placeholder="Search by username" required></div>
                 <div class="td" id="s-cover">
                     <button type="submit">
                         <div id="s-circle"></div>
