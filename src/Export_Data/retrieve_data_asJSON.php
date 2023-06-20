@@ -7,7 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
     require_once '../../vendor/autoload.php';
     require_once  '../Utils/DbConnection.php';
-    $config = require '../..//config.php';
+    $config = require '../../config.php';
 
 //    if (!isset(apache_request_headers()['Authorization'])) {
 //        //respond unauthorized

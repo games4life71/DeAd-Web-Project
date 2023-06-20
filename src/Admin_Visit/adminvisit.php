@@ -105,7 +105,7 @@ $username = $_GET['username'];
             echo '<h1> Export data about the user:</h1>';
             echo '<button class="export-button"><a href="../Export_Data/retrieve_data_asJSON.php?username='.$username.'"'.'>Export JSON</a></button>';
             echo '<button class="export-button"><a href="../Export_Data/retrieve_data_asCSV.php?username='.$username.'"'.'>Export CSV</a></button>';
-            echo '<button class="export-button"><a href="../Export_Data/#">Export HTML</a></button>';
+            echo '<button class="export-button"><a href="../Export_Data/retrieve_data_asHTML.php?username='.$username.'"'.'>Export HTML</a></button>';
             echo '</div>';
             echo '<br>';
         } else {
@@ -118,8 +118,8 @@ $username = $_GET['username'];
             echo '<div class="form-footer">';
             echo '<h1> Export data about the user:</h1>';
             echo '<button class="export-button"><a href="../Export_Data/retrieve_data_asJSON.php?username='.$username.'"'.'>Export JSON</a></button>';
-            echo '<button class="export-button"><a href="../Export_Data/retrieve_data_asCSV.php?username="'.$username.'>Export CSV</a></button>';
-            echo '<button class="export-button"><a href="../Export_Data/#">Export HTML</a></button>';
+            echo '<button class="export-button"><a href="../Export_Data/retrieve_data_asCSV.php?username="'.$username.'"'.'>Export CSV</a></button>';
+            echo '<button class="export-button"><a href="../Export_Data/retrieve_data_asHTML.php?username='.$username.'"'.'>Export HTML</a></button>';
             echo '</div>';
             echo '<br>';
         }
