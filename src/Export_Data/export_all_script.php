@@ -8,7 +8,7 @@ require '../Utils/DbConnection.php';
 $config = require '../../config.php';
 
 
-function exportJSON($export_data)
+function exportJSON($export_data, $statistic_data)
 {
 
     $export_data = json_encode($export_data);
@@ -17,10 +17,12 @@ function exportJSON($export_data)
     header("Content-Disposition: attachment; filename=$filename");
     $output = fopen("php://output", "w");
     fwrite($output, $export_data);
+    fwrite($output, "\n");
+    fwrite($output, json_encode($statistic_data));
     fclose($output);
 }
 
-function exportCSV($export_data)
+function exportCSV($export_data, $statistic_data)
 {
     $filename = "export.csv";
     header("Content-type: text/csv");
@@ -29,10 +31,14 @@ function exportCSV($export_data)
     foreach ($export_data as $row) {
         fputcsv($output, $row);
     }
+    fputcsv($output, "\n");
+    fputcsv($output, "Total :");
+    fputcsv($output, $statistic_data);
+
     fclose($output);
 }
 
-function exportHTML(array $export_data)
+function exportHTML(array $export_data , array $statistic_data)
 {
     $filename = "export.html";
     header("Content-type: text/html");
@@ -46,6 +52,7 @@ function exportHTML(array $export_data)
         }
         fwrite($output, "</tr>");
     }
+    fwrite($output, "<tr><td>Total</td><td>" . $statistic_data['total'] . "</td></tr>");
     fwrite($output, "</table></body></html>");
     fclose($output);
 }
@@ -92,6 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
     $export_data = array();
+    $statistic = array();
 
 
     switch ($_POST['export']) {
@@ -101,6 +109,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             while ($row = $result->fetch_assoc()) {
                 $export_data[] = $row;
             }
+
+            //make a short statistics
+            $result = $conn->query("SELECT COUNT(*) as total FROM users");
+            $row = $result->fetch_assoc();
+            $statistic['total'] = $row['total'];
+
             if ($_POST['sorted'] == 'alphabetically') {
                 usort($export_data, function ($a, $b) {
                     return $a['username'] <=> $b['username'];
@@ -119,6 +133,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     return $a['fname'] <=> $b['fname'];
                 });
             }
+
+            //make a short statistics
+            $result = $conn->query("SELECT COUNT(*)  as total FROM inmates");
+            $row = $result->fetch_assoc();
+            $statistic['total'] = $row['total'];
+
             break;
 
         case 'all':
@@ -135,7 +155,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 });
 
             }
+            //make a short statistics
+            $result = $conn->query("SELECT COUNT(*)  as total FROM appointments");
+            $row = $result->fetch_assoc();
+            $statistic['total'] = $row['total'];
+
+
             break;
+
         default:
             http_response_code(400);
             exit();
@@ -145,21 +172,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     switch ($_POST['format']) {
         case 'json':
-            exportJSON($export_data);
+            exportJSON($export_data, $statistic);
             break;
         case 'csv':
-            exportCSV($export_data);
+            exportCSV($export_data , $statistic);
             break;
 
         case 'html':
-            exportHTML($export_data); //TODO implement this
+            exportHTML($export_data,$statistic); //TODO implement this
             break;
         default:
             http_response_code(400);
             exit();
     }
+
     //print_r($_POST);
-    exit();
+    //exit();
 
 } else {
     http_response_code(401);
