@@ -32,6 +32,23 @@ function exportCSV($export_data)
     fclose($output);
 }
 
+function exportHTML(array $export_data)
+{
+    $filename = "export.html";
+    header("Content-type: text/html");
+    header("Content-Disposition: attachment; filename=$filename");
+    $output = fopen("php://output", "w");
+    fwrite($output, "<html><body><table>");
+    foreach ($export_data as $row) {
+        fwrite($output, "<tr>");
+        foreach ($row as $key => $value) {
+            fwrite($output, "<td>$value</td>");
+        }
+        fwrite($output, "</tr>");
+    }
+    fwrite($output, "</table></body></html>");
+    fclose($output);
+}
 
 $conn = DbConnection::getInstance()->getConnection();
 
@@ -104,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             }
             break;
 
-        case 'appointments':
+        case 'all':
             $result = $conn->query("SELECT * FROM appointments");
             while ($row = $result->fetch_assoc()) {
                 $export_data[] = $row;
@@ -135,7 +152,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             break;
 
         case 'html':
-            //exportHTML($export_data); //TODO implement this
+            exportHTML($export_data); //TODO implement this
             break;
         default:
             http_response_code(400);
