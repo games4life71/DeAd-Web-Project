@@ -26,7 +26,8 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `appointments`
 --
-
+create database dead;
+use dead;
 CREATE TABLE `appointments` (
                                 `appointment_id` int(11) NOT NULL,
                                 `person_id` int(11) NOT NULL,
@@ -62,7 +63,7 @@ CREATE TABLE `inmates` (
                            `fname` varchar(50) NOT NULL,
                            `lname` varchar(50) NOT NULL,
                            `inmate_id` int(11) NOT NULL,
-                           `person_id` int(11) NOT NULL,
+                           `person_id` int(11) ,
                            `sentence_start_date` date NOT NULL,
                            `sentence_duration` int(11) NOT NULL,
                            `sentence_category` varchar(45) DEFAULT NULL
@@ -223,8 +224,7 @@ ALTER TABLE `appointments`
 --
 ALTER TABLE `inmates`
     ADD PRIMARY KEY (`inmate_id`),
-  ADD UNIQUE KEY `inmate_id_UNIQUE` (`inmate_id`),
-  ADD UNIQUE KEY `person_id_UNIQUE` (`person_id`);
+  ADD UNIQUE KEY `inmate_id_UNIQUE` (`inmate_id`);
 
 --
 -- Indexes for table `reset_pwd_requests`

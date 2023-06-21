@@ -19,7 +19,7 @@ body::-webkit-scrollbar {
 }
 
 .visit {
-    width: 100%;
+    width: 90%;
     max-width: 650px;
     margin: 100px auto;
     background: var(--offwhite);

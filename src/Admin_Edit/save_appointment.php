@@ -1,5 +1,6 @@
 <?php
 
+require_once '../../vendor/autoload.php';
 
 function compress($image)
 {
@@ -23,8 +24,38 @@ if (!isset($_SESSION['is_logged_in'])) {
     header('Location: ../Login_Module/login.php');
 }
 
+// Verificăm dacă utilizatorul este admin
+if (!isset($_SESSION['token'])) {
+    header('Location: ../Login_Module/login.php');
+    exit();
+}
+
 $config = require '../../config.php';
 require '../Utils/DbConnection.php';
+
+$token = $_SESSION['token'];
+$key = $config['secret_key'];
+
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+
+$jwt = new JWT();
+
+try {
+    $decode = $jwt->decode($token, new Key($key, 'HS256'));
+
+    // Verificăm dacă utilizatorul este admin
+    if ($decode->role !== 'admin') {
+        http_response_code(401);
+        exit();
+    }
+} catch (Exception $e) {
+    http_response_code(401);
+    exit();
+}
+
+$config = require '../../config.php';
+//require '../Utils/DbConnection.php';
 $conn = DbConnection::getInstance()->getConnection();
 
 $statemnt = $conn->prepare("SELECT user_id FROM users WHERE username = ?");
