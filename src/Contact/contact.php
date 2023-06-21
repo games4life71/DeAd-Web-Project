@@ -1,3 +1,11 @@
+<?php
+session_start(); //start the session
+if (!isset($_SESSION['is_logged_in'])) {
+    $_SESSION['is_logged_in'] = false;
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,10 +23,19 @@
     <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
     <ul class="menu">
         <li><a href="../HomePage/homepage.php">Home</a></li>
-        <li><a href="../Login_Module/login.php">Login</a></li>
-        <li><a href="../About/about.html">About Us</a></li>
-        <li><a href="../Contact/contact.html">Contact</a></li>
-        <li><a href="../FAQ/faq.html">FAQ</a> </li>
+        <?php
+        if($_SESSION['is_logged_in'])
+        {
+            echo '<li><a href="../UserProfile/profile.php">Profile</a></li>';
+        }
+        else
+        {
+            echo'<li><a href="../Login_Module/login.php">Login</a></li>';
+        }
+        ?>
+        <li><a href="../About/about.php">About Us</a></li>
+        <li><a href="contact.php">Contact</a></li>
+        <li><a href="../FAQ/faq.php">FAQ</a> </li>
     </ul>
 </header>
 
@@ -38,15 +55,15 @@
     <div class="phone">
         <img src="../assets/Contact/phone.png" alt="phone_img">
         <h2>PHONE</h2>
-        <p> 1234, ABC Street, XYZ City, 123456 </p>
-        <p> 1234, ABC Street, XYZ City, 123456 </p>
+        <p> Romania : +40 312 345 678 </p>
+        <p> International : +1 123 456 7890 </p>
     </div>
 
     <div class="email">
         <img src="../assets/Contact/email.png" alt="email_img">
         <h2>EMAIL</h2>
-        <p> 1234, ABC Street, XYZ City, 123456 </p>
-        <p> 1234, ABC Street, XYZ City, 123456 </p>
+        <p> admin@detentionadmin.com</p>
+        <p> admin@detentionadmin.com </p>
     </div>
 
 </div>

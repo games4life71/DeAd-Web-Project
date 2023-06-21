@@ -40,9 +40,9 @@ session_start();
         }
         ?>
 
-        <li><a href="../About/about.html">About Us</a></li>
-        <li><a href="../Contact/contact.html">Contact</a></li>
-        <li><a href="../FAQ/faq.html">FAQ</a></li>
+        <li><a href="../About/about.php">About Us</a></li>
+        <li><a href="../Contact/contact.php">Contact</a></li>
+        <li><a href="../FAQ/faq.php">FAQ</a></li>
     </ul>
 </header>
 
@@ -75,7 +75,13 @@ session_start();
                     //button to create an appointment
                     echo '<div class="button-center">';
                     echo '<h2>You have no appointments</h2>';
-                    echo '<a href="../Appointment/editappointment.php" style="color:  #5c4b4b">Create an appointment</a>';
+
+                    echo '<a href="../Appointment/appointment.php" style="color:  #5c4b4b">Create an appointment</a>';
+
+                    //echo '<a href="../Appointment/editappointment.php" style="color:  #5c4b4b">Create an appointment</a>';
+
+                    //echo '<a href="../Appointment/editappointment.php" style="color:  #5c4b4b">Create an appointment</a>';
+
                     echo '</div>';
                     exit();
                 }

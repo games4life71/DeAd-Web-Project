@@ -1,3 +1,11 @@
+<?php
+session_start(); //start the session
+if (!isset($_SESSION['is_logged_in'])) {
+    $_SESSION['is_logged_in'] = false;
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,10 +25,19 @@
     <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
     <ul class="menu">
         <li><a href="../HomePage/homepage.php">Home</a></li>
-        <li><a href="../Login_Module/login.php">Login</a></li>
-        <li><a href="../About/about.html">About Us</a></li>
-        <li><a href="../Contact/contact.html">Contact</a></li>
-        <li><a href="../FAQ/faq.html">FAQ</a> </li>
+        <?php
+        if($_SESSION['is_logged_in'])
+        {
+            echo '<li><a href="../UserProfile/profile.php">Profile</a></li>';
+        }
+        else
+        {
+            echo'<li><a href="../Login_Module/login.php">Login</a></li>';
+        }
+        ?>
+        <li><a href="../About/about.php">About Us</a></li>
+        <li><a href="../Contact/contact.php">Contact</a></li>
+        <li><a href="../FAQ/faq.php">FAQ</a> </li>
     </ul>
 </header>
 
@@ -35,6 +52,7 @@ $username = $_GET['username'];
 
     <?php
     if (isset($_GET['username'])) {
+        $username = $_GET['username'];
         require '../Utils/DbConnection.php';
         $conn = DbConnection::getInstance()->getConnection();
 
@@ -70,7 +88,7 @@ $username = $_GET['username'];
                 echo '<td>' . $row['date'] . '</td>';
                 echo '<td>' . $row['visit_start'] . '</td>';
                 echo '<td>' . $row['visit_nature'] . '</td>';
-                echo '<td><a class="edit-button" href="../Admin_Edit/editappointment.php?appointment_id=' . $row['appointment_id'] . '&person_id=' . $row['person_id'] . '&username=' . $username . '">Edit</a></td>';
+                echo '<td><a class="edit-button" href="../Admin_Edit/editappointment.php?appointment_id=' . $row['appointment_id'].  '&person_id=' . $row['person_id'] . '&username=' . $username . '">Edit</a></td>';
                 //echo '<td><button class="edit-button" data-id="' . $row['appointment_id'] . '" data-personid="' . $row['person_id'] . '">Edit</button></td>';
                 echo '<td><button class="delete-button" data-id="' . $row['appointment_id'] . '">Delete</button></td>';
                 echo '</tr>';
@@ -80,19 +98,49 @@ $username = $_GET['username'];
             echo '</tbody>';
             echo '</table>';
             echo '</div>';
-        } else {
-            // Display a message if no appointments are found
-            echo '<div class="form-body">';
-            echo '<p>No appointments found for the given username.</p>';
             echo '</div>';
+            echo '</div>';
+
+            echo '<div class="form-footer">';
+            echo '<h1> Export data about the user:</h1>';
+            echo '<button class="export-button"><a href="../Export_Data/retrieve_data_asJSON.php?username='.$username.'"'.'>Export JSON</a></button>';
+            echo '<button class="export-button"><a href="../Export_Data/retrieve_data_asCSV.php?username='.$username.'"'.'>Export CSV</a></button>';
+            echo '<button class="export-button"><a href="../Export_Data/#">Export HTML</a></button>';
+            echo '</div>';
+            echo '<br>';
+        } else {
+
+            // Display a message if no appointments are found
+            echo '<div class="button-center">';
+            echo '<p style="color:  #5c4b4b ">No appointments found for the given username.</p>';
+            echo '</div>';
+            echo '<br>';
+            echo '<div class="form-footer">';
+            echo '<h1> Export data about the user:</h1>';
+            echo '<button class="export-button"><a href="../Export_Data/retrieve_data_asJSON.php?username='.$username.'"'.'>Export JSON</a></button>';
+            echo '<button class="export-button"><a href="../Export_Data/retrieve_data_asCSV.php?username="'.$username.'>Export CSV</a></button>';
+            echo '<button class="export-button"><a href="../Export_Data/#">Export HTML</a></button>';
+            echo '</div>';
+            echo '<br>';
         }
+
 
         // Close the database connection
         mysqli_close($conn);
     }
     ?>
 
+
+<!--    <div class="form-footer">-->
+<!--        <h1>Export data about the user:</h1>-->
+<!--        <button class="export-button"><a href="../Export_Data/#">Export JSON</a></button>-->
+<!--        <button class="export-button"><a href="../Export_Data/#">Export CSV</a></button>-->
+<!--        <button class="export-button"><a href="../Export_Data/#">Export HTML</a></button>-->
+<!--    </div>-->
+
+
 </form>
+
 
 <script>
     const deleteButtons = document.querySelectorAll('.delete-button');
@@ -135,6 +183,10 @@ $username = $_GET['username'];
         });
     });
 
+
+
+
+</script src="getJSON.js"><script
 
 
 
