@@ -5,7 +5,7 @@
 //return an array of configuration settings
 
 $config = array(
-    'hostname' => '127.0.0.3:9999',
+    'hostname' => '127.0.0.3:3306',
     'username' => 'root',
     'password' => 'root',
     'database' => 'dead',

@@ -18,19 +18,18 @@ body::-webkit-scrollbar {
     display: none;
 }
 
-.summary {
+.visit {
     width: 90%;
     max-width: 650px;
     margin: 100px auto;
     background: var(--offwhite);
     border-radius: 10px;
-    padding: 0 20px;
-    box-sizing: border-box;
 }
 
 .form-header {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    margin-top: 8rem;
 }
 
 .form-header h1 {
@@ -42,7 +41,8 @@ body::-webkit-scrollbar {
 }
 
 .form-body {
-    padding: 10px;
+    padding: 10px 5%;
+    margin:1rem;
 }
 
 .form-group {
@@ -133,10 +133,81 @@ body::-webkit-scrollbar {
     -webkit-user-select: none;
     touch-action: manipulation;
     color: var(--offwhite);
+    margin-left: 13px;
 }
 
-@media (min-width: 768px) {
+.message {
+    text-align: center;
+}
+
+.message.success {
+    color: green;
+}
+
+.message.error {
+    color: red;
+}
+
+/* Add a media query for screens with a maximum width of 768 pixels (tablets and smaller) */
+@media (max-width: 768px) {
+    .visit {
+        margin: 10px auto;
+    }
+
+    .form-header h1 {
+        margin-top:40px;
+        font-size: 24px;
+    }
+
+    .form-body .label-title {
+        font-size: 14px;
+    }
+
+    .form-body .form-input,
+    input[type="date"],
+    input[type="number"] {
+        font-size: 14px;
+        height: 30px;
+    }
+
+    .horizontal-group .left,
+    .horizontal-group .right {
+        float: none;
+        width: 100%;
+    }
+
     .btn {
-        padding: 13px 50px 13px;
+        padding: 10px 20px;
+        font-size: 14px;
+        margin-left: 0;
     }
 }
+
+/* Add a media query for screens with a maximum width of 480 pixels (smartphones) */
+@media (max-width: 480px) {
+    .visit {
+        margin: 30px auto;
+        margin-top: 80px;
+    }
+
+    .form-header h1 {
+        font-size: 20px;
+    }
+
+    .form-body .label-title {
+        font-size: 12px;
+    }
+
+    .form-body .form-input,
+    input[type="date"],
+    input[type="number"] {
+        font-size: 12px;
+        height: 26px;
+    }
+
+    .btn {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+}
+
