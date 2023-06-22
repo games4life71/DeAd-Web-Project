@@ -12,6 +12,10 @@ header > h1 {
     font-size: 3em;
     padding-top: 4em;
 }
+img {
+    max-width: 100%;
+    height: auto;
+}
 div.banner {
     display: flex;
     justify-content: space-between;
@@ -91,9 +95,4 @@ p.issue {
 
 b{
     color: #4b0061;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
 }
