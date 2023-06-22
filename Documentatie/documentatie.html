@@ -212,5 +212,153 @@
     </section></li>
     </ol>
 </section>
+
+<section id="admin">
+    <h2>Admin's pages</h2>
+    <ol>
+        <li><section id="Admin_Homepage">
+            <h3>The homepage for admin</h3>
+            <p>
+                The code starts by initializing the session using session_start()
+                and checks if the is_logged_in session variable is set. If not,
+                it sets it to false.
+                The code then proceeds to generate the HTML for the homepage.
+                The HTML structure includes a header section with a logo and a
+                navigation menu. The menu items include "Home," "Profile"
+                (if the user is logged in), "Login" (if the user is not logged in),
+                "About Us," "Contact," and "FAQ."
+                Inside the <code>div</code> element, there are three main sections:
+                left-side, middle, and right-side.
+                In the left-side section, a welcome message is displayed along with a
+                description of how the platform can help. If the user is logged in
+                and is <b>admin</b>, additional content
+                is displayed along with buttons accessing the admin panel and export panel.
+                In the right-side section, there is a block that displays a personalized
+                welcome message. If the user is logged in, it shows the username and provides
+                a link to the user's profile.
+            </p>
+            <figure typeof="schema:SoftwareSourceCode" resource="#role-example" >
+                <figcaption>
+                    <span property="schema:name"></span>
+                    <span property="schema:description">
+                    The admin homepage.
+              </span>
+                </figcaption>
+                <img src="admin-pages/admin-homepage.png" alt="Admin Homepage">
+                <img src="admin-pages/admin-homepage-hover.png" alt="Admin Hover Username">
+
+            </figure>
+
+        </section>
+        </li>
+
+        <li id="admin_panel">
+            <h2>Admin Panel</h2>
+            <p>
+                The search page allows admins to search for usernames.
+                It features a search input field where admins can enter a
+                username and submit the form. Upon submission, the page
+                makes a call to the "searchUsername.php" endpoint using cURL.
+                The response from the endpoint is displayed on the page. The page
+                also includes a dropdown content area where the search results can
+                be displayed.
+            </p>
+            <p>
+                This page handles a GET request to search for usernames
+                in a database table. It first verifies the authorization token sent
+                in the request header to ensure that the user is an admin and the token
+                is not expired. If the token is valid, it establishes a database connection
+                and performs a search based on the provided username parameter. The search
+                is executed using a SQL query to retrieve rows from the "users" table where
+                the username is similar to the provided username. If matching rows are found,
+                the code generates a dropdown select element with options representing the search
+                results. Each option is a link to an admin visit page specific to the selected
+                user. If no results are found, a message indicating "No results found!" is displayed.
+            </p>
+            <figure typeof="schema:SoftwareSourceCode" resource="#role-example" >
+                <figcaption>
+                    <span property="schema:name"></span>
+                    <span property="schema:description">
+                    The search page.
+              </span>
+                </figcaption>
+                <img src="admin-pages/admin-searchbar-part1.png" alt="Admin Search Page 1">
+                <img src="admin-pages/admin-searchpage-part2.png" alt="Admin Search Page 2">
+
+            </figure>
+        </li>
+
+        <li id="Admin Visit">
+            <h2>Specified user's appointments</h2>
+            <p>
+                The session is started, and the is_logged_in session variable is checked to determine
+                if the user is logged in or not.
+                The HTML structure of the page is defined, including the header section with a navigation menu.
+                The username is obtained from the URL using $_GET['username'].
+                The PHP code checks if the username parameter is set in the URL and retrieves the
+                appointments for the given username from the database.
+                If appointments are found, they are displayed in a table with columns for the first
+                name, last name, date, visit start time, and visit nature. Each row also includes links
+                to edit and delete the appointment.
+                If no appointments are found, a message is displayed indicating that no appointments were
+                found for the given username.
+                Buttons are provided for exporting the user's data in JSON, CSV, and HTML formats.
+                JavaScript code is included at the end of the file to handle deleting appointments using AJAX.
+                When a delete button is clicked, a confirmation dialog is shown. If confirmed, an AJAX request
+                is sent to the delete.php file to delete the appointment with the specified ID. If the deletion
+                is successful, the page is refreshed to update the displayed appointments.
+                Overall, this code provides a user interface for editing appointments and allows for deleting
+                appointments asynchronously using AJAX.
+            </p>
+
+            <figure typeof="schema:SoftwareSourceCode" resource="#role-example" >
+                <figcaption>
+                    <span property="schema:name"></span>
+                    <span property="schema:description">
+                    The edit page.
+              </span>
+                </figcaption>
+                <img src="admin-pages/admin-see-appointments.png" alt="Admin See Appointments">
+                <img src="admin-pages/admin-delete-appointemnts.png" alt="Admin Delete Appointments">
+                <img src="admin-pages/admin-no-appointments.png" alt="Admin No Appointments">
+            </figure>
+        </li>
+
+        <li id="Edit Appointments">
+            <h2>Edit Appointments</h2>
+            <p>
+                This page is responsible for editing an appointment in a
+                database based on user input. It first checks if the form is submitted by
+                checking the existence of the 'submit' parameter. If submitted,
+                it establishes a database connection, retrieves the necessary data
+                from the form, and updates the corresponding record in the 'appointments'
+                table. If the update is successful, it redirects the user back to the admin
+                visit page for the specified username. Otherwise, it displays an error message.
+
+                The code also includes session management for user authentication. If the session
+                variable 'is_logged_in' is not set, it sets it to false. The HTML part of the code
+                presents a form for editing appointment details, including the nature of the visit,
+                date, and visit time start and end. Upon submitting the form, the PHP code is
+                triggered for processing. The page also includes a navigation bar and some
+                conditional logic based on the user's login status.
+
+                Overall, the code allows administrators to edit appointment details
+                and ensures proper authorization and data handling.
+            </p>
+
+            <figure typeof="schema:SoftwareSourceCode" resource="#role-example" >
+                <figcaption>
+                    <span property="schema:name"></span>
+                    <span property="schema:description">
+                    The edit page.
+              </span>
+                </figcaption>
+                <img src="admin-pages/admin-edit-appointments.png" alt="Admin Edit Appointments">
+                <img src="admin-pages/admin-edit-appointments2.png" alt="Admin Edit Appointments 2">
+            </figure>
+
+        </li>
+    </ol>
+</section>
 </body>
 </html>
