@@ -57,8 +57,8 @@ if ($conn->connect_errno) {
     die('Could not connect to db: ' . $conn->connect_error);
 } else {
     //sanitize the username
-    $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
-    $stmt->bind_param("s", $username);
+    $stmt = $conn->prepare("SELECT * FROM users WHERE username = ? or email = ?");
+    $stmt->bind_param("ss", $username, $email);
     $stmt->execute();
     $result = $stmt->get_result();
 
@@ -71,13 +71,19 @@ if ($conn->connect_errno) {
     }
 
 
-    $user_id = $result->fetch_assoc()['user_id'];
+    //$user_id = $result->fetch_assoc()['user_id'];
     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
+    try {
+        $stmt = $conn->prepare("INSERT INTO users (username, password, email, fname, lname,function) VALUES (?, ?, ?, ?, ?,?)");
+        $stmt->bind_param("ssssss", $username, $passwordHash, $email, $fname, $lname, $function);
+        $result = $stmt->execute();
+
+    }
+    catch (Exception $e){
+        echo $e->getMessage();
+    }
     //insert the username and password from the database
-    $stmt = $conn->prepare("INSERT INTO users (username, password, email, fname, lname,function) VALUES (?, ?, ?, ?, ?,?)");
-    $stmt->bind_param("ssssss", $username, $passwordHash, $email, $fname, $lname, $function);
-    $result = $stmt->execute();
 
 
     if ($result) {
@@ -94,7 +100,7 @@ if ($conn->connect_errno) {
         $_SESSION['lname'] = $_POST['lname'];
         $_SESSION['function'] = $function;
         $_SESSION['is_logged_in'] = true;
-        $_SESSION['id'] = $user_id;
+        //$_SESSION['id'] = $user_id;
 
         header('Location: ../HomePage/homepage.php');
     } else {

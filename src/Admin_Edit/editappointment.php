@@ -1,6 +1,44 @@
 <?php
+
+require_once '../../vendor/autoload.php';
+
+session_start();
+if (!isset($_SESSION['is_logged_in'])) {
+    $_SESSION['is_logged_in'] = false;
+}
+
+// Verificăm dacă utilizatorul este admin
+if (!isset($_SESSION['token'])) {
+    header('Location: ../Login_Module/login.php');
+    exit();
+}
+
+$config = require '../../config.php';
+require '../Utils/DbConnection.php';
+
+$token = $_SESSION['token'];
+$key = $config['secret_key'];
+
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+
+$jwt = new JWT();
+
+try {
+    $decode = $jwt->decode($token, new Key($key, 'HS256'));
+
+    // Verificăm dacă utilizatorul este admin
+    if ($decode->role !== 'admin') {
+        http_response_code(401);
+        exit();
+    }
+} catch (Exception $e) {
+    http_response_code(401);
+    exit();
+}
+
 if (isset($_POST['submit'])) {
-    require '../Utils/DbConnection.php';
+    //require '../Utils/DbConnection.php';
     $conn = DbConnection::getInstance()->getConnection();
 
     // Preluarea datelor din formular
@@ -31,14 +69,6 @@ if (isset($_POST['submit'])) {
     // Închiderea conexiunii cu baza de date
     mysqli_close($conn);
 }
-?>
-<?php
-session_start(); //start the session
-if (!isset($_SESSION['is_logged_in'])) {
-    $_SESSION['is_logged_in'] = false;
-}
-
-
 ?>
 
 <!DOCTYPE html>
@@ -76,7 +106,7 @@ if (!isset($_SESSION['is_logged_in'])) {
 
 <form class="visit" action="" method="post" enctype="multipart/form-data">
     <div class="form-header">
-        <h1>Make an appointment</h1>
+        <h1>Edit appointment</h1>
     </div>
 
     <div class="form-body">

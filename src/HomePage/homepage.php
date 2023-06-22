@@ -81,8 +81,11 @@ if (!isset($_SESSION['is_logged_in'])) {
                     echo '
             <a href="../Export_Data/export_all.php">
             <button class="oval-button">EXPORT PANEL</button>
-        </a>
-';
+        </a>';
+                    echo '
+            <a href="../Add_Inmate/addinmate.php">
+            <button class="oval-button">ADD INMATE</button>
+        </a>';
                 }
             }
         }

@@ -2,8 +2,11 @@
 <html lang="en">
 <?php
 
-
 session_start();
+require_once '../../vendor/autoload.php';
+
+
+
 //redirect to retrieve_appointment.php  to retrieve the appointments
 //header('Location: retrieve_appointments.php');
 
@@ -60,13 +63,22 @@ session_start();
                 <?php
                 //use curl to make a request to the api
                 $url = "http://localhost/src/User_Visit/retrieve_appointments.php" . "?id=" . $_SESSION['id'];
+               // $curl = new Curl\Curl();
                 $curl = curl_init();
+
+                //$curl->setOpt(CURLOPT_RETURNTRANSFER, true);
                 curl_setopt($curl, CURLOPT_URL, $url);
+               //$curl->setOpt(CURLOPT_URL, $url);
                 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
                 //set the parameter id
-
+               // $curl->setOpt(CURLOPT_HTTPGET, true);
                 curl_setopt($curl, CURLOPT_HTTPGET, true);
+
+
+               //curl_exec($curl);
+                //$curl_response = $curl->response;
                 $curl_response = curl_exec($curl);
+               // $curl->close();
                 curl_close($curl);
                 $response = json_decode($curl_response, true);
                 //parse the response

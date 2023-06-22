@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $user_id = $_GET['id'];
 
     $user_id = strval($user_id);
-    $stmt = $conn->prepare("SELECT a.appointment_id,a.firstname,a.lastname,a.date,u.fname,u.lname FROM appointments a JOIN users u  WHERE u.user_id = ?");
+    $stmt = $conn->prepare("SELECT a.appointment_id,a.firstname,a.lastname,a.date,u.fname,u.lname FROM appointments a JOIN users u ON a.person_id = u.user_id WHERE u.user_id = ?");
 
     $stmt->bind_param("s", $user_id);
     $stmt->execute();

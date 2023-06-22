@@ -1,9 +1,39 @@
 <?php
-session_start(); //start the session
+require_once '../../vendor/autoload.php';
+
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+
+session_start();
+
+// Verifică dacă utilizatorul este logat
 if (!isset($_SESSION['is_logged_in'])) {
-    $_SESSION['is_logged_in'] = false;
+    header('Location: ../Login_Module/login.php');
+    exit();
 }
 
+// Verifică dacă utilizatorul este admin
+if (!isset($_SESSION['token'])) {
+    header('Location: ../Login_Module/login.php');
+    exit();
+}
+
+$config = require '../../config.php';
+$key = $config['secret_key'];
+$jwt = new JWT();
+
+try {
+    $decode = $jwt->decode($_SESSION['token'], new Key($key, 'HS256'));
+
+    // Verifică dacă utilizatorul este admin
+    if ($decode->role !== 'admin') {
+        header('Location: ../Login_Module/login.php');
+        exit();
+    }
+} catch (Exception $e) {
+    header('Location: ../Login_Module/login.php');
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -15,9 +45,30 @@ if (!isset($_SESSION['is_logged_in'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../NavBar/navstyle.css">
     <link rel="stylesheet" href="adminvisitstyle.css">
-    <title>User Visit</title>
+    <title>Make an appointment</title>
 </head>
-
+<body>
+<header class="header">
+    <a href="../HomePage/homepage.php"><img src="../../assets/Logo/Asset%201.svg" class="logo" alt="logo"></a>
+    <input class="menu-btn" type="checkbox" id="menu-btn"/>
+    <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+    <ul class="menu">
+        <li><a href="../HomePage/homepage.php">Home</a></li>
+        <?php
+        if($_SESSION['is_logged_in'])
+        {
+            echo '<li><a href="../UserProfile/profile.php">Profile</a></li>';
+        }
+        else
+        {
+            echo'<li><a href="../Login_Module/login.php">Login</a></li>';
+        }
+        ?>
+        <li><a href="../About/about.php">About Us</a></li>
+        <li><a href="../Contact/contact.php">Contact</a></li>
+        <li><a href="../FAQ/faq.php">FAQ</a></li>
+    </ul>
+</header>
 <body>
 <header class="header">
     <a href="../HomePage/homepage.php"><img src="../../assets/Logo/Asset%201.svg" class="logo" alt="logo"></a>
