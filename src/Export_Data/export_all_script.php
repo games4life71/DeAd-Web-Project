@@ -31,8 +31,7 @@ function exportCSV($export_data, $statistic_data)
     foreach ($export_data as $row) {
         fputcsv($output, $row);
     }
-    fputcsv($output, "\n");
-    fputcsv($output, "Total :");
+    fputcsv($output, array("Total :"));
     fputcsv($output, $statistic_data);
 
     fclose($output);
