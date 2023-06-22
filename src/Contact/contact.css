@@ -82,7 +82,7 @@ body::-webkit-scrollbar{
     border: 1px solid #fff;
     border-radius: 10px;
     animation: fadeIn 5s;
-    margin-bottom: 50px;
+
 }
 @keyframes fadeIn {
     0% { opacity: 0; }
