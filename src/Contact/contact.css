@@ -72,6 +72,7 @@ body::-webkit-scrollbar{
     padding: 30px;
     background-color: linear-gradient(to right, var(--lightblue) , var(--darkblue) );
     border-radius: 10px;
+    margin-bottom: 50px;
 }
 
 
@@ -81,8 +82,7 @@ body::-webkit-scrollbar{
     border: 1px solid #fff;
     border-radius: 10px;
     animation: fadeIn 5s;
-
-
+    margin-bottom: 50px;
 }
 @keyframes fadeIn {
     0% { opacity: 0; }
