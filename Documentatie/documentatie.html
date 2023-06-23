@@ -17,6 +17,50 @@
     </ul>
 </header>
 
+<div id="content-info">
+    <h2>Content Table</h2>
+    <ol id="content">
+        <li><a href="#abstract" style="text-decoration:none; color:#4b0061">Abstract</a></li>
+        <li><a href="#introduction" style="text-decoration:none; color:#4b0061">Introduction</a></li>
+        <li><a href="#structure" style="text-decoration:none; color:#4b0061">Structure</a></li>
+        <ul>
+            <li><a href="#Root" style="text-decoration:none; color:#9400bf">Root</a></li>
+            <li><a href="#article" style="text-decoration:none; color:#9400bf">Article</a></li>
+            <li><a href="#hunk" style="text-decoration:none; color:#9400bf">Schema</a></li>
+        </ul>
+        <li><a href="#general" style="text-decoration:none; color:#4b0061">General</a></li>
+        <ul>
+            <li><a href="#general-homepage" style="text-decoration:none; color:#9400bf">HomePage</a></li>
+            <li><a href="#about_us" style="text-decoration:none; color:#9400bf">About Us</a></li>
+            <li><a href="#contact_us" style="text-decoration:none; color:#9400bf">Contact Us</a></li>
+            <li><a href="#faq" style="text-decoration:none; color:#9400bf">Frequently Asked Questions</a></li>
+            <li><a href="#reset-pass" style="text-decoration:none; color:#9400bf">Reset Password</a></li>
+            <li><a href="#change-info" style="text-decoration:none; color:#9400bf">Change Info</a></li>
+            <li><a href="#forgot-pass" style="text-decoration:none; color:#9400bf">Contact Us</a></li>
+        </ul>
+        <li><a href="#user" style="text-decoration:none; color:#4b0061">User</a></li>
+        <ul>
+            <li><a href="#user-homepage" style="text-decoration:none; color:#9400bf">User HomePage</a></li>
+            <li><a href="#make-app" style="text-decoration:none; color:#9400bf">Make Appointment </a></li>
+            <li><a href="#visit-page" style="text-decoration:none; color:#9400bf">Visit Page</a></li>
+            <li><a href="#make-summary" style="text-decoration:none; color:#9400bf">Make Summary</a></li>
+            <li><a href="#profile-page" style="text-decoration:none; color:#9400bf">Profile Page</a></li>
+        </ul>
+        <li><a href="#admin" style="text-decoration:none; color:#4b0061">Admin</a></li>
+        <ul>
+            <li><a href="#Admin_Homepage" style="text-decoration:none; color:#9400bf">HomePage</a></li>
+            <li><a href="#Admin_panel" style="text-decoration:none; color:#9400bf">Panel</a></li>
+            <li><a href="#Admin_Visit" style="text-decoration:none; color:#9400bf">Appointments for a specific user</a></li>
+            <li><a href="#Admin_Edit_Appointments" style="text-decoration:none; color:#9400bf">Edit Appointments</a></li>
+            <li><a href="#Admin_Export" style="text-decoration:none; color:#9400bf">Export data for a specific user</a></li>
+            <li><a href="#Admin_Export_All" style="text-decoration:none; color:#9400bf">Export All</a></li>
+            <li><a href="#Admin_Add" style="text-decoration:none; color:#9400bf">Add Inmate</a></li>
+        </ul>
+    </ol>
+
+
+</div>
+
 <section typeof="sa:Abstract" id="abstract" role="doc-abstract">
     <h2>Abstract</h2>
     <p>
@@ -59,18 +103,23 @@
     </p>
     <ul>
         <li><b>Streamline the visitation process</b>: One of the primary goals of this project is to make the visitation
-            process for individuals in correctional facilities as efficient and streamlined as possible.</li>
+            process for individuals in correctional facilities as efficient and streamlined as possible.
+        </li>
         <li><b>Improve record-keeping and reporting</b>: Another key goal of this project is to provide a comprehensive
-            record-keeping and reporting system for visits. </li>
+            record-keeping and reporting system for visits.
+        </li>
         <li>
-            <b>Enhance overall well-being and quality of life</b>: Ultimately, the overarching goal of this project is to improve
-            the overall well-being and quality of life for individuals in correctional facilities. By providing them with a
+            <b>Enhance overall well-being and quality of life</b>: Ultimately, the overarching goal of this project is
+            to improve
+            the overall well-being and quality of life for individuals in correctional facilities. By providing them
+            with a
             reliable and convenient way to stay connected with loved ones and legal representatives.
         </li>
     </ul>
     <p>
         <!--This document is a work in progress. We welcome your feedback and contributions. Please join us on GitHub.-->
 </section>
+
 <section id="structure">
     <h2>Structure</h2>
     <p>
@@ -80,105 +129,138 @@
         if they do not have one yet.
     </p>
     <ol>
-    <li><section id="Root">
-        <h3>The root and <code>head</code></h3>
-        <p>
-            The document is encoded in UTF-8 and transmitted with a media type of
-            <code>text/html</code>.
-        </p>
-        <p>
-            The <code>head</code> contains <code>&lt;meta charset="utf-8"&gt;</code> element, a
-            <code>title</code> element and a <code>link</code> element to the stylesheet.
-        </p>
-    </section></li>
+        <li>
+            <section id="Root">
+                <h3>The root and <code>head</code></h3>
+                <p>
+                    The document is encoded in UTF-8 and transmitted with a media type of
+                    <code>text/html</code>.
+                </p>
+                <p>
+                    The <code>head</code> contains <code>&lt;meta charset="utf-8"&gt;</code> element, a
+                    <code>title</code> element and a <code>link</code> element to the stylesheet.
+                </p>
+            </section>
+        </li>
 
-    <li><section id="article">
+        <li>
+            <section id="article">
 
-        <h3>The <code>main page</code></h3>
-        <p>
-            The first child of <code>article</code> is <code>header</code>. The header
-            contains a <code>navbar</code> with the content of the application. The following element is a
-            <code>div</code> containing three <code>div</code> with the role of <code>container</code> having some information
-            about the web application and two links for making an appointment and also seeing the previous visits . The first <code>div</code> contains a <code>h1</code> element with the information
-            of the application. The second <code>div</code> helps with the design of the page. The third <code>div</code>
-            contains a <code>h2</code> element with the username of the user and a button for login in.
+                <h3>The <code>main page</code></h3>
+                <p>
+                    The first child of <code>article</code> is <code>header</code>. The header
+                    contains a <code>navbar</code> with the content of the application. The following element is a
+                    <code>div</code> containing three <code>div</code> with the role of <code>container</code> having
+                    some information
+                    about the web application and two links for making an appointment and also seeing the previous
+                    visits . The first <code>div</code> contains a <code>h1</code> element with the information
+                    of the application. The second <code>div</code> helps with the design of the page. The third <code>div</code>
+                    contains a <code>h2</code> element with the username of the user and a button for login in.
 
-        </p>
+                </p>
 
-        <h3>The <code>login page</code></h3>
-        <p>
-            The first element is a <code>div</code> with the role of <code>wrapper</code> having a <code>form</code> element
-            containing the <code>input</code> and <code>label</code> for the user to put the information required and a <code>button</code> for submitting.
-            Also, in case of forgetting the password, there is a link for resetting it that is not implemented for now. The <code>div</code>
-            has multiple <code>div</code> for the design of the page. In case the user does not have an account, there is a link for creating one.
-        </p>
+                <h3>The <code>login page</code></h3>
+                <p>
+                    The first element is a <code>div</code> with the role of <code>wrapper</code> having a
+                    <code>form</code> element
+                    containing the <code>input</code> and <code>label</code> for the user to put the information
+                    required and a <code>button</code> for submitting.
+                    Also, in case of forgetting the password, there is a link for resetting it that is not implemented
+                    for now. The <code>div</code>
+                    has multiple <code>div</code> for the design of the page. In case the user does not have an account,
+                    there is a link for creating one.
+                </p>
 
-        <h3>The <code>signup page</code></h3>
-        <p>
-            In case the user does not have an account, there is a link for creating one.
-            The first element is a <code>div</code> with the role of <code>wrapper</code> having a <code>form</code> element
-            containing other <code>div</code> with <code>input</code> and <code>label</code> for the user to put the information required
-            and a <code>button</code> for submitting. If the user has an account, there is a link for logging in.
-        </p>
+                <h3>The <code>signup page</code></h3>
+                <p>
+                    In case the user does not have an account, there is a link for creating one.
+                    The first element is a <code>div</code> with the role of <code>wrapper</code> having a
+                    <code>form</code> element
+                    containing other <code>div</code> with <code>input</code> and <code>label</code> for the user to put
+                    the information required
+                    and a <code>button</code> for submitting. If the user has an account, there is a link for logging
+                    in.
+                </p>
 
-        <h3>The <code>appointment page</code></h3>
-        <p>
-            After we click on the link for making an appointment, the first child of <code>article</code> is <code>header</code>. The header
-            contains a <code>navbar</code> with the content of the application. The following element is a
-            <code>form</code> containing three <code>div</code> with the role of <code>form-header</code>, <code>form-body</code> and
-            <code>form-footer</code> helping with the design of the form inputs.
-            The first <code>div</code> contains a <code>h1</code> element with the title
-            of the page. The second <code>div</code> has the <code>input</code> and <code>label</code> for the user to put the information required
-            and a <code>button</code> for submitting .
+                <h3>The <code>appointment page</code></h3>
+                <p>
+                    After we click on the link for making an appointment, the first child of <code>article</code> is
+                    <code>header</code>. The header
+                    contains a <code>navbar</code> with the content of the application. The following element is a
+                    <code>form</code> containing three <code>div</code> with the role of <code>form-header</code>,
+                    <code>form-body</code> and
+                    <code>form-footer</code> helping with the design of the form inputs.
+                    The first <code>div</code> contains a <code>h1</code> element with the title
+                    of the page. The second <code>div</code> has the <code>input</code> and <code>label</code> for the
+                    user to put the information required
+                    and a <code>button</code> for submitting .
 
-        </p>
+                </p>
 
-        <h3>The <code>see appointments page</code></h3>
-        <p>
-            If we want to see our appointments, the first child of <code>article</code> is <code>header</code>. The header
-            contains a <code>navbar</code> with the content of the application. The following element is a
-            <code>form</code> containing three <code>div</code> with the role of <code>form-header</code>, <code>form-body</code> and
-            <code>form-footer</code> helping with the design of the form inputs .
-            The first <code>div</code> contains a <code>h1</code> element with the title
-            of the page. The second <code>div</code> has the information of the appointments and a <code>button</code> for making the
-            required summaries.
-        </p>
+                <h3>The <code>see appointments page</code></h3>
+                <p>
+                    If we want to see our appointments, the first child of <code>article</code> is <code>header</code>.
+                    The header
+                    contains a <code>navbar</code> with the content of the application. The following element is a
+                    <code>form</code> containing three <code>div</code> with the role of <code>form-header</code>,
+                    <code>form-body</code> and
+                    <code>form-footer</code> helping with the design of the form inputs .
+                    The first <code>div</code> contains a <code>h1</code> element with the title
+                    of the page. The second <code>div</code> has the information of the appointments and a
+                    <code>button</code> for making the
+                    required summaries.
+                </p>
 
-        <h3>The <code>make a summary page</code></h3>
-        <p>
-            It is required to make a summary after every visit, the first child of <code>article</code> is <code>header</code>. The header
-            contains a <code>navbar</code> with the content of the application. The following element is a
-            <code>form</code> containing three <code>div</code> with the role of <code>form-header</code>, <code>form-body</code> and
-            <code>form-footer</code> helping with the design of the form inputs.
-            The first <code>div</code> contains a <code>h1</code> element with the title
-            of the page. The second <code>div</code> has the <code>input</code> and <code>label</code> for the user to put the information required, a <code>textarea</code>
-            for the summary and a <code>button</code> for submitting .
-        </p>
+                <h3>The <code>make a summary page</code></h3>
+                <p>
+                    It is required to make a summary after every visit, the first child of <code>article</code> is
+                    <code>header</code>. The header
+                    contains a <code>navbar</code> with the content of the application. The following element is a
+                    <code>form</code> containing three <code>div</code> with the role of <code>form-header</code>,
+                    <code>form-body</code> and
+                    <code>form-footer</code> helping with the design of the form inputs.
+                    The first <code>div</code> contains a <code>h1</code> element with the title
+                    of the page. The second <code>div</code> has the <code>input</code> and <code>label</code> for the
+                    user to put the information required, a <code>textarea</code>
+                    for the summary and a <code>button</code> for submitting .
+                </p>
 
-        <h3>The <code>about us page</code></h3>
-        <p>
-           In case the user wants to know more about the application, there is a link for the "About Us" page.The header
-            contains a <code>navbar</code> with the links to other sections. The following element is a <code>div</code> containing
-            a <code>h1</code> element with the title of the page and a <code>div</code> with the information about the product.
-        </p>
+                <h3>The <code>about us page</code></h3>
+                <p>
+                    In case the user wants to know more about the application, there is a link for the "About Us"
+                    page.The header
+                    contains a <code>navbar</code> with the links to other sections. The following element is a <code>div</code>
+                    containing
+                    a <code>h1</code> element with the title of the page and a <code>div</code> with the information
+                    about the product.
+                </p>
 
-        <h3>The <code>frequently asked questions(FAQ) page</code></h3>
-        <p>
-            In case the user has some question about the application, there is a link for the "FAQ" page.The header
-            contains a <code>navbar</code> with the links to other sections. The first element is the title of the page.The frequent questions
-            are each stored in a <code>details</code> element with a <code>summary</code> element for the question and a <code>p</code> element for the answer.
-            The user can click on the question to see the answer and then click again to hide it.
-        </p>
+                <h3>The <code>frequently asked questions(FAQ) page</code></h3>
+                <p>
+                    In case the user has some question about the application, there is a link for the "FAQ" page.The
+                    header
+                    contains a <code>navbar</code> with the links to other sections. The first element is the title of
+                    the page.The frequent questions
+                    are each stored in a <code>details</code> element with a <code>summary</code> element for the
+                    question and a <code>p</code> element for the answer.
+                    The user can click on the question to see the answer and then click again to hide it.
+                </p>
 
-        <h3>The <code>contact us</code></h3>
-        <p>
-            In case the user wants to contact the application, there is a link for the "Contact Us" page.The header contains a <code>navbar</code> with the links to other sections. The first element is the title of the page  stored in a <code>div</code>. The contact information
-            is stored in a <code>div</code> with a <code>h1</code> element for the title and a <code>div</code> with the information for the contact method.Each <code>div</code> also has an animation for the contact method.
-        </p>
-    </section></li>
-    <li><section id="hunk">
-        <h3>Schema</h3>
-        <figure typeof="schema:SoftwareSourceCode" resource="#role-example" id="role-example">
+                <h3>The <code>contact us</code></h3>
+                <p>
+                    In case the user wants to contact the application, there is a link for the "Contact Us" page.The
+                    header contains a <code>navbar</code> with the links to other sections. The first element is the
+                    title of the page stored in a <code>div</code>. The contact information
+                    is stored in a <code>div</code> with a <code>h1</code> element for the title and a <code>div</code>
+                    with the information for the contact method.Each <code>div</code> also has an animation for the
+                    contact method.
+                </p>
+            </section>
+        </li>
+        <li>
+            <section id="hunk">
+                <h3>Schema</h3>
+                <figure typeof="schema:SoftwareSourceCode" resource="#role-example" id="role-example">
           <pre>
             <a>web-app</a>
             └─<a>home page</a>
@@ -195,64 +277,869 @@
             └─<a>FAQ</a>
 
           </pre>
-            <figcaption>
-                <span property="schema:name"></span>
-                <span property="schema:description">
+                    <figcaption>
+                        <span property="schema:name"></span>
+                        <span property="schema:description">
               This is an example of the application's structure.
             </span>
-            </figcaption>
-            <figcaption>
-                <span property="schema:name"></span>
-                <span property="schema:description">
+                    </figcaption>
+                    <figcaption>
+                        <span property="schema:name"></span>
+                        <span property="schema:description">
                 Next you can see a diagram with the visual representation of the circulation between the pages.
               </span>
-            </figcaption>
-            <img src="Schema-pagini-DeAd.svg" alt="SVG Image">
-        </figure>
-    </section></li>
+                    </figcaption>
+                    <img src="Schema-pagini-DeAd.svg" alt="SVG Image">
+                </figure>
+            </section>
+        </li>
     </ol>
 </section>
+
+<section id="general">
+    <h2>General pages</h2>
+    <ol>
+        <li>
+            <h3 id="general-homepage">Homepage</h3>
+            <p>
+                It first checks if the <code>$_SESSION['is_logged_in']</code> variable is false,
+                indicating that the user is not logged in. If that's the case,
+                it displays a heading with the title "How we can help you" and a
+                paragraph describing the purpose of the platform. The paragraph explains
+                that the platform aims to streamline the visitation process for individuals
+                visiting loved ones in correctional facilities, allowing them to request and
+                manage visitation appointments easily.
+
+                This section serves as an introduction and highlights the benefits of the
+                platform for users who are not logged in, encouraging them to consider signing
+                up or logging in to access additional features.
+            </p>
+
+            <figure typeof="schema:SoftwareSourceCode" resource="#role-example">
+                <figcaption>
+                    <span property="schema:name"></span>
+                    <span property="schema:description">
+                            The homepage when the user is not logged in.
+                    </span>
+                </figcaption>
+                <img src="general%20pages/general-homepage.png" alt="Home Page">
+            </figure>
+        </li>
+        <li>
+            <h3 id="about_us">About Us page</h3>
+
+            <p>
+                The About Us page provides information about Detention Admin, a company dedicated to revolutionizing the
+                visitation experience for correctional facilities. This documentation outlines the structure and
+                functionality of the About Us page.
+            </p>
+
+            <h4>Getting Started</h4>
+            <ul>
+                <li>Include the necessary CSS files: navstyle.css for the navigation bar and about.css for the About Us
+                    page's styling.
+                </li>
+                <li>Start the PHP session using session_start(). If the is_logged_in session variable is not set,
+                    initialize it as false.
+                </li>
+                <li>Define the HTML structure with the appropriate DOCTYPE declaration and language attribute.</li>
+                <li>Create a header section with a logo and a responsive navigation bar. The navigation bar includes
+                    menu items such as "Home," "Profile" (conditionally displayed based on the user's login status),
+                    "About Us," "Contact," and "FAQ."
+                </li>
+                <li>Design the About Us section with a title and a paragraph describing the mission of Detention Admin.
+                    Emphasize the company's dedication to providing a seamless and secure platform for visitation
+                    management, highlighting the importance of maintaining connections with loved ones during
+                    challenging times.
+                </li>
+                <li>Display information about the team behind Detention Admin, including the names and roles of the
+                    three members: Dogaru Stefan-Adrian, Jitca Diana, and Munteanu Lucian. Mention that all team members
+                    are students at the University of "Alexandru Ioan Cuza" in Iasi, Romania, and are currently in their
+                    2nd year, pursuing a major in Computer Science.
+                </li>
+            </ul>
+
+            <h4 >Usage</h4>
+            <ul>
+                <li>Access the About Us page by navigating to the appropriate URL.</li>
+                <li>The page will load with the header section, including the Detention Admin logo and the navigation
+                    bar.
+                </li>
+                <li>Scroll down to view the About Us section, containing a title and a description of Detention Admin's
+                    mission.
+                </li>
+                <li>Read about the team members and their roles in revolutionizing the visitation experience for
+                    correctional facilities.
+                </li>
+            </ul>
+
+
+            <figure typeof="schema:SoftwareSourceCode" resource="#role-example">
+                <figcaption>
+                    <span property="schema:name"></span>
+                    <span property="schema:description">
+                            The about us page.
+                    </span>
+                </figcaption>
+                <img src="general%20pages/About%20Us.png" alt="About Us page">
+            </figure>
+        </li>
+
+        <li>
+            <h3 id="contact_us">Contact Us page</h3>
+
+
+            <p>
+                The Contact page allows users to get in touch with Detention Admin through various means of
+                communication. This documentation provides an overview of the structure and functionality of the Contact
+                page.
+            </p>
+
+            <h4>Getting Started</h4>
+            <ul>
+                <li>Start the PHP session using session_start(). If the is_logged_in session variable is not set,
+                    initialize it as false.
+                </li>
+                <li>Define the HTML structure with the appropriate DOCTYPE declaration, language attribute, and
+                    necessary meta tags.
+                </li>
+                <li>Include the required CSS files: navstyle.css for the navigation bar and contact.css for the Contact
+                    page's styling.
+                </li>
+                <li>Create a header section with the Detention Admin logo and a responsive navigation bar. The
+                    navigation bar includes menu items such as "Home," "Profile" (conditionally displayed based on the
+                    user's login status), "About Us," "Contact," and "FAQ."
+                </li>
+                <li>Design the Contact section with a title and contact information.</li>
+                <li>Display the company's address, including the street, city, and postal code.</li>
+                <li>Provide phone numbers, both for local and international inquiries.</li>
+                <li>Specify the email address for contacting Detention Admin.</li>
+            </ul>
+
+            <h4>Usage</h4>
+            <ul>
+                <li>Access the Contact page by navigating to the appropriate URL.</li>
+                <li>The page will load with the header section, including the Detention Admin logo and the navigation
+                    bar.
+                </li>
+                <li>Scroll down to view the Contact section, which includes the following information:</li>
+                <ul>
+                    <li>Address: Displayed with an icon, showing the street, city, and postal code.</li>
+                    <li>Phone: Presented with an icon, providing both the local and international phone numbers.</li>
+                    <li>Email: Presented with an icon, displaying the company's email address.</li>
+                </ul>
+            </ul>
+
+
+            <p>
+                The Contact page serves as a medium for users to connect with Detention Admin, providing contact
+                information such as address, phone numbers, and email address. Users can access this page to initiate
+                communication with the company as needed.
+            </p>
+
+
+            <figure typeof="schema:SoftwareSourceCode" resource="#role-example">
+                <figcaption>
+                    <span property="schema:name"></span>
+                    <span property="schema:description">
+                            The contact us page.
+                    </span>
+                </figcaption>
+                <img src="general%20pages/Contact%20Us.png" alt="Contact Us page">
+            </figure>
+        </li>
+
+        <li>
+            <h3 id="faq">The frequently asked questions(FAQ) page</h3>
+
+
+            <p>
+                The FAQ (Frequently Asked Questions) page provides users with answers to common queries about the
+                Detention Admin system. This documentation provides an overview of the structure and functionality of
+                the FAQ page.
+            </p>
+
+            <h4>Getting Started</h4>
+            <ul>
+                <li>Start the PHP session using session_start(). If the is_logged_in session variable is not set,
+                    initialize it as false.
+                </li>
+                <li>Define the HTML structure with the appropriate DOCTYPE declaration, language attribute, and
+                    necessary meta tags.
+                </li>
+                <li>Include the required CSS files: navstyle.css for the navigation bar and faqstyle.css for the FAQ
+                    page's styling.
+                </li>
+                <li>Create a header section with the Detention Admin logo and a responsive navigation bar. The
+                    navigation bar includes menu items such as "Home," "Profile" (conditionally displayed based on the
+                    user's login status), "About Us," "Contact," and "FAQ."
+                </li>
+                <li>Design the FAQ section with a heading and a list of frequently asked questions.</li>
+                <li>Each question is enclosed within a &lt;details&gt; element.</li>
+                <li>Each question is wrapped in a &lt;summary&gt; element, followed by an SVG icon for
+                    expanding/collapsing the answer.
+                </li>
+                <li>The answer to each question is provided within a &lt;p&gt; element.</li>
+            </ul>
+
+            <h4>Usage</h4>
+            <ul>
+                <li>Access the FAQ page by navigating to the appropriate URL.</li>
+                <li>The page will load with the header section, including the Detention Admin logo and the navigation
+                    bar.
+                </li>
+                <li>Scroll down to view the FAQ section, which includes a list of frequently asked questions.</li>
+                <li>To view the answer to a specific question, click on the question's summary. The answer will expand
+                    or collapse based on the user's interaction.
+                </li>
+                <li>Read the answer to the question. Once done, move on to the next question if desired.</li>
+            </ul>
+            <p>
+                The FAQ page provides a convenient resource for users to find answers to common questions regarding the
+                Detention Admin system. By accessing this page, users can expand and collapse the answers to specific
+                questions, gaining insights and clarifications as needed.
+            </p>
+
+            <figure typeof="schema:SoftwareSourceCode" resource="#role-example">
+                <figcaption>
+                    <span property="schema:name"></span>
+                    <span property="schema:description">
+                            The frequently asked question page.
+                    </span>
+                </figcaption>
+                <img src="general%20pages/FAQ.png" alt="FAQ page">
+                <img src="general%20pages/general-faq-clicked.png" alt="FAQ page clicked">
+            </figure>
+        </li>
+
+
+        <li>
+
+            <h3 id="reset-pass">Reset password page</h3>
+
+            <p>
+                The "resetpass.php" file represents a web page that allows users to reset their password. It contains an
+                HTML form where users can enter their current password, new password, and confirm the new password. The
+                file also includes CSS styling for the form.
+            </p>
+            <p>
+                The form's action is set to "resetpwd.php," which is the file responsible for handling the password
+                reset logic. When the form is submitted, it sends a POST request to "resetpwd.php" with the entered
+                password values.
+            </p>
+            <p>
+                Inside the form, there are three input fields for the current password, new password, and confirm new
+                password. Each input field has a corresponding label and an icon that is updated based on user input.
+                The input fields are required to ensure that all the necessary information is provided.
+            </p>
+            <p>
+                After the input fields, there is PHP code that checks for any errors passed through the URL parameters
+                using the $_GET['error'] variable. If an error is detected, an appropriate error message is displayed
+                based on the error code. The error messages indicate if the passwords do not match, the current password
+                is incorrect, or the new password is the same as the current password.
+            </p>
+            <p>
+                Finally, there is a "reset" button that submits the form when clicked.
+            </p>
+            <p>
+                The "resetpwd.php" file handles the password reset logic when the form in "resetpass.php" is submitted.
+                It starts by initiating a session and includes the "DbConnection.php" file to establish a connection
+                with the database.
+            </p>
+            <p>
+                The file defines a function named "checkpwd" that checks the strength of a password based on certain
+                criteria, such as the presence of uppercase and lowercase letters, numbers, and a minimum length. The
+                function returns a strength value between 0 and 3, indicating the password's strength level.
+            </p>
+            <p>
+                The file retrieves the current password, new password, and confirm new password values from the POST
+                request. It also retrieves the username from the session.
+            </p>
+            <p>
+                The "checkpwd" function is called to determine the strength of the new password. If the password
+                strength is less than 3, the user is redirected back to the "resetpass.php" page with an error code
+                indicating the password strength level.
+            </p>
+            <p>
+                If the database connection is successful, the file executes a query to retrieve the user's information
+                based on the provided username. It compares the current password with the hashed password stored in the
+                database using the password_verify function. If the passwords match, further checks are performed.
+            </p>
+            <p>
+                First, it checks if the new password and confirm new password values are the same. If they match, it
+                checks if the new password is the same as the current password. If it is, the user is redirected back to
+                the "resetpass.php" page with an error code indicating that the new password and current password are
+                the same.
+            </p>
+            <p>
+                If the new password and confirm new password values are different, and the new password is not the same
+                as the current password, the password in the database is updated with the new hashed password. The user
+                is then redirected to the homepage.
+            </p>
+            <p>
+                If any error conditions are met, such as incorrect current password or mismatched passwords, the user is
+                redirected back to the "resetpass.php" page with the corresponding error code.
+            </p>
+            <p>
+                Overall, these files provide a password reset functionality where users can enter their current and new
+                passwords to update their account's password securely.
+            </p>
+
+            <figure typeof="schema:SoftwareSourceCode" resource="#role-example">
+                <figcaption>
+                    <span property="schema:name"></span>
+                    <span property="schema:description">
+                            The reset password page.
+                    </span>
+                </figcaption>
+                <img src="general%20pages/Reset%20Password.png" alt="Reset password">
+            </figure>
+
+        </li>
+
+        <li>
+            <h3 id="change-info">Change Info page</h3>
+
+
+            <p>
+                The "change_info.php" file represents a web page where users can update their profile information. It
+                includes an HTML form that allows users to enter their new name, surname, and secondary email. The page
+                also displays a header with a logo and a navigation menu.
+            </p>
+            <p>
+                At the beginning of the file, it checks if the user is logged in by verifying the existence of the
+                'username' session variable. If the user is not logged in, they are redirected to the login page.
+            </p>
+            <p>
+                The HTML form in the "aside" section of the page is submitted to "change_info_logic.php" for processing
+                when the user clicks the "Enter" button. The form includes input fields for the name, surname, and
+                secondary email. The values of the name and surname fields are populated based on the session variables
+                'fname' and 'lname', respectively. If these session variables are not set, placeholder text is displayed
+                in the input fields.
+            </p>
+            <p>
+                Below the input fields, there is PHP code that checks for any errors passed through the URL parameters
+                using the $_GET['error'] variable. If an error is detected, an appropriate error message is displayed
+                based on the error code. Error messages indicate invalid email, email already existing as primary or
+                secondary email, and null email.
+            </p>
+            <p>
+                Overall, this page allows users to update their profile information by entering their new name, surname,
+                and secondary email.
+            </p>
+            <p>
+                The "change_info_logic.php" file handles the processing logic for updating the user's profile
+                information when the form in "change_info.php" is submitted. It starts by initiating a session and
+                includes the necessary files and configurations.
+            </p>
+            <p>
+                The file retrieves the user's username from the session and the new name, surname, and secondary email
+                values from the POST request.
+            </p>
+            <p>
+                It performs several validations on the secondary email address. First, it verifies if the email is valid
+                using the filter_var function. If the email is not valid, the user is redirected back to
+                "change_info.php" with an error code indicating an invalid email.
+            </p>
+            <p>
+                Next, it checks if the secondary email provided is the same as the current primary or secondary email.
+                If it is, the user is redirected back to "change_info.php" with an error code indicating that the email
+                already exists.
+            </p>
+            <p>
+                If the secondary email is null, the user is redirected back to "change_info.php" with an error code
+                indicating that the email cannot be null.
+            </p>
+            <p>
+                After the email validations, it verifies if the name and surname fields contain only letters using the
+                preg_match function. If any non-letter characters are found, the user is redirected back to
+                "change_info.php" with an appropriate error code.
+            </p>
+            <p>
+                If all the validations pass, the file prepares an UPDATE query to update the user's information in the
+                database. It binds the new name, surname, secondary email, and username to the query parameters and
+                executes the query.
+            </p>
+            <p>
+                The session variables for the name, surname, and secondary email are updated with the new values.
+            </p>
+            <p>
+                Finally, the file checks for any errors that occurred during the query execution. If an error is
+                detected, the user is redirected back to "change_info.php" with an appropriate error code. Otherwise,
+                the user is redirected to the profile page.
+            </p>
+            <p>
+                Overall, this file handles the logic for updating the user's profile information based on the values
+                provided in the form on "change_info.php".
+            </p>
+
+            <figure typeof="schema:SoftwareSourceCode" resource="#role-example">
+                <figcaption>
+                    <span property="schema:name"></span>
+                    <span property="schema:description">
+                            The change info page.
+                    </span>
+                </figcaption>
+                <img src="general%20pages/Change%20Info.png" alt="Change Info">
+            </figure>
+        </li>
+
+        <li>
+            <h3 id="forgot-pass">Forgot Password</h3>
+            <p>
+                The page's content is in the body section.
+                The form-container div contains the forgot password form.
+                The form has an action attribute set to "forgot_pwd.php" and a method attribute set to
+                "POST",  indicating that the form data will be submitted to the "forgot_pwd.php" file
+                using the <code>POST</code> method.
+                <br>
+                Inside the form, there is an input field for the user to enter their email address, with
+                appropriate attributes such as name, required, and id.
+                A button with the class "btn" is provided for submitting the form.
+                <br>
+                The PHP code checks if any error or success messages are present in the URL parameters (<code>$_GET</code>).
+                If an error message is present (error=1), it displays an error message using the class "error".
+                If a success message is present (success=1), it displays a success message using the class
+                "success" and adds a delay before redirecting the user to "code_verification.html".
+                The PHP code is placed within the HTML structure, and the code ends with the closing body and
+                html tags.
+                In summary, this code generates a forgot password form where users can enter their email address.
+                Upon submission, the form data is sent to "forgot_pwd.php" for processing. The PHP code handles
+                error and success messages based on the URL parameters, providing appropriate feedback to the user.
+            </p>
+
+            <p>
+                The code includes the necessary AWS SDK and a database connection file.
+                The email address to which the password reset link will be sent is obtained from the <code>POST
+                </code>data.
+                A database query is executed to check if the email address exists in the users table.
+                If the email address is not found, the code redirects the user back to the forgot password page with
+                an "invalidemail" error parameter in the URL.
+                The username associated with the email address is retrieved from the database query result.
+                A random token is generated using random_bytes and <code>bin2hex</code> functions.
+                The username, email address, and token are inserted into the reset_pwd_requests table in the database.
+                The code fetches and displays all records from the <code>reset_pwd_requests</code> table
+                (for debugging purposes).
+                An AWS SES client is created with the appropriate configuration.
+                The sender's email address, subject, and body content (both HTML and plain text) are set for the email.
+                The email is sent using the sendEmail method of the SES client, specifying the recipient,
+                reply-to address, source, and message details.
+                If the email is sent successfully, the code redirects the user back to the forgot
+                password page with a "success=1" parameter in the URL.
+                If there is an error while sending the email, the code outputs the error message.
+                In summary, this code verifies the email address provided by the user, generates a
+                random token, inserts a reset password request into the database, and sends an email
+                with the reset password link using AWS SES.
+            </p>
+
+            <p>
+
+                The page's content is in the body section.
+                The form-container div contains the verification code input form.
+                The form has an action attribute set to "verify_token.php" and a
+                method attribute set to "POST," indicating that the form data will be
+                submitted to the "verify_token.php" file using the POST method.
+                Inside the form, there is an input field for the user to enter the
+                verification code, with appropriate attributes such as name, required, and id.
+                A button with the class "btn" is provided for submitting the form.
+                The code ends with the closing body and html tags.
+                In summary, this code generates a form where users can enter the
+                verification code they received during a password reset process.
+                The entered code will be submitted to the "verify_token.php" file for
+                further processing.
+            </p>
+
+            <figure typeof="schema:SoftwareSourceCode" resource="#role-example">
+                <figcaption>
+                    <span property="schema:name"></span>
+                    <span property="schema:description">
+                            The change info page.
+                    </span>
+                </figcaption>
+                <img src="general%20pages/geenral-forgot-pass.png" alt="Forgot Password Email">
+                <img src="general%20pages/general-forgot-pass-code.png" alt="Forgot Password Code">
+                <img src="general%20pages/general-forgot-pass-email.png" alt="Forgot Password Email Image">
+            </figure>
+
+        </li>
+    </ol>
+</section>
+
+<section id="user">
+    <h2>User's pages</h2>
+    <ol>
+        <li>
+            <h3 id="user-homepage">The User Home Page</h3>
+
+            <p>
+                The "homepage.php" file represents the homepage of the DeAd (Detention Admin) web application. It
+                provides various functionalities to users with the role of a regular user. The following description
+                highlights the available user functionalities:
+            </p>
+            <p>
+                The homepage serves as the entry point for the DeAd application. It consists of a header section that
+                includes a logo and a navigation menu. The menu allows users to navigate to different sections of the
+                application, such as the homepage itself, user profile, about us, contact, and FAQ.
+            </p>
+            <p>
+                Upon accessing the homepage, users are greeted with a large title stating "WELCOME TO OUR WEBSITE!" If
+                the user is not logged in, a small title is displayed, informing them about how the platform can help
+                them. The accompanying text describes the purpose of the application, which is to streamline the
+                visitation process for individuals visiting loved ones in correctional facilities. It emphasizes that
+                the platform allows users to easily request and manage visitation appointments for a smooth and
+                organized experience.
+            </p>
+            <p>
+                For logged-in users with the role of a regular user, the page presents additional functionalities. A
+                button labeled "CREATE APPOINTMENTS" allows users to create new visitation appointments, while another
+                button labeled "SEE APPOINTMENTS" enables them to view their existing appointments.
+            </p>
+            <p>
+                Overall, the homepage.php file provides an interface that caters to both regular users and
+                administrators, offering distinct functionalities based on their roles within the DeAd application.
+            </p>
+
+            <figure typeof="schema:SoftwareSourceCode" resource="#role-example">
+                <figcaption>
+                    <span property="schema:name"></span>
+                    <span property="schema:description">
+                            The user's homepage.
+                    </span>
+                </figcaption>
+                <img src="users%20pages/HomePage%20user.png" alt="User HomePage">
+            </figure>
+        </li>
+
+        <li>
+            <h3 id="make-app">Make an appointment page</h3>
+
+            <p>
+                The "appointment.php" file is responsible for handling the appointment form submission and displaying
+                the appointment form. It starts by checking if the user is logged in by verifying the session variable
+                "is_logged_in." If the user is not logged in, the session variable is set to false.
+            </p>
+            <p>
+                The HTML structure begins with the standard document type declaration and the inclusion of necessary CSS
+                files for styling. The page consists of a header section that contains a logo and a navigation menu. The
+                navigation menu includes links to the home page, user profile (if logged in), about us, contact, and FAQ
+                pages.
+            </p>
+            <p>
+                The main content of the page is a form with the class "visit" that allows users to make an appointment.
+                The form uses the POST method to submit the data to the "save_appointment.php" file for processing. It
+                includes several input fields for capturing information such as the first name and last name of the
+                prisoner, the relationship with the prisoner, the nature of the visit, the source of income, a photo
+                upload field, the date of the visit, and the start and end time of the visit.
+            </p>
+            <p>
+                The form also includes error handling functionality. If any errors occur during the form submission,
+                such as an invalid inmate name or an invalid file type for the photo, error messages are displayed on
+                the form.
+            </p>
+            <p>
+                The "save_appointment.php" file is responsible for processing the form data submitted from the
+                "appointment.php" page. It starts by defining a function called "compress," which is used to compress
+                uploaded images. Then, the session is started, and the username is retrieved from the session variable.
+            </p>
+            <p>
+                If the user is not logged in, they are redirected to the login page. The database connection is
+                established using the configuration settings and the DbConnection class. The user ID of the currently
+                logged-in user is retrieved from the database.
+            </p>
+            <p>
+                The form data is then retrieved from the $_POST superglobal array. If a profile photo is uploaded, it is
+                compressed using the "compress" function and its contents are stored in a variable. The validity of the
+                photo extension is checked, and if it is not valid, the user is redirected back to the form page with an
+                appropriate error message.
+            </p>
+            <p>
+                Next, the script checks if the inmate specified in the form exists in the database. If not, the user is
+                redirected back to the form page with an error indicating that the inmate does not exist.
+            </p>
+            <p>
+                Further, it checks if the inmate already has a visit scheduled within the specified time interval. If a
+                conflicting visit is found, the user is redirected back to the form page with an error message
+                indicating the conflict.
+            </p>
+            <p>
+                If all the checks pass, the script prepares an SQL statement to insert the appointment data into the
+                database. The appointment is then inserted into the "appointments" table.
+            </p>
+            <p>
+                Additionally, the appointment details are inserted into the "visits_summary" table, including the
+                visitor ID, inmate ID, visit date, visit nature, visit hours, and appointment reference ID.
+            </p>
+            <p>
+                Finally, the script redirects the user to the homepage after the appointment is successfully saved.
+            </p>
+
+            <figure typeof="schema:SoftwareSourceCode" resource="#role-example">
+                <figcaption>
+                    <span property="schema:name"></span>
+                    <span property="schema:description">
+                            The user's make an appointment page.
+                    </span>
+                </figcaption>
+                <img src="users%20pages/Make%20Appointment.png" alt="Make an appointment">
+                <img src="users%20pages/user-app-email.png" alt="Make an appointment Email">
+            </figure>
+        </li>
+
+        <li>
+            <h3 id="visit-page">User Visit's page</h3>
+
+
+            <p>
+                This page represents the user interface for displaying a user's current appointments. It allows users to
+                view their appointments and provides an option to create a new appointment. The file contains HTML
+                markup along with PHP code to handle the dynamic content and interactions.
+            </p>
+            <p>
+                The page begins with the standard HTML doctype declaration and language attribute. It includes several
+                meta tags for character encoding, compatibility, and viewport settings. The file also references
+                external CSS stylesheets for customizing the appearance of the page.
+            </p>
+            <p>
+                The header section contains a navigation bar with links to various pages such as the homepage, user
+                profile, about us, contact, and FAQ. The visibility of the "Profile" link depends on whether the user is
+                logged in or not. If the user is logged in, the "Profile" link is displayed; otherwise, a "Login" link
+                is shown.
+            </p>
+            <p>
+                After the header, a form is displayed to show the user's current appointments. Inside the form, there is
+                a heading displaying "Your Current Appointments." The form body contains a list of appointments fetched
+                from the "retrieve_appointments.php" page using a cURL request.
+            </p>
+            <p>
+                The PHP code retrieves the user's ID from the session and constructs a cURL request URL with the user's
+                ID as a parameter. The cURL request is made to the "retrieve_appointments.php" page, which fetches the
+                appointments from the database based on the user's ID. The response from the "retrieve_appointments.php"
+                page is then parsed as JSON.
+            </p>
+            <p>
+                If there are no appointments in the response, a message is displayed indicating that the user has no
+                appointments. Additionally, a link is provided to create a new appointment using the "appointment.php"
+                page.
+            </p>
+            <p>
+                If there are appointments in the response, they are iterated over, and each appointment's details, such
+                as the visitor's name, date, and the inmate being visited, are displayed in a list format. For each
+                appointment, a "Make a summary" link is also displayed, which leads to the "summary.php" page with the
+                corresponding appointment's ID as a parameter.
+            </p>
+            <p>
+                The "retrieve_appointments.php" file serves as the backend for retrieving the appointments from the
+                database. It handles a GET request and expects the user's ID as a parameter. The file establishes a
+                database connection using the DbConnection class from the "DbConnection.php" file. It then prepares and
+                executes a SQL query to fetch the appointments associated with the provided user ID.
+            </p>
+            <p>
+                The query retrieves the inmate's name, appointment date, visitor's name, and appointment ID. The fetched
+                appointment details are stored in an array, and all the appointment data is encoded as JSON. The JSON
+                response is then sent back to the frontend with the appropriate Content-Type header.
+            </p>
+            <p>
+                Overall, these files work together to provide a user interface for displaying and managing appointments.
+                The "userVisit.php" page allows users to view their current appointments, while the
+                "retrieve_appointments.php" file handles the backend logic for retrieving the appointments from the
+                database.
+            </p>
+
+
+            <figure typeof="schema:SoftwareSourceCode" resource="#role-example">
+                <figcaption>
+                    <span property="schema:name"></span>
+                    <span property="schema:description">
+                            The user's visit page.
+                    </span>
+                </figcaption>
+                <img src="users%20pages/User%20Visits.png" alt="User visits">
+            </figure>
+        </li>
+
+        <li>
+            <h3 id="make-summary">Make a summary page</h3>
+
+            <p>
+                The summary.php file is responsible for displaying a form to create a summary of a visit. Here's a
+                description of the elements and important code segments in the file:
+            </p>
+            <p>
+                The HTML structure consists of a &lt;header&gt; containing a logo and a navigation menu, allowing users
+                to navigate to different pages. The form is contained within a &lt;form&gt; element with the class
+                "summary" and its action is set to "save_summary.php" for processing the form data.
+            </p>
+            <p>
+                Inside the PHP code:
+            </p>
+            <ul>
+                <li>The session is started, and if the user is not logged in, the $_SESSION['is_logged_in'] variable is
+                    set to false.
+                </li>
+                <li>A call is made to retrieve the appointment data using the retrieve_visit.php script, passing the
+                    visit ID via GET parameters.
+                </li>
+                <li>The response is decoded from JSON and stored in variables for further use.</li>
+                <li>The retrieved data is then used to populate the form fields. For example, the visit nature is
+                    displayed using radio buttons, and the selected option is determined based on the stored value in
+                    the response.
+                </li>
+                <li>The form includes inputs for selecting witnesses, specifying the prisoner's health, choosing the
+                    visit date, selecting the visit hours using a range input, and entering objects/data offered by the
+                    convict and provided to the convict.
+                </li>
+                <li>Finally, there is a textarea for entering the summary of the visit.</li>
+            </ul>
+            <ul>
+                <li>The session is started, and relevant form data is assigned to variables, such as $witnesses,
+                    $prisoner_health, $visit_nature, etc.
+                </li>
+                <li>The database connection is established using the configuration file and a database query is prepared
+                    to update the visits_summary table with the provided data.
+                </li>
+                <li>The prepared statement is executed, and if successful, the user is redirected to the homepage.
+                    Otherwise, any errors encountered during the query execution are displayed.
+                </li>
+            </ul>
+            <p>
+                Overall, these files work together to display a form for creating a visit summary and process the
+                submitted data to store it in the database.
+            </p>
+
+
+            <figure typeof="schema:SoftwareSourceCode" resource="#role-example">
+                <figcaption>
+                    <span property="schema:name"></span>
+                    <span property="schema:description">
+                            The user's make a summary about visit page.
+                    </span>
+                </figcaption>
+                <img src="users%20pages/Summary.png" alt="Make a summary">
+            </figure>
+        </li>
+
+        <li>
+            <h3 id="profile-page">Profile page</h3>
+
+            <p>
+                The profile.php file is responsible for displaying the user's profile information on the webpage. It
+                ensures that the user is logged in before accessing the profile page. The page consists of a header,
+                user details table, and a sidebar with profile-related options.
+            </p>
+            <p>
+                HTML Structure:
+            </p>
+            <ul>
+                <li>The HTML document starts with the &lt;!DOCTYPE html&gt; declaration and the &lt;html&gt; tag with
+                    the "en" language attribute.
+                </li>
+                <li>The &lt;head&gt; section contains meta tags for character encoding, compatibility settings, and
+                    viewport configuration.
+                </li>
+                <li>The page title is set as "Profile" using the &lt;title&gt; tag.</li>
+                <li>External CSS files, navstyle.css and profile.css, are linked for styling the navigation bar and
+                    profile page, respectively.
+                </li>
+                <li>Inline CSS is used to define custom CSS variables for color definitions.</li>
+            </ul>
+            <p>
+                Page Content:
+            </p>
+            <ul>
+                <li>The &lt;header&gt; section contains a logo and a responsive navigation bar.</li>
+                <li>The navigation bar has a list of menu items, including "Home," "Profile," "About Us," "Contact," and
+                    "FAQ." The "Profile" item is conditionally displayed based on the user's login status.
+                </li>
+                <li>The main content is wrapped in a &lt;div&gt; container with the class "container."</li>
+                <li>Inside the container, there are three sections: "left-side," "middle," and "right-side."</li>
+                <li>The "left-side" section contains a table displaying user details such as username, name, surname,
+                    email, and secondary email (if available).
+                </li>
+                <li>If the user has an "admin" role, an additional row indicating the role is displayed.</li>
+                <li>The "middle" section is empty in the provided code.</li>
+                <li>The "right-side" section contains a sidebar with profile-related options.</li>
+                <li>The "Profile" option is active by default.</li>
+                <li>Other options include "Logout," "Change Password," and "Change Info."</li>
+            </ul>
+            <p>
+                PHP Code:
+            </p>
+            <ul>
+                <li>PHP session is started using session_start().</li>
+                <li>If the "username" session variable is not set, the user is redirected to the login page.</li>
+                <li>User details are retrieved from session variables and stored in respective PHP variables.</li>
+                <li>The user details are then echoed inside the table rows using PHP string interpolation.</li>
+                <li>If the user has an "admin" role, an additional row indicating the role is echoed.</li>
+                <li>PHP is also used for conditional rendering of the "Profile" menu item in the navigation bar based on
+                    the user's login status.
+                </li>
+            </ul>
+            <p>
+                Overall, profile.php serves as a secure page that displays the user's profile information and provides
+                options to manage the profile, including logout, changing the password, and updating user information.
+                The page follows a responsive design and utilizes PHP to personalize the content based on the user's
+                session data.
+            </p>
+
+            <figure typeof="schema:SoftwareSourceCode" resource="#role-example">
+                <figcaption>
+                    <span property="schema:name"></span>
+                    <span property="schema:description">
+                            The user's profile page where you can logout, change information and
+                        password.
+                    </span>
+                </figcaption>
+                <img src="users%20pages/Profile.png" alt="Profile page">
+                <img src="users%20pages/user-logout.png" alt="Profile page hover Logout">
+            </figure>
+
+        </li>
+    </ol>
+</section>
+
+
 
 <section id="admin">
     <h2>Admin's pages</h2>
     <ol>
-        <li><section id="Admin_Homepage">
-            <h3>The homepage for admin</h3>
-            <p>
-                The code starts by initializing the session using <code>session_start()</code>
-                and checks if the <code>is_logged_in</code> session variable is set. If not,
-                it sets it to false.
-                The code then proceeds to generate the HTML for the homepage.
-                The HTML structure includes a header section with a logo and a
-                navigation menu. The menu items include "Home," "Profile"
-                (if the user is logged in), "Login" (if the user is not logged in),
-                "About Us," "Contact," and "FAQ."
-                Inside the <code>div</code> element, there are three main sections:
-                left-side, middle, and right-side.
-                In the left-side section, a welcome message is displayed along with a
-                description of how the platform can help. If the user is logged in
-                and is <b>admin</b>, additional content
-                is displayed along with buttons accessing the admin panel and export panel.
-                In the right-side section, there is a block that displays a personalized
-                welcome message. If the user is logged in, it shows the username and provides
-                a link to the user's profile.
-            </p>
-            <figure typeof="schema:SoftwareSourceCode" resource="#role-example" >
-                <figcaption>
-                    <span property="schema:name"></span>
-                    <span property="schema:description">
+        <li>
+            <section id="Admin_Homepage">
+                <h3>The homepage for admin</h3>
+                <p>
+                    The code starts by initializing the session using <code>session_start()</code>
+                    and checks if the <code>is_logged_in</code> session variable is set. If not,
+                    it sets it to false.
+                    The code then proceeds to generate the HTML for the homepage.
+                    The HTML structure includes a header section with a logo and a
+                    navigation menu. The menu items include "Home," "Profile"
+                    (if the user is logged in), "Login" (if the user is not logged in),
+                    "About Us," "Contact," and "FAQ."
+                    Inside the <code>div</code> element, there are three main sections:
+                    left-side, middle, and right-side.
+                    In the left-side section, a welcome message is displayed along with a
+                    description of how the platform can help. If the user is logged in
+                    and is <b>admin</b>, additional content
+                    is displayed along with buttons accessing the admin panel and export panel.
+                    In the right-side section, there is a block that displays a personalized
+                    welcome message. If the user is logged in, it shows the username and provides
+                    a link to the user's profile.
+                </p>
+                <figure typeof="schema:SoftwareSourceCode" resource="#role-example">
+                    <figcaption>
+                        <span property="schema:name"></span>
+                        <span property="schema:description">
                     The admin homepage.
               </span>
-                </figcaption>
-                <img src="admin-pages/admin-homepage.png" alt="Admin Homepage">
-                <img src="admin-pages/admin-homepage-hover.png" alt="Admin Hover Username">
+                    </figcaption>
+                    <img src="admin-pages/admin-homepage.png" alt="Admin Homepage">
+                    <img src="admin-pages/admin-homepage-hover.png" alt="Admin Hover Username">
 
-            </figure>
+                </figure>
 
-        </section>
+            </section>
         </li>
 
-        <li id="admin_panel">
+        <li id="Admin_panel">
             <h2>Admin Panel</h2>
             <p>
                 The search page allows admins to search for usernames.
@@ -275,7 +1162,7 @@
                 results. Each option is a link to an admin visit page specific to the selected
                 user. If no results are found, a message indicating "No results found!" is displayed.
             </p>
-            <figure typeof="schema:SoftwareSourceCode" resource="#role-example" >
+            <figure typeof="schema:SoftwareSourceCode" resource="#role-example">
                 <figcaption>
                     <span property="schema:name"></span>
                     <span property="schema:description">
@@ -288,7 +1175,7 @@
             </figure>
         </li>
 
-        <li id="Admin Visit">
+        <li id="Admin_Visit">
             <h2>Specified user's appointments</h2>
             <p>
                 The session is started, and the <code>is_logged_in</code> session variable is checked to determine
@@ -310,7 +1197,7 @@
 
             </p>
 
-            <figure typeof="schema:SoftwareSourceCode" resource="#role-example" >
+            <figure typeof="schema:SoftwareSourceCode" resource="#role-example">
                 <figcaption>
                     <span property="schema:name"></span>
                     <span property="schema:description">
@@ -323,7 +1210,7 @@
             </figure>
         </li>
 
-        <li id="Edit Appointments">
+        <li id="Admin_Edit_Appointments">
             <h2>Edit Appointments</h2>
             <p>
                 This page is responsible for editing an appointment in a
@@ -345,7 +1232,7 @@
                 and ensures proper authorization and data handling.
             </p>
 
-            <figure typeof="schema:SoftwareSourceCode" resource="#role-example" >
+            <figure typeof="schema:SoftwareSourceCode" resource="#role-example">
                 <figcaption>
                     <span property="schema:name"></span>
                     <span property="schema:description">
@@ -356,7 +1243,7 @@
             </figure>
         </li>
 
-        <li id="Export">
+        <li id="Admin_Export">
             <h2>Export data about the user</h2>
             <ul>
                 <li>
@@ -389,15 +1276,15 @@
                         JSON and made available for download.
                     </p>
 
-                    <figure typeof="schema:SoftwareSourceCode" resource="#role-example" >
-                    <figcaption>
-                        <span property="schema:name"></span>
-                        <span property="schema:description">
+                    <figure typeof="schema:SoftwareSourceCode" resource="#role-example">
+                        <figcaption>
+                            <span property="schema:name"></span>
+                            <span property="schema:description">
                             The file with information in JSON.
                         </span>
-                    </figcaption>
-                    <img src="admin-pages/admin-export-JSON-data.png" alt="Admin JSON Data">
-                </figure>
+                        </figcaption>
+                        <img src="admin-pages/admin-export-JSON-data.png" alt="Admin JSON Data">
+                    </figure>
                 </li>
 
                 <li>
@@ -428,7 +1315,7 @@
                         download. Each row in the CSV file represents a user or an appointment with their
                         respective information.
                     </p>
-                    <figure typeof="schema:SoftwareSourceCode" resource="#role-example" >
+                    <figure typeof="schema:SoftwareSourceCode" resource="#role-example">
                         <figcaption>
                             <span property="schema:name"></span>
                             <span property="schema:description">
@@ -466,7 +1353,7 @@
                         This code generates an HTML page that presents the user data and associated inmate
                         appointments in a tabular format.
                     </p>
-                    <figure typeof="schema:SoftwareSourceCode" resource="#role-example" >
+                    <figure typeof="schema:SoftwareSourceCode" resource="#role-example">
                         <figcaption>
                             <span property="schema:name"></span>
                             <span property="schema:description">
@@ -481,9 +1368,10 @@
         </li>
 
         <li>
-            <h2>Export Panel</h2>
+            <h2 id="Admin_Export_All">Export Panel</h2>
             <p>
-                The code starts with a PHP session management. If the session variable <code>is_logged_in</code> is not set,
+                The code starts with a PHP session management. If the session variable <code>is_logged_in</code> is not
+                set,
                 it is initialized as false.
 
                 The form has a class of "export" and an action attribute pointing to "export_all_script.php"
@@ -505,7 +1393,8 @@
             <p>
                 The code starts with the import of required dependencies and the database connection setup
                 using DbConnection.php and the config.php file.
-                Three functions are defined: <code>exportJSON</code>, <code>exportCSV</code>, and <code>exportHTML</code>. These functions handle
+                Three functions are defined: <code>exportJSON</code>, <code>exportCSV</code>, and
+                <code>exportHTML</code>. These functions handle
                 the data export in JSON, CSV, and HTML formats, respectively.
                 The database connection is established using <code>DbConnection::getInstance()->getConnection()</code>.
                 Inside the <code>$_SERVER['REQUEST_METHOD'] == 'POST'</code> block, the script retrieves the necessary
@@ -525,7 +1414,7 @@
                 Finally, the script handles cases where an invalid option is selected and handles
                 unauthorized access.
             </p>
-            <figure typeof="schema:SoftwareSourceCode" resource="#role-example" >
+            <figure typeof="schema:SoftwareSourceCode" resource="#role-example">
                 <figcaption>
                     <span property="schema:name"></span>
                     <span property="schema:description">
@@ -538,19 +1427,19 @@
         </li>
 
         <li>
-            <h2>Add Inmate</h2>
+            <h2 id="Admin_Add">Add Inmate</h2>
             <p>
                 The code starts with session management. It starts the session and checks if the
                 <code>is_logged_in</code> session variable is set. If not, it sets it to false.
                 The form is contained within a <code>form</code> element and has the action attribute set to
-            "save_inmate.php", indicating that the form data will be submitted for processing.
-            Inside the form, there is a form header with a heading and a message section. The message
-            section displays a success or error message based on the value of the success parameter
-            passed in the URL. If the value is 1, a success message is displayed. If the value is 0,
-            an error message is displayed.
-            The form body contains several form groups, each with a label and an input field. The input
-            fields have attributes such as type, id, name, class, placeholder, pattern, title, and
-            required to define their behavior and validation rules.
+                "save_inmate.php", indicating that the form data will be submitted for processing.
+                Inside the form, there is a form header with a heading and a message section. The message
+                section displays a success or error message based on the value of the success parameter
+                passed in the URL. If the value is 1, a success message is displayed. If the value is 0,
+                an error message is displayed.
+                The form body contains several form groups, each with a label and an input field. The input
+                fields have attributes such as type, id, name, class, placeholder, pattern, title, and
+                required to define their behavior and validation rules.
             </p>
 
             <p>
@@ -576,7 +1465,7 @@
             </p>
 
 
-            <figure typeof="schema:SoftwareSourceCode" resource="#role-example" >
+            <figure typeof="schema:SoftwareSourceCode" resource="#role-example">
                 <figcaption>
                     <span property="schema:name"></span>
                     <span property="schema:description">
