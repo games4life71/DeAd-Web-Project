@@ -64,8 +64,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $export_data['function'] = $row['function'];
 
     $user_id = $row['user_id'];
+    //select all the appointments of a user
 
-    $stmt = $conn->prepare("SELECT firstname ,lastname,relationship,visit_nature,source_of_income,visit_start,visit_end FROM appointments WHERE person_id = ?");
+    $stmt = $conn->prepare("SELECT firstname ,lastname,relationship,visit_nature,source_of_income,visit_start,visit_end,appointment_id FROM appointments WHERE person_id = ?");
     $stmt->bind_param("i", $user_id);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -74,9 +75,48 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     while ($row = $result->fetch_assoc()) {
         $appointments[] = $row;
     }
-    //print_r($appointments);
 
+    $summaries = array();
+    $i = 0;
+    $n = count($appointments);
+    while($i<$n)
+    {
+       $stmt = $conn->prepare("SELECT visit_date, witnesses, items_provided_to_convict, 
+       items_offered_by_convict, health_status, summary FROM visits_summary WHERE appointment_refID = ?");
+       $stmt->bind_param("i", $appointments[$i]['appointment_id']);
+       $stmt->execute();
+       $result = $stmt->get_result();
+       $row = $result->fetch_assoc();
+       $summaries[] = $row;
+       $i++;
 
+    }
+
+    $inmatesArr = array();
+    $namesOfInmates = array();
+    $i = 0;
+    $n = count($appointments);
+
+    //select the id of the inmates
+
+    while($i < $n){
+        $stmt = $conn->prepare("SELECT inmate_id FROM inmates where fname = ? and lname = ?");
+        $stmt->bind_param("ss", $appointments[$i]['firstname'], $appointments[$i]['lastname']);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row = $result->fetch_assoc();
+        $inmatesArr[] = $row;
+        $namesOfInmates[] = $appointments[$i]['firstname'] . " " . $appointments[$i]['lastname'];
+        $i++;
+    }
+
+    //add the name to summaries array
+    $i = 0;
+    $n = count($summaries);
+    while($i<$n){
+        $summaries[$i]['name'] = $namesOfInmates[$i];
+        $i++;
+    }
 
 }
 ?>
@@ -206,6 +246,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
                 }
             ?>
 
+    </table>
+    <br>
+    <table>
+        <tr>
+            <th>Prisoner's name</th>
+            <th>Visit date</th>
+            <th>Witnesses</th>
+            <th>Items provided to convict</th>
+            <th>Items offered by convict</th>
+            <th>Health status</th>
+            <th>Summary</th>
+        </tr>
+        <?php
+        $i = 0;
+        $n = count($summaries);
+        while( $i < $n){
+            ?>
+            <tr>
+                <td><?php echo $summaries[$i]['name']; ?></td>
+                <td><?php echo $summaries[$i]['visit_date']; ?></td>
+                <td><?php echo $summaries[$i]['witnesses']; ?></td>
+                <td><?php echo $summaries[$i]['items_provided_to_convict']; ?></td>
+                <td><?php echo $summaries[$i]['items_offered_by_convict']; ?></td>
+                <td><?php echo $summaries[$i]['health_status']; ?></td>
+                <td><?php echo $summaries[$i]['summary']; ?></td>
+            </tr>
+            <?php
+            $i = $i + 1;
+        }
+        ?>
     </table>
 </section>
 </body>

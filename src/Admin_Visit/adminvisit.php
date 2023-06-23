@@ -96,7 +96,7 @@ try {
 $username = $_GET['username'];
 ?>
 
-<form class="visit" action="#" method="get">
+<div class="visit" >
     <div class="form-header">
         <h1>Edit appointments of <?php echo $username; ?></h1>
     </div>
@@ -190,7 +190,7 @@ $username = $_GET['username'];
 <!--    </div>-->
 
 
-</form>
+</div>
 
 
 <script>
