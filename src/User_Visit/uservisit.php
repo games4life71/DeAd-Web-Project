@@ -62,7 +62,8 @@ require_once '../../vendor/autoload.php';
 
                 <?php
                 //use curl to make a request to the api
-                $url = "http://localhost/src/User_Visit/retrieve_appointments.php" . "?id=" . $_SESSION['id'];
+                $base_url = "http://ec2-18-184-17-109.eu-central-1.compute.amazonaws.com";
+                $url = $base_url."/src/User_Visit/retrieve_appointments.php" . "?id=" . $_SESSION['id'];
                // $curl = new Curl\Curl();
                 $curl = curl_init();
 

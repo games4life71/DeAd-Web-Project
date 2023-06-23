@@ -46,7 +46,8 @@ if (!isset($_SESSION['is_logged_in'])) {
     <?php
     //session_start();
     //make a call to retrieve appointment
-    $url_with_id = "http://localhost/src/Summary-Form/retrieve_visit.php" . "?visit_id=" . $_GET['visit_id'];
+    $base_url = "http://ec2-18-184-17-109.eu-central-1.compute.amazonaws.com";
+    $url_with_id = $base_url."/src/Summary-Form/retrieve_visit.php" . "?visit_id=" . $_GET['visit_id'];
     $curl = curl_init($url_with_id);
 
     if(isset($_SESSION['token']))
