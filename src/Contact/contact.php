@@ -46,21 +46,21 @@ if (!isset($_SESSION['is_logged_in'])) {
 
 <div class="contact_info">
     <div class="address">
-        <img src="../assets/Contact/address.png" alt="adress_img">
+        <img src="../../assets/Contact/address.png" alt="adress_img">
         <h2>ADDRESS </h2>
         <p> 1234, ABC Street, XYZ City, 123456 </p>
         <p> 1234, ABC Street, XYZ City, 123456 </p>
     </div>
 
     <div class="phone">
-        <img src="../assets/Contact/phone.png" alt="phone_img">
+        <img src="../../assets/Contact/phone.png" alt="phone_img">
         <h2>PHONE</h2>
         <p> Romania : +40 312 345 678 </p>
         <p> International : +1 123 456 7890 </p>
     </div>
 
     <div class="email">
-        <img src="../assets/Contact/email.png" alt="email_img">
+        <img src="../../assets/Contact/email.png" alt="email_img">
         <h2>EMAIL</h2>
         <p> admin@detentionadmin.com</p>
         <p> admin@detentionadmin.com </p>
