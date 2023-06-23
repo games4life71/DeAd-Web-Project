@@ -2,8 +2,11 @@
 <html lang="en">
 <?php
 
-
 session_start();
+require_once '../../vendor/autoload.php';
+
+
+
 //redirect to retrieve_appointment.php  to retrieve the appointments
 //header('Location: retrieve_appointments.php');
 
@@ -40,9 +43,9 @@ session_start();
         }
         ?>
 
-        <li><a href="../About/about.html">About Us</a></li>
-        <li><a href="../Contact/contact.html">Contact</a></li>
-        <li><a href="../FAQ/faq.html">FAQ</a></li>
+        <li><a href="../About/about.php">About Us</a></li>
+        <li><a href="../Contact/contact.php">Contact</a></li>
+        <li><a href="../FAQ/faq.php">FAQ</a></li>
     </ul>
 </header>
 
@@ -59,14 +62,24 @@ session_start();
 
                 <?php
                 //use curl to make a request to the api
-                $url = "http://localhost/src/User_Visit/retrieve_appointments.php" . "?id=" . $_SESSION['id'];
+                $base_url = "http://ec2-18-184-17-109.eu-central-1.compute.amazonaws.com";
+                $url = $base_url."/src/User_Visit/retrieve_appointments.php" . "?id=" . $_SESSION['id'];
+               // $curl = new Curl\Curl();
                 $curl = curl_init();
+
+                //$curl->setOpt(CURLOPT_RETURNTRANSFER, true);
                 curl_setopt($curl, CURLOPT_URL, $url);
+               //$curl->setOpt(CURLOPT_URL, $url);
                 curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
                 //set the parameter id
-
+               // $curl->setOpt(CURLOPT_HTTPGET, true);
                 curl_setopt($curl, CURLOPT_HTTPGET, true);
+
+
+               //curl_exec($curl);
+                //$curl_response = $curl->response;
                 $curl_response = curl_exec($curl);
+               // $curl->close();
                 curl_close($curl);
                 $response = json_decode($curl_response, true);
                 //parse the response
@@ -75,7 +88,13 @@ session_start();
                     //button to create an appointment
                     echo '<div class="button-center">';
                     echo '<h2>You have no appointments</h2>';
+
                     echo '<a href="../Appointment/appointment.php" style="color:  #5c4b4b">Create an appointment</a>';
+
+                    //echo '<a href="../Appointment/editappointment.php" style="color:  #5c4b4b">Create an appointment</a>';
+
+                    //echo '<a href="../Appointment/editappointment.php" style="color:  #5c4b4b">Create an appointment</a>';
+
                     echo '</div>';
                     exit();
                 }

@@ -9,7 +9,7 @@
 }
 
 body {
-    background:  linear-gradient(to bottom, var(--lightblue) 10%, var(--darkblue) 75%);
+    background: linear-gradient(to bottom, var(--lightblue), var(--darkblue)) fixed;
     margin: 0;
     padding: 0;
 }
@@ -19,7 +19,8 @@ body::-webkit-scrollbar{
 }
 
 .visit{
-    width:650px;
+    width: 90%;
+    max-width:650px;
     margin:100px auto;
     background: var(--offwhite);
     border-radius: 10px;
@@ -28,6 +29,7 @@ body::-webkit-scrollbar{
 .form-header  {
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    /*margin-top: 8rem;*/
 }
 
 .form-header h1 {
@@ -39,16 +41,63 @@ body::-webkit-scrollbar{
 }
 
 
+.button-center{
+    border: 5px solid var(--offpink);
+    margin: 0 auto;
+    border-radius: 10px;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+    color: var(--brown);
+}
 
+.form-footer {
+    clear: both;
+    text-align: center;
+}
+
+.form-footer a{
+    color: var(--offwhite);
+    text-decoration: none;
+
+}
+
+.form-footer h1{
+    border-bottom:1px solid #cccccc;
+    font-size: 20px;
+    color: var(--brown);
+    text-align: center;
+}
+
+.export-button {
+    display:inline-block;
+    margin-left:5px;
+    margin-right:5px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: 150;
+    letter-spacing: 1px;
+    padding: 10px 15px 10px;
+    outline: 0;
+    border: 1px solid var(--brown);
+    cursor: pointer;
+    position: relative;
+    background-color: var(--brown);
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+
+}
 
 
 .form-body {
     padding:10px 40px;
-   /* color:#666;*/
+    /* color:#666;*/
 }
 
 .form-group{
     margin-bottom:20px;
+
 }
 
 .form-body .label-title {
@@ -151,30 +200,40 @@ body::-webkit-scrollbar{
     text-align: center;
 }
 
-/* Style the visitor list */
 .visitor-list {
     list-style: none;
     padding: 0;
     margin: 20px 0;
     display: flex;
     flex-wrap: wrap;
-  }
-  
-  /* Style each list item */
-  .visitor-list li {
-    width: 50%;
+    justify-content: center;
+}
+
+.visitor-list li {
+    width: 90%;
+    max-width: 400px;
     padding: 10px;
     box-sizing: border-box;
     border: 1px solid #ccc;
-  }
-  
-  /* Style the visitor information */
-  .visitor-info {
     margin-bottom: 10px;
-  }
-  
-  /* Style the edit button */
-  .edit-button {
+}
+
+.visitor-info {
+    margin-bottom: 10px;
+}
+
+.visitor-info table {
+    width: 100%;
+}
+
+.visitor-info th,
+.visitor-info td {
+    display: table-cell;
+    text-align: center;
+}
+
+/* Style the edit button */
+.edit-button {
     background-color: var(--brown);
     color: white;
     border: none;
@@ -186,9 +245,9 @@ body::-webkit-scrollbar{
     margin-top: 10px;
     cursor: pointer;
     border-radius: 10px;
-  }
+}
 
-    .delete-button {
+.delete-button {
     background-color: rgb(143, 0, 0);
     color: white;
     border: none;
@@ -200,13 +259,44 @@ body::-webkit-scrollbar{
     margin-top: 10px;
     cursor: pointer;
     border-radius: 10px;
-  }
-  
-  /* Change the width of list items on smaller screens */
-  @media (max-width: 768px) {
-    .visitor-list li {
-      width: 100%;
-    }
-  }
-  
+}
 
+/* Change the width of list items on smaller screens */
+@media (max-width: 768px) {
+    body {
+        background: linear-gradient(to bottom, var(--lightblue), var(--darkblue));
+    }
+
+    .visit {
+        width: 90%;
+        max-width: 650px;
+        padding: 3rem;
+    }
+
+    .form-body {
+        padding: 10px;
+    }
+
+    .button-center {
+        width: 100%;
+    }
+
+    .visitor-list li {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+
+    .export-button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .visitor-info th,
+    .visitor-info td {
+        display: block;
+        width: auto;
+        text-align: center;
+    }
+}

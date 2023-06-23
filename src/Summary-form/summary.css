@@ -19,6 +19,7 @@ body::-webkit-scrollbar {
 }
 
 .summary {
+    width: 90%;
     max-width: 650px;
     margin: 100px auto;
     background: var(--offwhite);

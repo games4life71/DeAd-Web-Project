@@ -45,6 +45,24 @@
                 } else if ($_GET['error'] == 3) {
                     echo '<p class="error"  style="font-size: 13px;  color: red;  padding: 3px; ">New password cannot be the same as current password !</p>';
                 }
+                else if ($_GET['error'] == 4)
+                {
+                    if(isset($_GET['strength']))
+                    {
+                        if($_GET['strength'] == 0)
+                        {
+                            echo '<p class="error"  style="font-size: 13px;  color: red;  padding: 3px; ">Password is not strong!!</p>';
+                        }
+                        else if($_GET['strength'] == 1)
+                        {
+                            echo '<p class="error"  style="font-size: 13px;  color: red;  padding: 3px; ">Try using upper letters</p>';
+                        }
+                        else if($_GET['strength'] == 2)
+                        {
+                            echo '<p class="error"  style="font-size: 13px;  color: red;  padding: 3px; ">Try using some digits !</p>';
+                        }
+                    }
+                }
             }
             ?>
 

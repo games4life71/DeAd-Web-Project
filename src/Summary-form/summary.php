@@ -1,3 +1,11 @@
+<?php
+session_start(); //start the session
+if (!isset($_SESSION['is_logged_in'])) {
+    $_SESSION['is_logged_in'] = false;
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,45 +17,70 @@
     <title>Summary</title>
 </head>
 <body>
-<!--<header class="header">-->
-<!--    <a href="../HomePage/homepage.php"><img src="../../assets/Logo/Asset%201.svg" class="logo" alt="logo"></a>-->
-<!--    <input class="menu-btn" type="checkbox" id="menu-btn"/>-->
-<!--    <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>-->
-<!--    <ul class="menu">-->
-<!--        <li><a href="../HomePage/homepage.php">Home</a></li>-->
-<!--        <li><a href="../Login_Module/login.php">Login</a></li>-->
-<!--        <li><a href="../About/about.html">About Us</a></li>-->
-<!--        <li><a href="../Contact/contact.html">Contact</a></li>-->
-<!--        <li><a href="../FAQ/faq.html">FAQ</a></li>-->
-<!--    </ul>-->
-<!--</header>-->
+<header class="header">
+    <a href="../HomePage/homepage.php"><img src="../../assets/Logo/Asset%201.svg" class="logo" alt="logo"></a>
+    <input class="menu-btn" type="checkbox" id="menu-btn"/>
+    <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+    <ul class="menu">
+        <li><a href="../HomePage/homepage.php">Home</a></li>
+        <?php
+        if($_SESSION['is_logged_in'])
+        {
+            echo '<li><a href="../UserProfile/profile.php">Profile</a></li>';
+        }
+        else
+        {
+            echo'<li><a href="../Login_Module/login.php">Login</a></li>';
+        }
+        ?>
+        <li><a href="../About/about.html">About Us</a></li>
+        <li><a href="../Contact/contact.html">Contact</a></li>
+        <li><a href="../FAQ/faq.html">FAQ</a></li>
+    </ul>
+</header>
 <form class="summary" action="save_summary.php" method="POST">
 
     <div class="form-header">
         <h1>Summary of the visit</h1>
     </div>
     <?php
-    session_start();
+    //session_start();
     //make a call to retrieve appointment
-    $url_with_id = "http://localhost/src/Summary-Form/retrieve_visit.php" . "?visit_id=" . $_GET['visit_id'];
+    $base_url = "http://ec2-18-184-17-109.eu-central-1.compute.amazonaws.com";
+    $url_with_id = $base_url."/src/Summary-form/retrieve_visit.php" . "?visit_id=" . $_GET['visit_id'];
     $curl = curl_init($url_with_id);
 
     if(isset($_SESSION['token']))
     {
         curl_setopt($curl,CURLOPT_HTTPHEADER,array('Authorization: Bearer '.$_SESSION['token']));
     }
+
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($curl, CURLOPT_HTTPGET, true);
     $response = curl_exec($curl);
     curl_close($curl);
     $response = json_decode($response, true);
-    print_r($response);
+
+    //print_r($response);
+
+    //print_r($response);
+
+    //print_r($response);
+
 
     $GLOBALS['visit_date'] = $response['date'];
     $GLOBALS['visit_nature'] = $response['visit_nature'];
     $visit_start = intval($response['visit_start']);
     $visit_end = intval($response['visit_end']);
-    $GLOBALS['visit_time'] = $visit_start . " - " . $visit_end;
+
+    $difference = $visit_end - $visit_start;
+    $GLOBALS['visit_time'] = $difference;
+    //print_r($GLOBALS['visit_time']);
+
+//    $GLOBALS['visit_time'] = $visit_start . " - " . $visit_end;
+//
+//
+//    $GLOBALS['visit_time'] = $visit_start . " - " . $visit_end;
 
 
     //send the appointment id to the next page
@@ -73,17 +106,31 @@
                     <div class="input-group">
                         <?php
                         if($GLOBALS['visit_nature'] == "parental")
-                            echo "<label><input type='radio' name='visit_nature' value='Parental' checked='checked'>Parental</label>";
+
+                            echo "<label><input type='radio' name='visit_nature' value='parental' checked='checked'>Parental</label>";
                         else
-                            echo "<label><input type='radio' name='visit_nature' value='Parental'>Parental</label>";
+                            echo "<label><input type='radio' name='visit_nature' value='parental'>Parental</label>";
+
                         if($GLOBALS['visit_nature'] == "friendship")
-                            echo "<label><input type='radio' name='visit_nature' value='Friendship' checked='checked'>Friendship</label>";
+                            echo "<label><input type='radio' name='visit_nature' value='friendship' checked='checked'>Friendship</label>";
                         else
-                            echo "<label><input type='radio' name='visit_nature' value='Friendship'>Friendship</label>";
+                            echo "<label><input type='radio' name='visit_nature' value='friendship'>Friendship</label>";
+
                         if($GLOBALS['visit_nature'] == "lawyer")
-                            echo "<label>><input type='radio' name='visit_nature' value='Lawyer' checked='checked'>Lawyer</label";
+                            echo "<label><input type='radio' name='visit_nature' value='lawyership' checked='checked'>Lawyer</label>";
                         else
-                            echo "<label><input type='radio' name='visit_nature' value='Lawyer'>Lawyer</label>";
+                            echo "<label><input type='radio' name='visit_nature' value='lawyership'>Lawyer</label>";
+
+
+//                        if($GLOBALS['visit_nature'] == "friendship")
+//                            echo "<label><input type='radio' name='visit_nature' value='Friendship' checked='checked'>Friendship</label>";
+//                        else
+//                            echo "<label><input type='radio' name='visit_nature' value='Friendship'>Friendship</label>";
+//                        if($GLOBALS['visit_nature'] == "lawyer")
+//                            echo "<label>><input type='radio' name='visit_nature' value='Lawyer' checked='checked'>Lawyer</label";
+//                        else
+//                            echo "<label><input type='radio' name='visit_nature' value='Lawyer'>Lawyer</label>";
+
                         ?>
 
                     </div>
@@ -99,9 +146,9 @@
                             <input type="radio" name="witnesses" value="legal_gurdian" id="legal_gurdian"> Legal
                             Guardian</label>
                         <label for="doctor">
-                            <input type="radio" name="witnesses" value="doctor" id="doctor"> Doctor</label>
+                            <input type="radio" name="witnesses" value="doctor" id="doctor" > Doctor</label>
                         <label for="nurse">
-                            <input type="radio" name="witnesses" value="nurse" id="nurse"> Nurse</label>
+                            <input type="radio" name="witnesses" value="nurse" id="nurse"  >Nurse</label>
                     </div>
                 </div>
 
@@ -117,12 +164,21 @@
 
                 <div class="form-group right">
                     <label for="date" class="label-title">Visit date:</label>
-                    <input type="date" id="date" name="visit_date" class="form-input" required="required">
+                    <?php
+                    echo "<input type='date' id='date' name='visit_date' class='form-input' value='" . $GLOBALS['visit_date'] . "' required='required'>";
+                    ?>
+<!--                    <input type="date" id="date" name="visit_date" class="form-input" required="required">-->
                 </div>
 
                 <div class="form-group right">
                     <label for="time" class="label-title">Hours (max 5) </label>
+
+                    <input type="range" min="0" max="5" step="1"  id="time" name="visit_hours" class="form-input" onChange="change();" value="<?php echo $GLOBALS['visit_time']; ?>"
+
                     <input type="range" min="0" max="5" step="1" value="0" id="time" name="visit_hours" class="form-input" onChange="change();"
+
+                    <input type="range" min="0" max="5" step="1" value="0" id="time" name="visit_hours" class="form-input" onChange="change();"
+
                            style="height:28px;width:78%;padding:0;">
                 </div>
 

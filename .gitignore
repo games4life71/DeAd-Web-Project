@@ -1,2 +1,10 @@
 /aws/
 config.php
+vendor/*
+.idea/
+composer.lock
+composer.phar
+composer.json
+*.sql
+```
+

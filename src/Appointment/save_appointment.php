@@ -1,6 +1,9 @@
 <?php
 
 
+use Aws\Exception\AwsException;
+use Aws\Ses\SesClient;
+require '../../aws/aws/aws-autoloader.php';
 function compress($image)
 {
     $info = getimagesize($image);
@@ -66,7 +69,7 @@ $ext = strtolower(pathinfo($_FILES['profile_photo']['name'], PATHINFO_EXTENSION)
 
 //check if the extension is valid
 if (!in_array($ext, $valid_extensions)) {
-    header('Location: appointment.php?error=2'); //invalid extension
+    header('Location: ../Appointment/appointment.php?error=2'); //invalid extension
     exit();
 }
 
@@ -82,7 +85,21 @@ $stmt->execute();
 $result = $stmt->get_result();
 $row = $result->fetch_assoc();
 if ($row == null) {
-    header('Location: appointment.php?error=1'); //inmate does not exist
+    header('Location: editappointment.php?error=1'); //inmate does not exist
+    exit();
+}
+
+//check if the inmate has a visit in the same time interval
+$stmt3 = $conn->prepare("SELECT * FROM appointments WHERE date = ? AND visit_start<= ? and visit_end >= ?");
+$stmt3->bind_param("sss", $date, $visit_start, $visit_end);
+$stmt3->execute();
+$result = $stmt3->get_result();
+$stmt3->close();
+//check if the inmate has a visit in the same time interval
+if ($result->num_rows > 0) {
+    echo "The inmate has a visit in the same time interval";
+    header('Location: ../Appointment/appointment.php?error=1'); //the inmate has a visit in the same time interval
+
     exit();
 }
 
@@ -96,6 +113,8 @@ $stmt3->close();
 if ($result->num_rows > 0) {
     echo "The inmate has a visit in the same time interval";
     header('Location: ../Summary-form/summary.php?error=1'); //the inmate has a visit in the same time interval
+
+
     exit();
 }
 
@@ -166,5 +185,112 @@ print("Result: ");
 print($result);
 echo $stmt->error;
 $stmt->close();
+
+
+
+//send an email to the User
+$stmt = $conn->prepare("SELECT email FROM users WHERE username = ?");
+$stmt->bind_param("s", $username);
+$stmt->execute();
+$result = $stmt->get_result();
+$row = $result->fetch_assoc();
+$email = $row['email'];
+$stmt->close();
+
+//send an email to the User
+
+$SesClient = new SesClient(
+
+    [
+        'profile' => 'default',
+        'region' => 'us-east-2',
+        'version' => 'latest'
+    ]
+
+);
+
+
+$sender = '7stefanadrian@gmail.com';
+
+$subject = 'Appointment Confirmation';
+
+$htmlBody = '<body style="font-family: Arial, sans-serif;"> 
+
+    <h2>Appointment Confirmation</h2>
+    <p>Dear '.$username.',</p>
+
+    <p>We are writing to confirm your appointment details:</p>
+
+    <table>
+        <tr>
+            <td><strong>Date:</strong></td>
+            <td>'.$date.'</td>
+        </tr>
+        <tr>
+            <td><strong>Time:</strong></td>
+            <td>'.$visit_start.'-'.$visit_end.'</td>
+        </tr>
+        <tr>
+            <td><strong>Location:</strong></td>
+            <td>Saint Row Penitanciary</td>
+        </tr>
+        <tr>
+            <td><strong>To visit inmate:</strong></td>
+            <td>'.$firstname.'-'.$lastname.'</td>
+        </tr>
+    </table>
+
+    <p>Please let us know if you have any questions or need to make any changes to your appointment.</p>
+
+    <p>Thank you for choosing our services ! </p>
+
+    <p>Best regards,</p>
+    
+    <p><b>DeAd Application Team ! </b></p>
+
+</body>';
+
+$charSet = 'UTF-8';
+try {
+    $result = $SesClient->sendEmail([
+        'Destination' => [
+            'ToAddresses' => [
+                $email,
+            ],
+        ],
+        'ReplyToAddresses' => [
+            "noreply@localhost",
+        ],
+        'Source' => $sender,
+        'Message' => [
+            'Body' => [
+                'Html' => [
+                    'Charset' => $charSet,
+                    'Data' => $htmlBody,
+                ],
+                'Text' => [
+                    'Charset' => $charSet,
+                    'Data' => $htmlBody,
+                ],
+            ],
+            'Subject' => [
+                'Charset' => $charSet,
+                'Data' => $subject,
+            ],
+        ],
+    ]);
+    $messageId = $result['MessageId'];
+    //echo("Email sent! Message ID: $messageId" . "\n");
+    header("Location: forgotpass.php?success=1");
+}
+catch (AwsException $e) {
+    // output error message if fails
+    echo $e->getMessage();
+    //header("Location: forgotpass.php?error=1");
+//    echo("The email was not sent. Error message: " . $e->getAwsErrorMessage() . "\n");
+}
+
+
+
 
 header('Location: ../HomePage/homepage.php');

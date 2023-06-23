@@ -33,11 +33,6 @@ $conn = DbConnection::getInstance()->getConnection();
 
 $passwordStrength = checkpwd($newpwd);
 
-if($passwordStrength <3)
-{
-    header("Location: resetpass.php?error=4&strength=$passwordStrength");
-    exit();
-}
 
 
 if ($conn->connect_errno) {
@@ -58,6 +53,13 @@ if ($conn->connect_errno) {
 
     if (password_verify($currentpwd, $row['password'])) {
         //check if the new password and confirm password are the same
+
+        if($passwordStrength <3)
+        {
+            header("Location: resetpass.php?error=4&strength=$passwordStrength");
+            exit();
+        }
+
 
         if ($newpwd == $confirmpwd) {
             if ($newpwd == $currentpwd) {
