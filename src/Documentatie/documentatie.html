@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Scholarly HTML</title>
+    <link rel="stylesheet" href="documentatie.css">
+</head>
+<body>
+<header>
+    <h1>Detention-Admin project</h1>
+    <h5>Authors:</h5>
+    <ul>
+        <li><b>Dogaru Stefan-Adrian</b></li>
+        <li><b>Jîtcă Diana</b></li>
+        <li><b>Munteanu Lucian-Vasile</b></li>
+    </ul>
+</header>
+
+<section typeof="sa:Abstract" id="abstract" role="doc-abstract">
+    <h2>Abstract</h2>
+    <p>
+        This project proposes a way of making appointments for visiting a prisoner. These
+        appointments are made by the person who is visiting the individuals who are serving time
+        in correctional facilities. The police officer
+        who is responsible for them will accept or decline the appointment. The police
+        officer will also be able to see the appointments that are made for the prisoner.
+        After the visit, the visitor will make a summary of the visit. The summary will be about
+        the time of the visit, the reason for the visit, the prisoner's health and if any objects
+        were brought to the prisoner or the prisoner gave it to them.
+    </p>
+</section>
+<section id="introduction" role="doc-introduction">
+    <h2>Introduction</h2>
+    <p>
+        Introducing our latest web application, a powerful and intuitive tool for managing visits for
+        individuals who are serving time in correctional facilities. Our app streamlines the visitation
+        process, making it easier and more efficient for both visitors and facility staff.
+    </p>
+    <p>
+        With our web app, visitors can easily schedule and manage their visits, attaching important information
+        about themselves and their relationship with the individual they are visiting. This includes their
+        identity, photo and nature of their relationship (e.g. friend, family member, layer).
+    </p>
+    <p>
+        The app also includes a comprehensive record-keeping system, tracking the date, nature, and duration of
+        each visit, as well as any items or information exchanged during the visit. The app also allows visitors
+        to document the state of health and well-being of the individual they are visiting, providing valuable insights
+        into their condition and helping to ensure their overall well-being.
+    </p>
+    <p>
+        The app also includes a comprehensive record-keeping system, tracking the date, nature, and duration of each
+        visit, as well as any items or information exchanged during the visit. The app also allows visitors to document
+        the state of health and well-being of the individual they are visiting, providing valuable insights into their
+        condition and helping to ensure their overall well-being.
+    </p>
+    <p>
+        Our high-level goals are to:
+    </p>
+    <ul>
+        <li><b>Streamline the visitation process</b>: One of the primary goals of this project is to make the visitation
+            process for individuals in correctional facilities as efficient and streamlined as possible.</li>
+        <li><b>Improve record-keeping and reporting</b>: Another key goal of this project is to provide a comprehensive
+            record-keeping and reporting system for visits. </li>
+        <li>
+            <b>Enhance overall well-being and quality of life</b>: Ultimately, the overarching goal of this project is to improve
+            the overall well-being and quality of life for individuals in correctional facilities. By providing them with a
+            reliable and convenient way to stay connected with loved ones and legal representatives.
+        </li>
+    </ul>
+    <p>
+        <!--This document is a work in progress. We welcome your feedback and contributions. Please join us on GitHub.-->
+</section>
+<section id="structure">
+    <h2>Structure</h2>
+    <p>
+        The first thing a client will see is the home page. The home page contains a short description of the
+        application, a button for creating the appointments, one to see them, and one to log in. The login page
+        contains a form where the user can enter their username and password. The user can also create an account
+        if they do not have one yet.
+    </p>
+    <ol>
+
+    
+    <h3>User's pages</h3>
+    
+    <li><section id="article">
+        
+
+        <h3><code>The User Home Page</code></h3>
+        <p>
+            <p>
+            The "homepage.php" file represents the homepage of the DeAd (Detention Admin) web application. It provides various functionalities to users with the role of a regular user. The following description highlights the available user functionalities:
+            </p>
+            <p>
+            The homepage serves as the entry point for the DeAd application. It consists of a header section that includes a logo and a navigation menu. The menu allows users to navigate to different sections of the application, such as the homepage itself, user profile, about us, contact, and FAQ.
+            </p>
+            <p>
+            Upon accessing the homepage, users are greeted with a large title stating "WELCOME TO OUR WEBSITE!" If the user is not logged in, a small title is displayed, informing them about how the platform can help them. The accompanying text describes the purpose of the application, which is to streamline the visitation process for individuals visiting loved ones in correctional facilities. It emphasizes that the platform allows users to easily request and manage visitation appointments for a smooth and organized experience.
+            </p>
+            <p>
+            For logged-in users with the role of a regular user, the page presents additional functionalities. A button labeled "CREATE APPOINTMENTS" allows users to create new visitation appointments, while another button labeled "SEE APPOINTMENTS" enables them to view their existing appointments.
+            </p>
+            <p>
+            Overall, the homepage.php file provides an interface that caters to both regular users and administrators, offering distinct functionalities based on their roles within the DeAd application.
+            </p>
+
+        <img src="users pages/HomePage user.png" alt="User HomePage">
+
+        </p>
+        
+        <h3><code>Make an appointment page</code></h3>
+        <p>
+            <p>
+            The "appointment.php" file is responsible for handling the appointment form submission and displaying the appointment form. It starts by checking if the user is logged in by verifying the session variable "is_logged_in." If the user is not logged in, the session variable is set to false.
+            </p>
+            <p>
+            The HTML structure begins with the standard document type declaration and the inclusion of necessary CSS files for styling. The page consists of a header section that contains a logo and a navigation menu. The navigation menu includes links to the home page, user profile (if logged in), about us, contact, and FAQ pages.
+            </p>
+            <p>
+            The main content of the page is a form with the class "visit" that allows users to make an appointment. The form uses the POST method to submit the data to the "save_appointment.php" file for processing. It includes several input fields for capturing information such as the first name and last name of the prisoner, the relationship with the prisoner, the nature of the visit, the source of income, a photo upload field, the date of the visit, and the start and end time of the visit.
+            </p>
+            <p>
+            The form also includes error handling functionality. If any errors occur during the form submission, such as an invalid inmate name or an invalid file type for the photo, error messages are displayed on the form.
+            </p>
+            <p>
+            The "save_appointment.php" file is responsible for processing the form data submitted from the "appointment.php" page. It starts by defining a function called "compress," which is used to compress uploaded images. Then, the session is started, and the username is retrieved from the session variable.
+            </p>
+            <p>
+            If the user is not logged in, they are redirected to the login page. The database connection is established using the configuration settings and the DbConnection class. The user ID of the currently logged-in user is retrieved from the database.
+            </p>
+            <p>
+            The form data is then retrieved from the $_POST superglobal array. If a profile photo is uploaded, it is compressed using the "compress" function and its contents are stored in a variable. The validity of the photo extension is checked, and if it is not valid, the user is redirected back to the form page with an appropriate error message.
+            </p>
+            <p>
+            Next, the script checks if the inmate specified in the form exists in the database. If not, the user is redirected back to the form page with an error indicating that the inmate does not exist.
+            </p>
+            <p>
+            Further, it checks if the inmate already has a visit scheduled within the specified time interval. If a conflicting visit is found, the user is redirected back to the form page with an error message indicating the conflict.
+            </p>
+            <p>
+            If all the checks pass, the script prepares an SQL statement to insert the appointment data into the database. The appointment is then inserted into the "appointments" table.
+            </p>
+            <p>
+            Additionally, the appointment details are inserted into the "visits_summary" table, including the visitor ID, inmate ID, visit date, visit nature, visit hours, and appointment reference ID.
+            </p>
+            <p>
+            Finally, the script redirects the user to the homepage after the appointment is successfully saved.
+            </p>
+            <img src="users pages/Make Appointment.png" alt="Make an appointment">
+        </p>
+
+        <h3><code>User Visit's page</code></h3>
+        <p>
+            <p>
+            This page represents the user interface for displaying a user's current appointments. It allows users to view their appointments and provides an option to create a new appointment. The file contains HTML markup along with PHP code to handle the dynamic content and interactions.
+            </p>
+            <p>
+            The page begins with the standard HTML doctype declaration and language attribute. It includes several meta tags for character encoding, compatibility, and viewport settings. The file also references external CSS stylesheets for customizing the appearance of the page.
+            </p>
+            <p>
+            The header section contains a navigation bar with links to various pages such as the homepage, user profile, about us, contact, and FAQ. The visibility of the "Profile" link depends on whether the user is logged in or not. If the user is logged in, the "Profile" link is displayed; otherwise, a "Login" link is shown.
+            </p>
+            <p>
+            After the header, a form is displayed to show the user's current appointments. Inside the form, there is a heading displaying "Your Current Appointments." The form body contains a list of appointments fetched from the "retrieve_appointments.php" page using a cURL request.
+            </p>
+            <p>
+            The PHP code retrieves the user's ID from the session and constructs a cURL request URL with the user's ID as a parameter. The cURL request is made to the "retrieve_appointments.php" page, which fetches the appointments from the database based on the user's ID. The response from the "retrieve_appointments.php" page is then parsed as JSON.
+            </p>
+            <p>
+            If there are no appointments in the response, a message is displayed indicating that the user has no appointments. Additionally, a link is provided to create a new appointment using the "appointment.php" page.
+            </p>
+            <p>
+            If there are appointments in the response, they are iterated over, and each appointment's details, such as the visitor's name, date, and the inmate being visited, are displayed in a list format. For each appointment, a "Make a summary" link is also displayed, which leads to the "summary.php" page with the corresponding appointment's ID as a parameter.
+            </p>
+            <p>
+            The "retrieve_appointments.php" file serves as the backend for retrieving the appointments from the database. It handles a GET request and expects the user's ID as a parameter. The file establishes a database connection using the DbConnection class from the "DbConnection.php" file. It then prepares and executes a SQL query to fetch the appointments associated with the provided user ID.
+            </p>
+            <p>
+            The query retrieves the inmate's name, appointment date, visitor's name, and appointment ID. The fetched appointment details are stored in an array, and all the appointment data is encoded as JSON. The JSON response is then sent back to the frontend with the appropriate Content-Type header.
+            </p>
+            <p>
+            Overall, these files work together to provide a user interface for displaying and managing appointments. The "userVisit.php" page allows users to view their current appointments, while the "retrieve_appointments.php" file handles the backend logic for retrieving the appointments from the database.
+            </p>
+            <img src="users pages/User Visits.png" alt="User visits">
+        </p>
+
+        <h3><code>Make a summary page</code></h3>
+        <p>
+            <p>
+            The summary.php file is responsible for displaying a form to create a summary of a visit. Here's a description of the elements and important code segments in the file:
+            </p>
+            <p>
+            The HTML structure consists of a &lt;header&gt; containing a logo and a navigation menu, allowing users to navigate to different pages. The form is contained within a &lt;form&gt; element with the class "summary" and its action is set to "save_summary.php" for processing the form data.
+            </p>
+            <p>
+            Inside the PHP code:
+            </p>
+            <ul>
+                <li>The session is started, and if the user is not logged in, the $_SESSION['is_logged_in'] variable is set to false.</li>
+                <li>A call is made to retrieve the appointment data using the retrieve_visit.php script, passing the visit ID via GET parameters.</li>
+                <li>The response is decoded from JSON and stored in variables for further use.</li>
+                <li>The retrieved data is then used to populate the form fields. For example, the visit nature is displayed using radio buttons, and the selected option is determined based on the stored value in the response.</li>
+                <li>The form includes inputs for selecting witnesses, specifying the prisoner's health, choosing the visit date, selecting the visit hours using a range input, and entering objects/data offered by the convict and provided to the convict.</li>
+                <li>Finally, there is a textarea for entering the summary of the visit.</li>
+              </ul>
+              <ul>
+                <li>The session is started, and relevant form data is assigned to variables, such as $witnesses, $prisoner_health, $visit_nature, etc.</li>
+                <li>The database connection is established using the configuration file and a database query is prepared to update the visits_summary table with the provided data.</li>
+                <li>The prepared statement is executed, and if successful, the user is redirected to the homepage. Otherwise, any errors encountered during the query execution are displayed.</li>
+              </ul>
+            <p>
+            Overall, these files work together to display a form for creating a visit summary and process the submitted data to store it in the database.
+            </p>
+            <img src="users pages/Summary.png" alt="Make a summary">
+        </p>
+
+        <h3><code>Profile page</code></h3>
+        <p>
+            <p>
+            The profile.php file is responsible for displaying the user's profile information on the webpage. It ensures that the user is logged in before accessing the profile page. The page consists of a header, user details table, and a sidebar with profile-related options.
+            </p>
+            <p>
+            HTML Structure:
+            </p>
+            <ul>
+            <li>The HTML document starts with the &lt;!DOCTYPE html&gt; declaration and the &lt;html&gt; tag with the "en" language attribute.</li>
+            <li>The &lt;head&gt; section contains meta tags for character encoding, compatibility settings, and viewport configuration.</li>
+            <li>The page title is set as "Profile" using the &lt;title&gt; tag.</li>
+            <li>External CSS files, navstyle.css and profile.css, are linked for styling the navigation bar and profile page, respectively.</li>
+            <li>Inline CSS is used to define custom CSS variables for color definitions.</li>
+            </ul>
+            <p>
+            Page Content:
+            </p>
+            <ul>
+            <li>The &lt;header&gt; section contains a logo and a responsive navigation bar.</li>
+            <li>The navigation bar has a list of menu items, including "Home," "Profile," "About Us," "Contact," and "FAQ." The "Profile" item is conditionally displayed based on the user's login status.</li>
+            <li>The main content is wrapped in a &lt;div&gt; container with the class "container."</li>
+            <li>Inside the container, there are three sections: "left-side," "middle," and "right-side."</li>
+            <li>The "left-side" section contains a table displaying user details such as username, name, surname, email, and secondary email (if available).</li>
+            <li>If the user has an "admin" role, an additional row indicating the role is displayed.</li>
+            <li>The "middle" section is empty in the provided code.</li>
+            <li>The "right-side" section contains a sidebar with profile-related options.</li>
+            <li>The "Profile" option is active by default.</li>
+            <li>Other options include "Logout," "Change Password," and "Change Info."</li>
+            </ul>
+            <p>
+            PHP Code:
+            </p>
+            <ul>
+            <li>PHP session is started using session_start().</li>
+            <li>If the "username" session variable is not set, the user is redirected to the login page.</li>
+            <li>User details are retrieved from session variables and stored in respective PHP variables.</li>
+            <li>The user details are then echoed inside the table rows using PHP string interpolation.</li>
+            <li>If the user has an "admin" role, an additional row indicating the role is echoed.</li>
+            <li>PHP is also used for conditional rendering of the "Profile" menu item in the navigation bar based on the user's login status.</li>
+            </ul>
+            Overall, profile.php serves as a secure page that displays the user's profile information and provides options to manage the profile, including logout, changing the password, and updating user information. The page follows a responsive design and utilizes PHP to personalize the content based on the user's session data.
+            <img src="users pages/Profile.png" alt="Profile page">
+        </p>
+
+        <h3><strong>General pages</strong></h3>
+        
+        <h3><code>About Us page</code></h3>
+        <p>
+            <p>
+            The About Us page provides information about Detention Admin, a company dedicated to revolutionizing the visitation experience for correctional facilities. This documentation outlines the structure and functionality of the About Us page.
+            </p>
+
+            <h3>Getting Started</h3>
+            <ul>
+            <li>Include the necessary CSS files: navstyle.css for the navigation bar and about.css for the About Us page's styling.</li>
+            <li>Start the PHP session using session_start(). If the is_logged_in session variable is not set, initialize it as false.</li>
+            <li>Define the HTML structure with the appropriate DOCTYPE declaration and language attribute.</li>
+            <li>Create a header section with a logo and a responsive navigation bar. The navigation bar includes menu items such as "Home," "Profile" (conditionally displayed based on the user's login status), "About Us," "Contact," and "FAQ."</li>
+            <li>Design the About Us section with a title and a paragraph describing the mission of Detention Admin. Emphasize the company's dedication to providing a seamless and secure platform for visitation management, highlighting the importance of maintaining connections with loved ones during challenging times.</li>
+            <li>Display information about the team behind Detention Admin, including the names and roles of the three members: Dogaru Stefan-Adrian, Jitca Diana, and Munteanu Lucian. Mention that all team members are students at the University of "Alexandru Ioan Cuza" in Iasi, Romania, and are currently in their 2nd year, pursuing a major in Computer Science.</li>
+            </ul>
+
+            <h3>Usage</h3>
+            <ul>
+            <li>Access the About Us page by navigating to the appropriate URL.</li>
+            <li>The page will load with the header section, including the Detention Admin logo and the navigation bar.</li>
+            <li>Scroll down to view the About Us section, containing a title and a description of Detention Admin's mission.</li>
+            <li>Read about the team members and their roles in revolutionizing the visitation experience for correctional facilities.</li>
+            </ul>
+            <img src="general pages/About Us.png" alt="About Us page">
+        </p>
+
+        <h3><code>Contact Us page</code></h3>
+        <p>
+            <p>
+            The Contact page allows users to get in touch with Detention Admin through various means of communication. This documentation provides an overview of the structure and functionality of the Contact page.
+            </p>
+              
+              <h3>Getting Started</h3>
+              <ul>
+                <li>Start the PHP session using session_start(). If the is_logged_in session variable is not set, initialize it as false.</li>
+                <li>Define the HTML structure with the appropriate DOCTYPE declaration, language attribute, and necessary meta tags.</li>
+                <li>Include the required CSS files: navstyle.css for the navigation bar and contact.css for the Contact page's styling.</li>
+                <li>Create a header section with the Detention Admin logo and a responsive navigation bar. The navigation bar includes menu items such as "Home," "Profile" (conditionally displayed based on the user's login status), "About Us," "Contact," and "FAQ."</li>
+                <li>Design the Contact section with a title and contact information.</li>
+                <li>Display the company's address, including the street, city, and postal code.</li>
+                <li>Provide phone numbers, both for local and international inquiries.</li>
+                <li>Specify the email address for contacting Detention Admin.</li>
+              </ul>
+              
+              <h3>Usage</h3>
+              <ul>
+                <li>Access the Contact page by navigating to the appropriate URL.</li>
+                <li>The page will load with the header section, including the Detention Admin logo and the navigation bar.</li>
+                <li>Scroll down to view the Contact section, which includes the following information:</li>
+                <ul>
+                  <li>Address: Displayed with an icon, showing the street, city, and postal code.</li>
+                  <li>Phone: Presented with an icon, providing both the local and international phone numbers.</li>
+                  <li>Email: Presented with an icon, displaying the company's email address.</li>
+                </ul>
+              </ul>
+              
+              
+              <P>
+                The Contact page serves as a medium for users to connect with Detention Admin, providing contact information such as address, phone numbers, and email address. Users can access this page to initiate communication with the company as needed.
+                </p>
+            <img src="general pages/Contact Us.png" alt="Contact Us page">
+        </p>
+
+        <h3>The <code>frequently asked questions(FAQ) page</code></h3>
+        <p>
+            <p>
+            The FAQ (Frequently Asked Questions) page provides users with answers to common queries about the Detention Admin system. This documentation provides an overview of the structure and functionality of the FAQ page.
+            </p>
+
+            <h3>Getting Started</h3>
+            <ul>
+            <li>Start the PHP session using session_start(). If the is_logged_in session variable is not set, initialize it as false.</li>
+            <li>Define the HTML structure with the appropriate DOCTYPE declaration, language attribute, and necessary meta tags.</li>
+            <li>Include the required CSS files: navstyle.css for the navigation bar and faqstyle.css for the FAQ page's styling.</li>
+            <li>Create a header section with the Detention Admin logo and a responsive navigation bar. The navigation bar includes menu items such as "Home," "Profile" (conditionally displayed based on the user's login status), "About Us," "Contact," and "FAQ."</li>
+            <li>Design the FAQ section with a heading and a list of frequently asked questions.</li>
+            <li>Each question is enclosed within a &lt;details&gt; element.</li>
+            <li>Each question is wrapped in a &lt;summary&gt; element, followed by an SVG icon for expanding/collapsing the answer.</li>
+            <li>The answer to each question is provided within a &lt;p&gt; element.</li>
+            </ul>
+
+            <h3>Usage</h3>
+            <ul>
+            <li>Access the FAQ page by navigating to the appropriate URL.</li>
+            <li>The page will load with the header section, including the Detention Admin logo and the navigation bar.</li>
+            <li>Scroll down to view the FAQ section, which includes a list of frequently asked questions.</li>
+            <li>To view the answer to a specific question, click on the question's summary. The answer will expand or collapse based on the user's interaction.</li>
+            <li>Read the answer to the question. Once done, move on to the next question if desired.</li>
+            </ul>
+
+            <p>
+                The FAQ page provides a convenient resource for users to find answers to common questions regarding the Detention Admin system. By accessing this page, users can expand and collapse the answers to specific questions, gaining insights and clarifications as needed.
+            </p>
+            <img src="general pages/FAQ.png" alt="FAQ page">
+            </p>
+
+            <h3><code>Reset password page</code></h3>
+            <p>
+                <p>
+                The "resetpass.php" file represents a web page that allows users to reset their password. It contains an HTML form where users can enter their current password, new password, and confirm the new password. The file also includes CSS styling for the form.
+                </p>
+                <p>
+                The form's action is set to "resetpwd.php," which is the file responsible for handling the password reset logic. When the form is submitted, it sends a POST request to "resetpwd.php" with the entered password values.
+                </p>
+                <p>
+                Inside the form, there are three input fields for the current password, new password, and confirm new password. Each input field has a corresponding label and an icon that is updated based on user input. The input fields are required to ensure that all the necessary information is provided.
+                </p>
+                <p>
+                After the input fields, there is PHP code that checks for any errors passed through the URL parameters using the $_GET['error'] variable. If an error is detected, an appropriate error message is displayed based on the error code. The error messages indicate if the passwords do not match, the current password is incorrect, or the new password is the same as the current password.
+                </p>
+                <p>
+                Finally, there is a "reset" button that submits the form when clicked.
+                </p>
+                <p>
+                The "resetpwd.php" file handles the password reset logic when the form in "resetpass.php" is submitted. It starts by initiating a session and includes the "DbConnection.php" file to establish a connection with the database.
+                </p>
+                <p>
+                The file defines a function named "checkpwd" that checks the strength of a password based on certain criteria, such as the presence of uppercase and lowercase letters, numbers, and a minimum length. The function returns a strength value between 0 and 3, indicating the password's strength level.
+                </p>
+                <p>
+                The file retrieves the current password, new password, and confirm new password values from the POST request. It also retrieves the username from the session.
+                </p>
+                <p>
+                The "checkpwd" function is called to determine the strength of the new password. If the password strength is less than 3, the user is redirected back to the "resetpass.php" page with an error code indicating the password strength level.
+                </p>
+                <p>
+                If the database connection is successful, the file executes a query to retrieve the user's information based on the provided username. It compares the current password with the hashed password stored in the database using the password_verify function. If the passwords match, further checks are performed.
+                </p>
+                <p>
+                First, it checks if the new password and confirm new password values are the same. If they match, it checks if the new password is the same as the current password. If it is, the user is redirected back to the "resetpass.php" page with an error code indicating that the new password and current password are the same.
+                </p>
+                <p>
+                If the new password and confirm new password values are different, and the new password is not the same as the current password, the password in the database is updated with the new hashed password. The user is then redirected to the homepage.
+                </p>
+                <p>
+                If any error conditions are met, such as incorrect current password or mismatched passwords, the user is redirected back to the "resetpass.php" page with the corresponding error code.
+                </p>
+                <p>
+                    Overall, these files provide a password reset functionality where users can enter their current and new passwords to update their account's password securely.
+                </p>
+            <img src="general pages/Reset Password.png" alt="Reset password">
+            </p>
+            <h3><code>Change Info page</code></h3>
+            <p>
+                <p>
+                The "change_info.php" file represents a web page where users can update their profile information. It includes an HTML form that allows users to enter their new name, surname, and secondary email. The page also displays a header with a logo and a navigation menu.
+                </p>
+                <p>
+                At the beginning of the file, it checks if the user is logged in by verifying the existence of the 'username' session variable. If the user is not logged in, they are redirected to the login page.
+                </p>
+                <p>
+                The HTML form in the "aside" section of the page is submitted to "change_info_logic.php" for processing when the user clicks the "Enter" button. The form includes input fields for the name, surname, and secondary email. The values of the name and surname fields are populated based on the session variables 'fname' and 'lname', respectively. If these session variables are not set, placeholder text is displayed in the input fields.
+                </p>
+                <p>
+                Below the input fields, there is PHP code that checks for any errors passed through the URL parameters using the $_GET['error'] variable. If an error is detected, an appropriate error message is displayed based on the error code. Error messages indicate invalid email, email already existing as primary or secondary email, and null email.
+                </p>
+                <p>
+                Overall, this page allows users to update their profile information by entering their new name, surname, and secondary email.
+                </p>
+                <p>
+                The "change_info_logic.php" file handles the processing logic for updating the user's profile information when the form in "change_info.php" is submitted. It starts by initiating a session and includes the necessary files and configurations.
+                </p>
+                <p>
+                The file retrieves the user's username from the session and the new name, surname, and secondary email values from the POST request.
+                </p>
+                <p>
+                It performs several validations on the secondary email address. First, it verifies if the email is valid using the filter_var function. If the email is not valid, the user is redirected back to "change_info.php" with an error code indicating an invalid email.
+                </p>
+                <p>
+                Next, it checks if the secondary email provided is the same as the current primary or secondary email. If it is, the user is redirected back to "change_info.php" with an error code indicating that the email already exists.
+                </p>
+                <p>
+                If the secondary email is null, the user is redirected back to "change_info.php" with an error code indicating that the email cannot be null.
+                </p>
+                <p>
+                After the email validations, it verifies if the name and surname fields contain only letters using the preg_match function. If any non-letter characters are found, the user is redirected back to "change_info.php" with an appropriate error code.
+                </p>
+                <p>
+                If all the validations pass, the file prepares an UPDATE query to update the user's information in the database. It binds the new name, surname, secondary email, and username to the query parameters and executes the query.
+                </p>
+                <p>
+                The session variables for the name, surname, and secondary email are updated with the new values.
+                </p>
+                <p>
+                Finally, the file checks for any errors that occurred during the query execution. If an error is detected, the user is redirected back to "change_info.php" with an appropriate error code. Otherwise, the user is redirected to the profile page.
+                </p>
+                <p>
+                Overall, this file handles the logic for updating the user's profile information based on the values provided in the form on "change_info.php".
+                </p>
+            <img src="general pages/Change Info.png" alt="Change Info">
+            </p>
+        </p>
+
+    </section></li>
+    <li><section id="hunk">
+        <h3>Schema</h3>
+        <figure typeof="schema:SoftwareSourceCode" resource="#role-example" id="role-example">
+          <pre>
+            <a>web-app</a>
+            └─<a>home page</a>
+                └─<a>sign-in</a>
+                    ├─<a>sign-up</a>
+                    └─<a>forgot password</a>
+                └─<a>make an appointment</a>
+                └─<a>see appointments</a>
+            ├─<a>login</a>
+                ├─<a>sign-up</a>
+                └─<a>forgot password</a>
+            ├─<a>about us</a>
+            ├─<a>contact</a>
+            └─<a>FAQ</a>
+
+          </pre>
+            <figcaption>
+                <span property="schema:name"></span>
+                <span property="schema:description">
+              This is an example of the application's structure.
+            </span>
+            </figcaption>
+            <figcaption>
+                <span property="schema:name"></span>
+                <span property="schema:description">
+                Next you can see a diagram with the visual representation of the circulation between the pages.
+              </span>
+            </figcaption>
+            <img src="Schema-pagini-DeAd.svg" alt="SVG Image">
+        </figure>
+    </section></li>
+    </ol>
+</section>
+</body>
+</html>

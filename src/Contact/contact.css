@@ -72,6 +72,7 @@ body::-webkit-scrollbar{
     padding: 30px;
     background-color: linear-gradient(to right, var(--lightblue) , var(--darkblue) );
     border-radius: 10px;
+    margin-bottom: 50px;
 }
 
 
@@ -82,9 +83,21 @@ body::-webkit-scrollbar{
     border-radius: 10px;
     animation: fadeIn 5s;
 
-
 }
 @keyframes fadeIn {
     0% { opacity: 0; }
     100% { opacity: 1; }
+}
+
+@media only screen and (max-width: 600px) {
+    .contact_info {
+        flex-direction: column;
+    }
+
+    .contact_info .email,
+    .address,
+    .phone {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
 }
