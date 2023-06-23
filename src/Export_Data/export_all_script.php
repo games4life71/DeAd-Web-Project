@@ -12,7 +12,7 @@ function exportJSON($export_data, $statistic_data)
 {
 
     $export_data = json_encode($export_data);
-    $filename = "export.json";
+    $filename = "export_".date("Y-m-d").".json";
     header("Content-type: application/json");
     header("Content-Disposition: attachment; filename=$filename");
     $output = fopen("php://output", "w");
@@ -24,7 +24,7 @@ function exportJSON($export_data, $statistic_data)
 
 function exportCSV($export_data, $statistic_data)
 {
-    $filename = "export.csv";
+    $filename = "export_".date("Y-m-d").".csv";
     header("Content-type: text/csv");
     header("Content-Disposition: attachment; filename=$filename");
     $output = fopen("php://output", "w");
@@ -39,7 +39,7 @@ function exportCSV($export_data, $statistic_data)
 
 function exportHTML(array $export_data , array $statistic_data)
 {
-    $filename = "export.html";
+    $filename = "export_".date("Y-m-d").".html";
     header("Content-type: text/html");
     header("Content-Disposition: attachment; filename=$filename");
     $output = fopen("php://output", "w");
