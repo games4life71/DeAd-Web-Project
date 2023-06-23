@@ -75,10 +75,10 @@ if (!isset($_SESSION['is_logged_in'])) {
     $GLOBALS['visit_time'] = $difference;
     //print_r($GLOBALS['visit_time']);
 
-    $GLOBALS['visit_time'] = $visit_start . " - " . $visit_end;
-
-
-    $GLOBALS['visit_time'] = $visit_start . " - " . $visit_end;
+//    $GLOBALS['visit_time'] = $visit_start . " - " . $visit_end;
+//
+//
+//    $GLOBALS['visit_time'] = $visit_start . " - " . $visit_end;
 
 
     //send the appointment id to the next page

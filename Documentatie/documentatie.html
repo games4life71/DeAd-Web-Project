@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Scholarly HTML</title>
+    <link rel="stylesheet" href="documentatie.css">
+</head>
+<body>
+<header>
+    <h1>Detention-Admin project</h1>
+    <h5>Authors:</h5>
+    <ul>
+        <li><b>Dogaru Stefan-Adrian</b></li>
+        <li><b>Jîtcă Diana</b></li>
+        <li><b>Munteanu Lucian-Vasile</b></li>
+    </ul>
+</header>
+
+<section typeof="sa:Abstract" id="abstract" role="doc-abstract">
+    <h2>Abstract</h2>
+    <p>
+        This project proposes a way of making appointments for visiting a prisoner. These
+        appointments are made by the person who is visiting the individuals who are serving time
+        in correctional facilities. The police officer
+        who is responsible for them will accept or decline the appointment. The police
+        officer will also be able to see the appointments that are made for the prisoner.
+        After the visit, the visitor will make a summary of the visit. The summary will be about
+        the time of the visit, the reason for the visit, the prisoner's health and if any objects
+        were brought to the prisoner or the prisoner gave it to them.
+    </p>
+</section>
+<section id="introduction" role="doc-introduction">
+    <h2>Introduction</h2>
+    <p>
+        Introducing our latest web application, a powerful and intuitive tool for managing visits for
+        individuals who are serving time in correctional facilities. Our app streamlines the visitation
+        process, making it easier and more efficient for both visitors and facility staff.
+    </p>
+    <p>
+        With our web app, visitors can easily schedule and manage their visits, attaching important information
+        about themselves and their relationship with the individual they are visiting. This includes their
+        identity, photo and nature of their relationship (e.g. friend, family member, layer).
+    </p>
+    <p>
+        The app also includes a comprehensive record-keeping system, tracking the date, nature, and duration of
+        each visit, as well as any items or information exchanged during the visit. The app also allows visitors
+        to document the state of health and well-being of the individual they are visiting, providing valuable insights
+        into their condition and helping to ensure their overall well-being.
+    </p>
+    <p>
+        The app also includes a comprehensive record-keeping system, tracking the date, nature, and duration of each
+        visit, as well as any items or information exchanged during the visit. The app also allows visitors to document
+        the state of health and well-being of the individual they are visiting, providing valuable insights into their
+        condition and helping to ensure their overall well-being.
+    </p>
+    <p>
+        Our high-level goals are to:
+    </p>
+    <ul>
+        <li><b>Streamline the visitation process</b>: One of the primary goals of this project is to make the visitation
+            process for individuals in correctional facilities as efficient and streamlined as possible.</li>
+        <li><b>Improve record-keeping and reporting</b>: Another key goal of this project is to provide a comprehensive
+            record-keeping and reporting system for visits. </li>
+        <li>
+            <b>Enhance overall well-being and quality of life</b>: Ultimately, the overarching goal of this project is to improve
+            the overall well-being and quality of life for individuals in correctional facilities. By providing them with a
+            reliable and convenient way to stay connected with loved ones and legal representatives.
+        </li>
+    </ul>
+    <p>
+        <!--This document is a work in progress. We welcome your feedback and contributions. Please join us on GitHub.-->
+</section>
+<section id="structure">
+    <h2>Structure</h2>
+    <p>
+        The first thing a client will see is the home page. The home page contains a short description of the
+        application, a button for creating the appointments, one to see them, and one to log in. The login page
+        contains a form where the user can enter their username and password. The user can also create an account
+        if they do not have one yet.
+    </p>
+    <ol>
+    <li><section id="Root">
+        <h3>The root and <code>head</code></h3>
+        <p>
+            The document is encoded in UTF-8 and transmitted with a media type of
+            <code>text/html</code>.
+        </p>
+        <p>
+            The <code>head</code> contains <code>&lt;meta charset="utf-8"&gt;</code> element, a
+            <code>title</code> element and a <code>link</code> element to the stylesheet.
+        </p>
+    </section></li>
+
+    <li><section id="article">
+
+        <h3>The <code>main page</code></h3>
+        <p>
+            The first child of <code>article</code> is <code>header</code>. The header
+            contains a <code>navbar</code> with the content of the application. The following element is a
+            <code>div</code> containing three <code>div</code> with the role of <code>container</code> having some information
+            about the web application and two links for making an appointment and also seeing the previous visits . The first <code>div</code> contains a <code>h1</code> element with the information
+            of the application. The second <code>div</code> helps with the design of the page. The third <code>div</code>
+            contains a <code>h2</code> element with the username of the user and a button for login in.
+
+        </p>
+
+        <h3>The <code>login page</code></h3>
+        <p>
+            The first element is a <code>div</code> with the role of <code>wrapper</code> having a <code>form</code> element
+            containing the <code>input</code> and <code>label</code> for the user to put the information required and a <code>button</code> for submitting.
+            Also, in case of forgetting the password, there is a link for resetting it that is not implemented for now. The <code>div</code>
+            has multiple <code>div</code> for the design of the page. In case the user does not have an account, there is a link for creating one.
+        </p>
+
+        <h3>The <code>signup page</code></h3>
+        <p>
+            In case the user does not have an account, there is a link for creating one.
+            The first element is a <code>div</code> with the role of <code>wrapper</code> having a <code>form</code> element
+            containing other <code>div</code> with <code>input</code> and <code>label</code> for the user to put the information required
+            and a <code>button</code> for submitting. If the user has an account, there is a link for logging in.
+        </p>
+
+        <h3>The <code>appointment page</code></h3>
+        <p>
+            After we click on the link for making an appointment, the first child of <code>article</code> is <code>header</code>. The header
+            contains a <code>navbar</code> with the content of the application. The following element is a
+            <code>form</code> containing three <code>div</code> with the role of <code>form-header</code>, <code>form-body</code> and
+            <code>form-footer</code> helping with the design of the form inputs.
+            The first <code>div</code> contains a <code>h1</code> element with the title
+            of the page. The second <code>div</code> has the <code>input</code> and <code>label</code> for the user to put the information required
+            and a <code>button</code> for submitting .
+
+        </p>
+
+        <h3>The <code>see appointments page</code></h3>
+        <p>
+            If we want to see our appointments, the first child of <code>article</code> is <code>header</code>. The header
+            contains a <code>navbar</code> with the content of the application. The following element is a
+            <code>form</code> containing three <code>div</code> with the role of <code>form-header</code>, <code>form-body</code> and
+            <code>form-footer</code> helping with the design of the form inputs .
+            The first <code>div</code> contains a <code>h1</code> element with the title
+            of the page. The second <code>div</code> has the information of the appointments and a <code>button</code> for making the
+            required summaries.
+        </p>
+
+        <h3>The <code>make a summary page</code></h3>
+        <p>
+            It is required to make a summary after every visit, the first child of <code>article</code> is <code>header</code>. The header
+            contains a <code>navbar</code> with the content of the application. The following element is a
+            <code>form</code> containing three <code>div</code> with the role of <code>form-header</code>, <code>form-body</code> and
+            <code>form-footer</code> helping with the design of the form inputs.
+            The first <code>div</code> contains a <code>h1</code> element with the title
+            of the page. The second <code>div</code> has the <code>input</code> and <code>label</code> for the user to put the information required, a <code>textarea</code>
+            for the summary and a <code>button</code> for submitting .
+        </p>
+
+        <h3>The <code>about us page</code></h3>
+        <p>
+           In case the user wants to know more about the application, there is a link for the "About Us" page.The header
+            contains a <code>navbar</code> with the links to other sections. The following element is a <code>div</code> containing
+            a <code>h1</code> element with the title of the page and a <code>div</code> with the information about the product.
+        </p>
+
+        <h3>The <code>frequently asked questions(FAQ) page</code></h3>
+        <p>
+            In case the user has some question about the application, there is a link for the "FAQ" page.The header
+            contains a <code>navbar</code> with the links to other sections. The first element is the title of the page.The frequent questions
+            are each stored in a <code>details</code> element with a <code>summary</code> element for the question and a <code>p</code> element for the answer.
+            The user can click on the question to see the answer and then click again to hide it.
+        </p>
+
+        <h3>The <code>contact us</code></h3>
+        <p>
+            In case the user wants to contact the application, there is a link for the "Contact Us" page.The header contains a <code>navbar</code> with the links to other sections. The first element is the title of the page  stored in a <code>div</code>. The contact information
+            is stored in a <code>div</code> with a <code>h1</code> element for the title and a <code>div</code> with the information for the contact method.Each <code>div</code> also has an animation for the contact method.
+        </p>
+    </section></li>
+    <li><section id="hunk">
+        <h3>Schema</h3>
+        <figure typeof="schema:SoftwareSourceCode" resource="#role-example" id="role-example">
+          <pre>
+            <a>web-app</a>
+            └─<a>home page</a>
+                └─<a>sign-in</a>
+                    ├─<a>sign-up</a>
+                    └─<a>forgot password</a>
+                └─<a>make an appointment</a>
+                └─<a>see appointments</a>
+            ├─<a>login</a>
+                ├─<a>sign-up</a>
+                └─<a>forgot password</a>
+            ├─<a>about us</a>
+            ├─<a>contact</a>
+            └─<a>FAQ</a>
+
+          </pre>
+            <figcaption>
+                <span property="schema:name"></span>
+                <span property="schema:description">
+              This is an example of the application's structure.
+            </span>
+            </figcaption>
+            <figcaption>
+                <span property="schema:name"></span>
+                <span property="schema:description">
+                Next you can see a diagram with the visual representation of the circulation between the pages.
+              </span>
+            </figcaption>
+            <img src="Schema-pagini-DeAd.svg" alt="SVG Image">
+        </figure>
+    </section></li>
+    </ol>
+</section>
+
+<section id="admin">
+    <h2>Admin's pages</h2>
+    <ol>
+        <li><section id="Admin_Homepage">
+            <h3>The homepage for admin</h3>
+            <p>
+                The code starts by initializing the session using <code>session_start()</code>
+                and checks if the <code>is_logged_in</code> session variable is set. If not,
+                it sets it to false.
+                The code then proceeds to generate the HTML for the homepage.
+                The HTML structure includes a header section with a logo and a
+                navigation menu. The menu items include "Home," "Profile"
+                (if the user is logged in), "Login" (if the user is not logged in),
+                "About Us," "Contact," and "FAQ."
+                Inside the <code>div</code> element, there are three main sections:
+                left-side, middle, and right-side.
+                In the left-side section, a welcome message is displayed along with a
+                description of how the platform can help. If the user is logged in
+                and is <b>admin</b>, additional content
+                is displayed along with buttons accessing the admin panel and export panel.
+                In the right-side section, there is a block that displays a personalized
+                welcome message. If the user is logged in, it shows the username and provides
+                a link to the user's profile.
+            </p>
+            <figure typeof="schema:SoftwareSourceCode" resource="#role-example" >
+                <figcaption>
+                    <span property="schema:name"></span>
+                    <span property="schema:description">
+                    The admin homepage.
+              </span>
+                </figcaption>
+                <img src="admin-pages/admin-homepage.png" alt="Admin Homepage">
+                <img src="admin-pages/admin-homepage-hover.png" alt="Admin Hover Username">
+
+            </figure>
+
+        </section>
+        </li>
+
+        <li id="admin_panel">
+            <h2>Admin Panel</h2>
+            <p>
+                The search page allows admins to search for usernames.
+                It features a search input field where admins can enter a
+                username and submit the form. Upon submission, the page
+                makes a call to the "searchUsername.php" endpoint using cURL.
+                The response from the endpoint is displayed on the page. The page
+                also includes a dropdown content area where the search results can
+                be displayed.
+            </p>
+            <p>
+                This page handles a <code>GET</code> request to search for usernames
+                in a database table. It first verifies the authorization token sent
+                in the request header to ensure that the user is an admin and the token
+                is not expired. If the token is valid, it establishes a database connection
+                and performs a search based on the provided username parameter. The search
+                is executed using a SQL query to retrieve rows from the "users" table where
+                the username is similar to the provided username. If matching rows are found,
+                the code generates a dropdown select element with options representing the search
+                results. Each option is a link to an admin visit page specific to the selected
+                user. If no results are found, a message indicating "No results found!" is displayed.
+            </p>
+            <figure typeof="schema:SoftwareSourceCode" resource="#role-example" >
+                <figcaption>
+                    <span property="schema:name"></span>
+                    <span property="schema:description">
+                    The search page.
+              </span>
+                </figcaption>
+                <img src="admin-pages/admin-searchbar-part1.png" alt="Admin Search Page 1">
+                <img src="admin-pages/admin-searchpage-part2.png" alt="Admin Search Page 2">
+
+            </figure>
+        </li>
+
+        <li id="Admin Visit">
+            <h2>Specified user's appointments</h2>
+            <p>
+                The session is started, and the <code>is_logged_in</code> session variable is checked to determine
+                if the user is logged in or not.
+                The HTML structure of the page is defined, including the header section with a navigation menu.
+                The username is obtained from the URL using <code>$_GET['username']</code>.
+                The PHP code checks if the username parameter is set in the URL and retrieves the
+                appointments for the given username from the database.
+                If appointments are found, they are displayed in a table with columns for the first
+                name, last name, date, visit start time, and visit nature. Each row also includes links
+                to edit and delete the appointment.
+                If no appointments are found, a message is displayed indicating that no appointments were
+                found for the given username.
+                Buttons are provided for exporting the user's data in JSON, CSV, and HTML formats.
+                JavaScript code is included at the end of the file to handle deleting appointments using AJAX.
+                When a delete button is clicked, a confirmation dialog is shown. If confirmed, an AJAX request
+                is sent to the delete.php file to delete the appointment with the specified ID. If the deletion
+                is successful, the page is refreshed to update the displayed appointments.
+
+            </p>
+
+            <figure typeof="schema:SoftwareSourceCode" resource="#role-example" >
+                <figcaption>
+                    <span property="schema:name"></span>
+                    <span property="schema:description">
+                    The visit appointments page .
+              </span>
+                </figcaption>
+                <img src="admin-pages/admin-see-appointments.png" alt="Admin See Appointments">
+                <img src="admin-pages/admin-delete-appointemnts.png" alt="Admin Delete Appointments">
+                <img src="admin-pages/admin-no-appointments.png" alt="Admin No Appointments">
+            </figure>
+        </li>
+
+        <li id="Edit Appointments">
+            <h2>Edit Appointments</h2>
+            <p>
+                This page is responsible for editing an appointment in a
+                database based on user input. It first checks if the form is submitted by
+                checking the existence of the 'submit' parameter. If submitted,
+                it establishes a database connection, retrieves the necessary data
+                from the form, and updates the corresponding record in the 'appointments'
+                table. If the update is successful, it redirects the user back to the admin
+                visit page for the specified username. Otherwise, it displays an error message.
+
+                The code also includes session management for user authentication. If the session
+                variable 'is_logged_in' is not set, it sets it to false. The HTML part of the code
+                presents a form for editing appointment details, including the nature of the visit,
+                date, and visit time start and end. Upon submitting the form, the PHP code is
+                triggered for processing. The page also includes a navigation bar and some
+                conditional logic based on the user's login status.
+
+                Overall, the code allows administrators to edit appointment details
+                and ensures proper authorization and data handling.
+            </p>
+
+            <figure typeof="schema:SoftwareSourceCode" resource="#role-example" >
+                <figcaption>
+                    <span property="schema:name"></span>
+                    <span property="schema:description">
+                    The edit page.
+              </span>
+                </figcaption>
+                <img src="admin-pages/admin-edit-page.png" alt="Admin Edit Appointments">
+            </figure>
+        </li>
+
+        <li id="Export">
+            <h2>Export data about the user</h2>
+            <ul>
+                <li>
+                    <h3>JSON</h3>
+                    <p>
+                        The code assumes that the request method is GET. If it's not, the code will not execute.
+                        The required files are included, such as the JWT library and the database connection file.
+                        The session is started, and the JWT token is obtained from the session. The secret key is
+                        retrieved from the configuration file.
+                        The token is decoded and validated. If the token is invalid, unauthorized, or expired,
+                        the code responds with a 401 status code and exits.
+                        The username is obtained from the <code>$_GET</code> superglobal array.
+                        <br>
+                        <br>
+                        The database connection is established, and a SQL query is prepared to select all the data
+                        of the user with the given username.
+                        Another prepared statement is used to select all the appointments of the user with the
+                        given user ID.
+                        For each appointment, an additional query is prepared to retrieve the associated inmate's
+                        information based on their first name and last name.
+                        The appointment and inmate data are combined into an array and added to the appointments array.
+                        The export_data array is created and populated with the user's information and the
+                        appointments array.
+                        The export_data array is encoded as JSON.
+                        The JSON data is written to the output stream and sent as a downloadable file with the
+                        appropriate headers.
+                        The output stream is closed, and the script exits.
+                        Overall, this code serves as an API endpoint for retrieving inmate data. It requires a
+                        valid JWT token with an "admin" role to access the data. The retrieved data is exported as
+                        JSON and made available for download.
+                    </p>
+
+                    <figure typeof="schema:SoftwareSourceCode" resource="#role-example" >
+                    <figcaption>
+                        <span property="schema:name"></span>
+                        <span property="schema:description">
+                            The file with information in JSON.
+                        </span>
+                    </figcaption>
+                    <img src="admin-pages/admin-export-JSON-data.png" alt="Admin JSON Data">
+                </figure>
+                </li>
+
+                <li>
+                    <h3>CSV</h3>
+                    <p>
+                        After validating the token and user role, the code proceeds to retrieve the username
+                        and establish a database connection.
+                        A SQL query is prepared to select all the user data based on the username.
+                        The CSV file's filename is defined, and appropriate headers are set to indicate that
+                        the response should be treated as a CSV file download.
+                        The output stream is opened and initialized for writing CSV data.
+                        The field names are defined and written to the output as the first row.
+                        Using a loop, each row of user data is fetched and written as a CSV row.
+
+                        Another prepared statement is used to select the appointments of the user with the
+                        given user ID.
+
+                        The field names for appointment data and inmate data are defined and written to the
+                        output as the second row.
+                        For each appointment, an additional query is prepared to retrieve the associated
+                        inmate's information based on their first name and last name.
+
+                        The combined data is written to the output as a CSV row.
+                        Finally, the output is sent to the client, and the output stream is closed.
+                        <br>
+                        <br>
+                        This code exports the user data and associated appointment data as a CSV file for
+                        download. Each row in the CSV file represents a user or an appointment with their
+                        respective information.
+                    </p>
+                    <figure typeof="schema:SoftwareSourceCode" resource="#role-example" >
+                        <figcaption>
+                            <span property="schema:name"></span>
+                            <span property="schema:description">
+                            The file with information in CSV.
+                        </span>
+                        </figcaption>
+                        <img src="admin-pages/admin-export-CSV-data.png" alt="Admin CSV Data">
+                    </figure>
+                </li>
+
+                <li>
+                    <h3>HTML</h3>
+                    <p>
+                        The script begins by including necessary files, establishing a database connection,
+                        and validating the user's token and role.
+                        The username parameter is retrieved from the GET request.
+                        A SQL query is prepared to select all the data of the user based on their username.
+
+                        The user data is extracted from the result array and stored in the $export_data array.
+                        Another SQL query is prepared to select the appointments of the user based on their user ID.
+
+                        The HTML code starts with a section containing an h1 heading and two tables.
+                        The first table displays the user data retrieved earlier. Each field is displayed in a
+                        separate table cell.
+                        The second table displays the appointments of the user, including additional information
+                        related to the associated inmate.
+                        Inside the second table, a loop is used to iterate through the appointments and display
+                        each row of data.
+                        For each appointment, an additional SQL query is prepared to retrieve the associated
+                        inmate's information based on their first name and last name.
+                        The inmate data is fetched, and each field is displayed in a separate table cell.
+                        The HTML code ends with closing tags for the tables, section, body, and HTML.
+                        <br>
+                        <br>
+                        This code generates an HTML page that presents the user data and associated inmate
+                        appointments in a tabular format.
+                    </p>
+                    <figure typeof="schema:SoftwareSourceCode" resource="#role-example" >
+                        <figcaption>
+                            <span property="schema:name"></span>
+                            <span property="schema:description">
+                            The file with information in HTML.
+                        </span>
+                        </figcaption>
+                        <img src="admin-pages/admin-export-HTML-data.png" alt="Admin HTML Data">
+                    </figure>
+                </li>
+            </ul>
+
+        </li>
+
+        <li>
+            <h2>Export Panel</h2>
+            <p>
+                The code starts with a PHP session management. If the session variable <code>is_logged_in</code> is not set,
+                it is initialized as false.
+
+                The form has a class of "export" and an action attribute pointing to "export_all_script.php"
+                where the form data will be submitted.
+                The form consists of a form header, form body, and form footer.
+                In the form body, there are three form groups:
+                The first form group contains a label and a select element for selecting the data to export
+                (inmates, users, or all appointments).
+                The second form group contains radio buttons for selecting the sort order (alphabetically or
+                date created).
+                The third form group contains radio buttons for selecting the export format (JSON, CSV, or HTML).
+                The form footer includes a submit button with the label "Export."
+                The closing form, body, and html tags complete the HTML code.
+                <br>
+                Overall, this code generates a form that allows users to select options for exporting data,
+                such as the type of data, sorting order, and export format. The form data will be submitted to
+                "export_all_script.php" for further processing.
+            </p>
+            <p>
+                The code starts with the import of required dependencies and the database connection setup
+                using DbConnection.php and the config.php file.
+                Three functions are defined: <code>exportJSON</code>, <code>exportCSV</code>, and <code>exportHTML</code>. These functions handle
+                the data export in JSON, CSV, and HTML formats, respectively.
+                The database connection is established using <code>DbConnection::getInstance()->getConnection()</code>.
+                Inside the <code>$_SERVER['REQUEST_METHOD'] == 'POST'</code> block, the script retrieves the necessary
+                data from the session and the form submission.
+                The script verifies the validity of the JWT token and checks if the user has the required
+                role (admin).
+                Based on the selected export option (users, inmates, or all), the script fetches the
+                corresponding data from the database and stores it in the <code>$export_data</code> array.
+                The script also retrieves a short statistic related to the exported data.
+                Depending on the selected sorting option (alphabetically or date_created), the
+                $export_data array is sorted accordingly using <code>usort</code>.
+                The script then checks the selected export format (json, csv, or html) and calls the
+                corresponding export function, passing the <code>$export_data</code> and <code>$statistic arrays</code>.
+                The export functions set the appropriate headers for the selected format, open the
+                output stream, and write the exported data to the stream.
+                <br>
+                Finally, the script handles cases where an invalid option is selected and handles
+                unauthorized access.
+            </p>
+            <figure typeof="schema:SoftwareSourceCode" resource="#role-example" >
+                <figcaption>
+                    <span property="schema:name"></span>
+                    <span property="schema:description">
+                            The export all panel.
+                    </span>
+                </figcaption>
+                <img src="admin-pages/admin-export-all.png" alt="Admin Export All 1">
+                <img src="admin-pages/admin-export-all-part2.png" alt="Admin Export All 2">
+            </figure>
+        </li>
+
+        <li>
+            <h2>Add Inmate</h2>
+            <p>
+                The code starts with session management. It starts the session and checks if the
+                <code>is_logged_in</code> session variable is set. If not, it sets it to false.
+                The form is contained within a <code>form</code> element and has the action attribute set to
+            "save_inmate.php", indicating that the form data will be submitted for processing.
+            Inside the form, there is a form header with a heading and a message section. The message
+            section displays a success or error message based on the value of the success parameter
+            passed in the URL. If the value is 1, a success message is displayed. If the value is 0,
+            an error message is displayed.
+            The form body contains several form groups, each with a label and an input field. The input
+            fields have attributes such as type, id, name, class, placeholder, pattern, title, and
+            required to define their behavior and validation rules.
+            </p>
+
+            <p>
+
+                If the user is not logged in, they are redirected to the login page.
+                The script also verifies if the user is an admin by checking the presence of
+                the token session variable. If the token is not present, the user is redirected
+                to the login page.
+                The script retrieves the token from the session and the secret key from the configuration file.
+                It uses the Firebase JWT library to decode and verify the token. If the token is
+                invalid or the user is not an admin, the script exits with a 401 HTTP response code.
+                <br>
+                <br>
+                Next, the script establishes a database connection using the DbConnection class.
+                The inmate data is obtained from the <code>$_POST</code> superglobal array.
+                The script prepares an SQL statement to insert the inmate data into the inmates table.
+                The values are bound to the prepared statement using the <code>bind_param</code> method to prevent
+                SQL injection.
+                The statement is executed, and the connection and statement are closed.
+                Finally, the script redirects the user to the homepage and adds a success parameter to
+                the URL to indicate that the inmate was successfully added.
+
+            </p>
+
+
+            <figure typeof="schema:SoftwareSourceCode" resource="#role-example" >
+                <figcaption>
+                    <span property="schema:name"></span>
+                    <span property="schema:description">
+                            The add inmate page.
+                    </span>
+                </figcaption>
+                <img src="admin-pages/admin-add-inmate.png" alt="Admin Add Inmate">
+            </figure>
+        </li>
+    </ol>
+</section>
+</body>
+</html>
