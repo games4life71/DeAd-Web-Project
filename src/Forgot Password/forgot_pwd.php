@@ -62,8 +62,15 @@ $sender = '7stefanadrian@gmail.com';
 
 $subject = 'Reset your password';
 $body = 'Click on the link below to reset your password: http://localhost:8080/Reset%20Password/reset_pwd.php';
-$htmlBody = '<h1>Reset your password</h1>
-<p>"Someone requested to reset the password ! This is the token to reset your password"' . $token . '>Reset_Password</a></p>';
+//$htmlBody = '<h1>Reset your password</h1>
+//<p>"Someone requested to reset the password ! This is the token to reset your password"' . $token . '>Reset_Password</a></p>';
+$htmlBody=" <h1>Password Reset</h1>
+    <h2>Detention Admin</h2>
+    <p>Hello, " . $username . "</p>
+    <p>Please use the following token to reset your password:</p>
+    <p><strong>' . $token . '</strong></p>
+    <p>If you did not request a password reset, please ignore this email.</p>
+    <p>Thank you!</p>";
 
 $charSet = 'UTF-8';
 try {
