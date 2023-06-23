@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 
 
-        $stmt = $conn->prepare("SELECT * FROM users WHERE username like ?");
+        $stmt = $conn->prepare("SELECT * FROM users WHERE username like ? and `function` = 'user'");
 
         $stmt->bind_param("s", $username);
         $stmt->execute();

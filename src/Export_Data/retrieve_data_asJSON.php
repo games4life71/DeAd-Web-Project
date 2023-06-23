@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
    $user_id = $row['user_id'];
 
-   $export_data['user_info'] = $encode;
+   $export_data['user_info'] = $row;
 
     $stmt = $conn->prepare("SELECT * FROM appointments WHERE person_id = ?");
     $stmt->bind_param("i", $user_id);
@@ -76,21 +76,32 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
     $result = $stmt->get_result();
     //get the inmate for each appointment
     $appointments = array();
+
     while ($row = $result->fetch_assoc()) {
        // $inmate_id = $row['inmate_id'];
         $inamte_first_name = $row['firstname'];
         $inmate_last_name = $row['lastname'];
 
         $stmt = $conn->prepare("SELECT fname,lname, sentence_start_date,sentence_duration ,sentence_category FROM inmates WHERE fname = ? AND lname = ? ");
+
         $stmt->bind_param("ss", $inamte_first_name, $inmate_last_name);
         $stmt->execute();
         $result = $stmt->get_result();
-        $inmate = $result->fetch_assoc();
-        $appointments[] = array('appointment' => $row, 'inmate' => $inmate);
+        $row_inmate = $result->fetch_assoc(); //
+        $appointment_id = $row['appointment_id'];
+        $stmt = $conn->prepare("SELECT * FROM visits_summary WHERE appointment_refID = ?");
+        $stmt->bind_param("i", $appointment_id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $row_summary = $result->fetch_assoc();
+        //$inmate = $result->fetch_assoc();
+        $appointments[] = array('appointment' => $row, 'inmate' => $row_inmate, 'summary' =>$row_summary );
     }
+
     $encode = json_encode($appointments);
     //$encode = json_encode($result->fetch_assoc());
-    $export_data['appointments'] = $encode;
+    $export_data['appointments'] = $appointments;
+
     $output = fopen('php://output', 'w');
     fwrite($output, json_encode($export_data));
     $filename ="export_".$username.'_'.date('Y-m-d').".json";

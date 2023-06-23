@@ -104,7 +104,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     switch ($_POST['export']) {
         case 'users':
             //export all the users
-            $result = $conn->query("SELECT username,fname,lname,email,secondary_email,function FROM users");
+            $result = $conn->query("SELECT username,fname,lname,email,secondary_email,`function` FROM users");
             while ($row = $result->fetch_assoc()) {
                 $export_data[] = $row;
             }

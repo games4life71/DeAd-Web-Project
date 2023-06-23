@@ -47,13 +47,14 @@ if (!isset($_SESSION['is_logged_in'])) {
     //session_start();
     //make a call to retrieve appointment
     $base_url = "http://ec2-18-184-17-109.eu-central-1.compute.amazonaws.com";
-    $url_with_id = $base_url."/src/Summary-Form/retrieve_visit.php" . "?visit_id=" . $_GET['visit_id'];
+    $url_with_id = $base_url."/src/Summary-form/retrieve_visit.php" . "?visit_id=" . $_GET['visit_id'];
     $curl = curl_init($url_with_id);
 
     if(isset($_SESSION['token']))
     {
         curl_setopt($curl,CURLOPT_HTTPHEADER,array('Authorization: Bearer '.$_SESSION['token']));
     }
+
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     curl_setopt($curl, CURLOPT_HTTPGET, true);
     $response = curl_exec($curl);

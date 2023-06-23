@@ -42,8 +42,8 @@
             //make a call to the searchUsername endpoint
             //
             session_start();
-            $base_url = "http://ec2-18-184-17-109.eu-central-1.compute.amazonaws.com";
-
+            //$base_url = "http://ec2-18-184-17-109.eu-central-1.compute.amazonaws.com";
+            $base_url = "http://localhost";
             $url_with_username = $base_url."/src/Search_page/searchUsername.php?username=" . $_GET['username'];
             $curl = curl_init();
             //attach the token to the header

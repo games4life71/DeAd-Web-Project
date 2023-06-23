@@ -13,10 +13,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
 
 
     session_start();
-    //get the token from the header
-    $token = apache_request_headers()['Authorization'];
-    $token = str_replace('Bearer ', '', $token);
 
+    //get the token from the header
+    //$token = apache_request_headers()['Authorization'];
+    //$token = str_replace('Bearer ', '', $token);
+    $token = $_SESSION['token'];
     //validate it
     $config = require '../../config.php';
     require_once('../../vendor/autoload.php');
